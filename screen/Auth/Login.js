@@ -5,9 +5,13 @@ import { Text, View, TouchableOpacity, TextInput } from 'react-native';
 // 스타일 import
 import LoginStyle from "../../styles/Auth/LoginStyle";
 
-export default function LoginScreen() {
+export default function LoginScreen({navigation}) {
     const idInputRef = createRef();
     const pwInputRef = createRef();
+
+    // function gotoHomeScreen() {
+    //     navigation.navigate("Home");
+    // }
 
     return (
       <View style={LoginStyle.container}>
@@ -33,7 +37,10 @@ export default function LoginScreen() {
                 autoCapitalize="none"
                 secureTextEntry={true}
             />
-            <TouchableOpacity style={LoginStyle.loginButton}>
+            <TouchableOpacity 
+                style={LoginStyle.loginButton}
+                onPress={()=>navigation.navigate("Home")}
+            >
                 <Text style={LoginStyle.loginText}>로그인</Text>
             </TouchableOpacity>
         </View>

@@ -12,6 +12,7 @@ const Stack = createNativeStackNavigator();
 
 // 화면 연결
 import LoginScreen from "./screen/Auth/Login";
+import HomeScreen from "./screen/InApp/Home";
 
 export default function App() {
   return (
@@ -20,6 +21,11 @@ export default function App() {
         <Stack.Screen 
           name="Login"  
           component={LoginScreen} 
+          options={{headerShown : false}}
+        />
+        <Stack.Screen 
+          name="Home"  
+          component={HomeScreen} 
           options={{headerShown : false}}
         />
       </Stack.Navigator>
