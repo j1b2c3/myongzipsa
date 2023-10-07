@@ -24,9 +24,9 @@ export default function App() {
           options={{headerShown : false}}
         />
         <Stack.Screen 
-          name="Home"  
+          name="명집사"  
           component={HomeScreen} 
-          options={{headerShown : false}}
+          //options={{headerShown : false}}
         />
       </Stack.Navigator>
     </NavigationContainer>

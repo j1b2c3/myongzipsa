@@ -39,7 +39,7 @@ export default function LoginScreen({navigation}) {
             />
             <TouchableOpacity 
                 style={LoginStyle.loginButton}
-                onPress={()=>navigation.navigate("Home")}
+                onPress={()=>navigation.navigate("명집사")}
             >
                 <Text style={LoginStyle.loginText}>로그인</Text>
             </TouchableOpacity>
