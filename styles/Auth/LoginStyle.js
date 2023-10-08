@@ -2,15 +2,15 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
     container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'flex-start',
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
     },
 
     titleContainer: {
         width:"100%",
-        height: "25%",
+        height: "30%",
         justifyContent: "center",
         alignItems: "center",
     },
@@ -22,28 +22,28 @@ const styles = StyleSheet.create({
 
     imageContainer: {
         width:"100%",
-        height: "35%",
+        height: "30%",
         justifyContent: "center",
         alignItems: "center",
     },
 
     inputContainer: {
         width:"100%",
-        height: "25%",
+        height: "30%",
         justifyContent: "center",
         alignItems: "center",
     },
     input: {
         height: 40,
-        width: 280,
+        width: 250,
         borderWidth: 1,
         borderRadius: 10,
         borderColor: "gray",
-        margin: 5
+        margin: 10
     },
     loginButton: {
         height: 40,
-        width: 200,
+        width: 150,
         justifyContent: "center",
         alignItems: "center",
         backgroundColor: "#dcdcdc",
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
     },
     findContainer: {
         height: 40,
-        width: 170,
+        width: 150,
         justifyContent: "center",
         alignItems: "center",
         borderWidth: 1,
@@ -85,6 +85,6 @@ const styles = StyleSheet.create({
         borderColor: "gray",
         marginHorizontal: 10
     },
-  });
+});
 
 export default styles;

@@ -14,7 +14,7 @@ export default function LoginScreen({navigation}) {
     // }
 
     return (
-      <View style={LoginStyle.container}>
+    <View style={LoginStyle.container}>
         <View style={LoginStyle.titleContainer}>
             <Text style={LoginStyle.title}>명집사</Text>
         </View>
@@ -25,7 +25,7 @@ export default function LoginScreen({navigation}) {
             <TextInput 
                 style={LoginStyle.input}
                 ref={idInputRef}
-                placeholder="Username"
+                placeholder="   Username"
                 autoCapitalize="none"
                 blurOnSubmit={false}
                 returnKeyType="next"
@@ -33,12 +33,13 @@ export default function LoginScreen({navigation}) {
             <TextInput 
                 style={LoginStyle.input}
                 ref={pwInputRef}
-                placeholder="password"
+                placeholder="   password"
                 autoCapitalize="none"
                 secureTextEntry={true}
             />
             <TouchableOpacity 
                 style={LoginStyle.loginButton}
+                // 로그인 체크 필요
                 onPress={()=>navigation.navigate("명집사")}
             >
                 <Text style={LoginStyle.loginText}>로그인</Text>
@@ -52,6 +53,6 @@ export default function LoginScreen({navigation}) {
                 <Text style={LoginStyle.registerText}>아이디/비밀번호 찾기</Text>
             </TouchableOpacity>
         </View>
-      </View>
+    </View>
     );
 }
