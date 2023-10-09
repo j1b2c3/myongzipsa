@@ -1,7 +1,7 @@
+// login.js
 import React, { useState, useEffect, createRef } from "react";
 import { StatusBar } from 'expo-status-bar';
 import { Text, View, TouchableOpacity, TextInput } from 'react-native';
-// Login.js
 // 스타일 import 
 import LoginStyle from "../../styles/Auth/LoginStyle";
 
