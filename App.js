@@ -1,4 +1,4 @@
-//test
+
 // react에서 각종 함수들을 쓰기위해 기본적으로 불러오는 모듈, 앤간해서 모든 프론트 화면에 넣자.
 import * as React from "react";
 
