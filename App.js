@@ -32,7 +32,7 @@ export default function App() {
         <Stack.Screen 
           name="회원가입"  
           component={MemberShipScreen} 
-          //options={{headerShown : false}}
+          options={{headerShown : false}}
         />
       </Stack.Navigator>
     </NavigationContainer>

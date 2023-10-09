@@ -1,14 +1,16 @@
-// login.js 
-// test용 주석
 import React, { useState, useEffect, createRef } from "react";
 import { StatusBar } from 'expo-status-bar';
 import { Text, View, TouchableOpacity, TextInput } from 'react-native';
-// 스타일 import 
+
+// 스타일 import
 import LoginStyle from "../../styles/Auth/LoginStyle";
 
 export default function LoginScreen({navigation}) {
     const idInputRef = createRef();
     const pwInputRef = createRef();
+
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
 
     // function gotoHomeScreen() {
     //     navigation.navigate("Home");
@@ -30,6 +32,7 @@ export default function LoginScreen({navigation}) {
                 autoCapitalize="none"
                 blurOnSubmit={false}
                 returnKeyType="next"
+                onChangeText={text => setUsername(text)}
             />
             <TextInput 
                 style={LoginStyle.input}
@@ -37,6 +40,7 @@ export default function LoginScreen({navigation}) {
                 placeholder="   password"
                 autoCapitalize="none"
                 secureTextEntry={true}
+                onChangeText={text => setPassword(text)}
             />
             <TouchableOpacity 
                 style={LoginStyle.loginButton}
