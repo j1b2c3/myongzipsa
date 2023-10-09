@@ -1,4 +1,5 @@
-// login.js
+// login.js 
+// test용 주석
 import React, { useState, useEffect, createRef } from "react";
 import { StatusBar } from 'expo-status-bar';
 import { Text, View, TouchableOpacity, TextInput } from 'react-native';
