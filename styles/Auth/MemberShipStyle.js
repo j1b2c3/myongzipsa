@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-const styles = StyleSheet.create({
+const MemberShipStyle = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     color: "skyblue"
   },
 
-  InputContainer:{
+  inputContainer:{
     width:"100%",
     height: "30%",
     justifyContent: "center",
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default styles;
+export default MemberShipStyle;
 
 
 
