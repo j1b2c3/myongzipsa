@@ -1,24 +1,29 @@
-import React, { useState, useEffect, createRef } from "react";
-import { StatusBar } from 'expo-status-bar';
-import { Text, View, TouchableOpacity, TextInput } from 'react-native';
+import React, { useState } from "react";
+import { Text, View, TouchableOpacity, TextInput, Alert } from "react-native";
+import firebase from './firebaseConfig'; // Import Firebase config
 
 // 스타일 import
 import LoginStyle from "../../styles/Auth/LoginStyle";
 
-export default function LoginScreen({navigation}) {
-    const idInputRef = createRef();
-    const pwInputRef = createRef();
+export default function LoginScreen({ navigation }) {
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
 
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+    const handleLogin = async () => {
+        try {
+            await firebase.auth().signInWithEmailAndPassword(username, password);
+            // 로그인 성공 시 처리
+            navigation.navigate("명집사");
+        } 
+        catch (error) {
+        // 로그인 실패 시 에러 메시지를 보여줌
+        Alert.alert("로그인 실패", "아이디 또는 비밀번호가 올바르지 않습니다.");
+    }
+};
 
-    // function gotoHomeScreen() {
-    //     navigation.navigate("Home");
-    // }
-
-    return (
-    <View style={LoginStyle.container}>
-        <View style={LoginStyle.titleContainer}>
+return (
+<View style={LoginStyle.container}>
+<View style={LoginStyle.titleContainer}>
             <Text style={LoginStyle.title}>
                 명집사
             </Text>
@@ -27,32 +32,26 @@ export default function LoginScreen({navigation}) {
 
         </View>
         <View style={LoginStyle.inputContainer}>
-            <TextInput 
-                style={LoginStyle.input}
-                ref={idInputRef}
-                placeholder="   Username"
-                autoCapitalize="none"
-                blurOnSubmit={false}
-                returnKeyType="next"
-                onChangeText={text => setUsername(text)}
-            />
-            <TextInput 
-                style={LoginStyle.input}
-                ref={pwInputRef}
-                placeholder="   password"
-                autoCapitalize="none"
-                secureTextEntry={true}
-                onChangeText={text => setPassword(text)}
-            />
-            <TouchableOpacity 
-                style={LoginStyle.loginButton}
-                // 로그인 체크 필요
-                onPress={()=>navigation.navigate("명집사")}
-            >
-                <Text style={LoginStyle.loginText}>
-                    로그인
-                </Text>
-            </TouchableOpacity>
+        <TextInput
+        style={LoginStyle.input}
+        ref={idInputRef}
+        placeholder="   Username"
+        autoCapitalize="none"
+        blurOnSubmit={false}
+        returnKeyType="next"
+        onChangeText={(text) => setUsername(text)}
+        />
+        <TextInput
+        style={LoginStyle.input}
+        ref={pwInputRef}
+        placeholder="   Password"
+        autoCapitalize="none"
+        secureTextEntry={true}
+        onChangeText={(text) => setPassword(text)}
+        />
+        <TouchableOpacity style={LoginStyle.loginButton} onPress={handleLogin}>
+        <Text style={LoginStyle.loginText}>로그인</Text>
+        </TouchableOpacity>
         </View>
         <View style={LoginStyle.subContainer}>
             <TouchableOpacity style={LoginStyle.registerButton}
