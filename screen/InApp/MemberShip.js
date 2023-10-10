@@ -4,15 +4,14 @@ import MemberShipStyle from '../../styles/Auth/MemberShipStyle';
 
 const MemberShipScreen = () => {
   const [name, setName] = useState('');
-  const [schoolName, setSchoolName] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [passwordCheck, setPasswordCheck] = useState('');
-  const [dome, setDome] = useState('dome1');
+
 
   const handleSignUp = () => {
-    console.log(`Name: ${name}, 소속대학교: ${schoolName}, 기숙사: ${dome}, 아이디: ${username}, 비밀번호: ${password}, 비밀번호확인: ${passwordCheck}`);
-    // Add your signup logic here
+    console.log(`Name: ${name}, 아이디: ${username}, 비밀번호: ${password}, 비밀번호확인: ${passwordCheck}`);
+    // 회원가입
   };
 
   return (
