@@ -1,33 +1,21 @@
-import firebase from "firebase/compat/app"
 // Import the functions you need from the SDKs you need
-// Import the functions you need from the SDKs you need
-import { getAuth } from "firebase/auth";
-import { firebaseConfig } from "./ApiKeys";
-import "firebase/compat/auth"
-import "firebase/compat/database"
-import "firebase/compat/firestore"
-import "firebase/compat/functions"
-import  "firebase/compat/storage";
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyCz4vQbdJ2yYmc1Mb0x6gC_FAAKkPIBaUw",
+  authDomain: "myongjipsa.firebaseapp.com",
+  projectId: "myongjipsa",
+  storageBucket: "myongjipsa.appspot.com",
+  messagingSenderId: "196372437968",
+  appId: "1:196372437968:web:fbb75ff24583af24af77d5",
+  measurementId: "G-7Q77CBC791"
+};
 
 // Initialize Firebase
-if (!firebase.apps.length) {
-    firebase.initializeApp(firebaseConfig);
-} else {
-    firebase.app();
-}
-
- 
- // export const auth = getAuth(app); // 코드 추가
-
-  export const RealTimeDatabase=firebase.database();
-  export const firestoreDatabase=firebase.firestore();
-  export const authService=firebase.auth();
-  export const storageService=firebase.storage();
- // export const app=firebase.app();
-// if(!firebase.app.length){
-//    firebase.app.initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
