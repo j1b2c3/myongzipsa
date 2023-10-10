@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-const styles = StyleSheet.create({
+const MemberShipStyle = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     color: "skyblue"
   },
 
-  InputContainer:{
+  inputContainer:{
     width:"100%",
     height: "30%",
     justifyContent: "center",
@@ -36,6 +36,17 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginBottom: 17,
     paddingLeft: 8,
+  },
+
+  picker: {
+    width: 300,
+    height: 50,
+    borderColor: 'gray',
+    borderWidth: 1,
+    borderRadius: 10,
+    marginBottom: 17,
+    paddingLeft: 8,
+    backgroundColor: 'white'
   },
 
   SignUpContainer:{
@@ -60,7 +71,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default styles;
+export default MemberShipStyle;
 
 
 
