@@ -1,5 +1,6 @@
+import firebase from './javascripts/firebaseConfig';
 import React, { useState } from 'react';
-import { Text, View, TouchableOpacity, TextInput, Picker } from 'react-native';
+import { Text, View, TouchableOpacity, TextInput } from 'react-native';
 import MemberShipStyle from '../../styles/Auth/MemberShipStyle';
 
 const MemberShipScreen = () => {
@@ -9,10 +10,26 @@ const MemberShipScreen = () => {
   const [passwordCheck, setPasswordCheck] = useState('');
 
 
-  const handleSignUp = () => {
-    console.log(`Name: ${name}, 아이디: ${username}, 비밀번호: ${password}, 비밀번호확인: ${passwordCheck}`);
-    // 회원가입
+  const handleSignUp = async () => {
+    try {
+      // 사용자 생성
+      const userCredential = await firebase.auth().createUserWithEmailAndPassword(username, password);
+      const user = userCredential.user;
+
+      // 사용자 데이터 저장
+      await firebase.database().ref('users/' + user.uid).set({
+        name,
+        username,
+        // Add other user data you want to save
+      });
+      
+      console.log('User registered successfully:', user);
+    } catch (error) {
+      console.error('Error signing up:', error);
+      // Handle error appropriately (display message to user, etc.)
+    }
   };
+
 
   return (
     <View style={MemberShipStyle.container}>
