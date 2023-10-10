@@ -19,7 +19,9 @@ export default function LoginScreen({navigation}) {
     return (
     <View style={LoginStyle.container}>
         <View style={LoginStyle.titleContainer}>
-            <Text style={LoginStyle.title}>명집사</Text>
+            <Text style={LoginStyle.title}>
+                명집사
+            </Text>
         </View>
         <View style={LoginStyle.imageContainer}>
 
@@ -47,18 +49,24 @@ export default function LoginScreen({navigation}) {
                 // 로그인 체크 필요
                 onPress={()=>navigation.navigate("명집사")}
             >
-                <Text style={LoginStyle.loginText}>로그인</Text>
+                <Text style={LoginStyle.loginText}>
+                    로그인
+                </Text>
             </TouchableOpacity>
         </View>
         <View style={LoginStyle.subContainer}>
             <TouchableOpacity style={LoginStyle.registerButton}
                 onPress={()=>navigation.navigate("회원가입")}
             >
-                <Text style={LoginStyle.registerText}>회원가입</Text>
+                <Text style={LoginStyle.registerText}>
+                    회원가입
+                </Text>
                 
             </TouchableOpacity>
             <TouchableOpacity style={LoginStyle.findContainer}>
-                <Text style={LoginStyle.registerText}>아이디/비밀번호 찾기</Text>
+                <Text style={LoginStyle.registerText}>
+                    아이디/비밀번호 찾기
+                </Text>
             </TouchableOpacity>
         </View>
     </View>
