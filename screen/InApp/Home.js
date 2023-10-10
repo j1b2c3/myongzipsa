@@ -3,10 +3,29 @@ import { StatusBar } from 'expo-status-bar';
 import { Text, View, TouchableOpacity, TextInput } from 'react-native';
 
 // 스타일 import
+import HomeStyle from "../../styles/Auth/HomeStyle";
 
-export default function HomeScreen() {
+export default function HomeScreen({navigation}) {
+    React.useLayoutEffect(() => {
+      navigation.setOptions({
+        headerStyle: HomeStyle.head_navigation,
+        headerTitleStyle: HomeStyle.title,
+        headerLeft: () => (
+          // 뒤로가기 버튼 아이콘 설정
+          <Text 
+          style={HomeStyle.backButton} 
+          onPress={() => navigation.goBack()}
+          >
+            {'〈'} {/* 뒤로가기 아이콘 */}
+          </Text>
+        ),
+        headerTitleAlign : 'center',
+      })
+    }, [navigation])
+
     return (
       <View>
+        
         {/* 명집사의 특색 */}
         <View>
           <Text>안녕하세요 명집사입니다. </Text>

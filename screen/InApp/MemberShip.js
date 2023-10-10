@@ -17,9 +17,11 @@ const MemberShipScreen = () => {
 
   return (
     <View style={MemberShipStyle.container}>
-      <View style={MemberShipStyle.titleContainer}>
-        <Text style={MemberShipStyle.title}>회원가입하기</Text>
-      </View>
+        <View style={MemberShipStyle.titleContainer}>
+          <Text style={MemberShipStyle.title}>
+            회원가입하기
+          </Text>
+        </View>
 
       <View style={MemberShipStyle.inputContainer}>
         <TextInput
@@ -71,14 +73,17 @@ const MemberShipScreen = () => {
         />
       </View>
 
-      <View style={MemberShipStyle.SignUpContainer}>
-        <TouchableOpacity
-          style={MemberShipStyle.button}
-          onPress={handleSignUp}
-        >
-          <Text style={MemberShipStyle.buttonText}>가입하기</Text>
-        </TouchableOpacity>
-      </View>
+        <View style={MemberShipStyle.SignUpContainer}>
+          <TouchableOpacity
+            style={MemberShipStyle.button}
+            onPress={handleSignUp}
+          >
+            <Text style={MemberShipStyle.buttonText}>
+              가입하기
+            </Text>
+          </TouchableOpacity>
+        </View>
+
     </View>
   );
 };
