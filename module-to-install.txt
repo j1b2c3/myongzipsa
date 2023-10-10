@@ -5,4 +5,3 @@ npm install @react-navigation/bottom-tabs
 npm install @react-native-picker/picker
 npm install firebase
 npm install -g firebase-tools
-//test용
