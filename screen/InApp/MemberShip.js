@@ -32,27 +32,6 @@ const MemberShipScreen = () => {
         />
         <TextInput
           style={MemberShipStyle.input}
-          placeholder="소속대학교"
-          value={schoolName}
-          onChangeText={text => setSchoolName(text)}
-        />
-
-        /*오류
-        <Text style={MemberShipStyle.input}>기숙사 선택</Text>
-        <Picker
-          style={MemberShipStyle.picker}
-          selectedValue={dome}
-          onValueChange={(itemValue) => setDome(itemValue)}
-        >
-          <Picker.Item label="기숙사를 선택해주세요" value="none" />
-          <Picker.Item label="기숙사1" value="dome1" />
-          <Picker.Item label="기숙사2" value="dome2" />
-          <Picker.Item label="기숙사3" value="dome3" />
-        </Picker>
-        */
-
-        <TextInput
-          style={MemberShipStyle.input}
           placeholder="아이디"
           value={username}
           onChangeText={text => setUsername(text)}

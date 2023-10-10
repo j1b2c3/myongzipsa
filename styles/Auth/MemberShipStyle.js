@@ -38,17 +38,6 @@ const MemberShipStyle = StyleSheet.create({
     paddingLeft: 8,
   },
 
-  picker: {
-    width: 300,
-    height: 50,
-    borderColor: 'gray',
-    borderWidth: 1,
-    borderRadius: 10,
-    marginBottom: 17,
-    paddingLeft: 8,
-    backgroundColor: 'white'
-  },
-
   SignUpContainer:{
     width:"100%",
     height: "30%",
