@@ -20,13 +20,14 @@ const MemberShipScreen = () => {
       await firebase.database().ref('users/' + user.uid).set({
         name,
         username,
+        password
         // Add other user data you want to save
       });
       
       console.log('User registered successfully:', user);
     } catch (error) {
       console.error('Error signing up:', error);
-      // Handle error appropriately (display message to user, etc.)
+      alert("회원가입 오류 발생")
     }
   };
 
