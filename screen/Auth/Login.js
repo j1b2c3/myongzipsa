@@ -55,9 +55,10 @@ export default function LoginScreen({navigation}) {
                 onPress={()=>navigation.navigate("회원가입")}
             >
                 <Text style={LoginStyle.registerText}>회원가입</Text>
-                
             </TouchableOpacity>
-            <TouchableOpacity style={LoginStyle.findContainer}>
+            <TouchableOpacity style={LoginStyle.findContainer}
+                onPress={()=>navigation.navigate("아이디/비밀번호 찾기")}
+            >
                 <Text style={LoginStyle.registerText}>아이디/비밀번호 찾기</Text>
             </TouchableOpacity>
         </View>

@@ -22,7 +22,7 @@ export default function MemberShipScreen(navigation) {
           <Text style={MemberShipStyle.title}>회원가입하기</Text>
         </View>
 
-        <View style={MemberShipStyle.inputContainer}>
+        <View style={MemberShipStyle.InputContainer}>
           <TextInput
             style={MemberShipStyle.input}
             placeholder="이름"

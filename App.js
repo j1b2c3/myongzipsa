@@ -14,7 +14,11 @@ const Stack = createNativeStackNavigator();
 import LoginScreen from "./screen/Auth/Login";
 import HomeScreen from "./screen/InApp/Home";
 import MemberShipScreen from "./screen/InApp/MemberShip";
+import FindingScreen from "./screen/InApp/Finding";
 import FindIDScreen from "./screen/InApp/FindID";
+import FindPwdScreen from "./screen/InApp/FindPwd";
+
+
 
 export default function App() {
   return (
@@ -33,14 +37,16 @@ export default function App() {
         <Stack.Screen 
           name="회원가입"  
           component={MemberShipScreen} 
-          options={{headerShown : false}}
+          //options={{headerShown : false}}
         />
         <Stack.Screen 
           name="아이디/비밀번호 찾기"  
-          component={FindIDScreen} 
-          options={{headerShown : false}}
+          component={FindingScreen} 
+          //options={{headerShown : false}}
         />
+        
       </Stack.Navigator>
     </NavigationContainer>
+    
   );
 }
