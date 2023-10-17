@@ -1,6 +1,5 @@
 import React, { useState, useEffect, createRef } from "react";
-import { StatusBar } from 'expo-status-bar';
-import { Text, View, TouchableOpacity, TextInput } from 'react-native';
+import { Text, View, TouchableOpacity, TextInput, Image , StatusBar } from 'react-native';
 
 // 스타일 import
 import LoginStyle from "../../styles/Auth/LoginStyle";
@@ -24,7 +23,10 @@ export default function LoginScreen({navigation}) {
             </Text>
         </View>
         <View style={LoginStyle.imageContainer}>
-
+            <Image 
+                style={LoginStyle.image}
+                source = {require("../../img/icon_mjuM.jpg")}
+            />
         </View>
         <View style={LoginStyle.inputContainer}>
             <TextInput 
@@ -49,26 +51,24 @@ export default function LoginScreen({navigation}) {
                 // 로그인 체크 필요
                 onPress={()=>navigation.navigate("명집사")}
             >
-                <Text style={LoginStyle.loginText}>
-                    로그인
-                </Text>
+                <Text style={LoginStyle.loginText}>로그인</Text>
             </TouchableOpacity>
         </View>
         <View style={LoginStyle.subContainer}>
             <TouchableOpacity style={LoginStyle.registerButton}
                 onPress={()=>navigation.navigate("회원가입")}
             >
-                <Text style={LoginStyle.registerText}>
-                    회원가입
-                </Text>
+                <Text style={LoginStyle.registerText}>회원가입</Text>
                 
             </TouchableOpacity>
+
             <TouchableOpacity style={LoginStyle.findContainer}
                 onPress={()=>navigation.navigate("아이디/비밀번호 찾기")}
             >
                 <Text style={LoginStyle.registerText}>
                     아이디/비밀번호 찾기
                 </Text>
+            
             </TouchableOpacity>
         </View>
     </View>
