@@ -6,3 +6,11 @@ npm install firebase
 npm install -g firebase-tools
 npm install @react-native-picker/picker
 npm install @react-navigation/material-top-tabs react-native-tab-view
+
+{}
+npm install @react-native-async-storage/async-storage
+-> 오류 고치기 위한 것
+npx expo install --fix
+
+-> 또 안되면
+npm audit fix
