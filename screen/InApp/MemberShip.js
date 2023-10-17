@@ -1,4 +1,4 @@
-import firebase from './javascripts/firebaseConfig';
+import firebase from '../javascripts/firebaseConfig';
 import React, { useState } from 'react';
 import { Text, View, TouchableOpacity, TextInput } from 'react-native';
 import MemberShipStyle from '../../styles/Auth/MemberShipStyle';
@@ -21,7 +21,6 @@ const MemberShipScreen = () => {
         name,
         username,
         password
-        // Add other user data you want to save
       });
       
       console.log('User registered successfully:', user);

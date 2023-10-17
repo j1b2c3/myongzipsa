@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Text, View, TouchableOpacity, TextInput, Alert } from "react-native";
-import firebase from './javascripts/firebaseConfig';
+import firebase from '../../javascripts/firebaseConfig';
 
 // 스타일 import
 import LoginStyle from "../../styles/Auth/LoginStyle";
