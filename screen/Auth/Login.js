@@ -1,4 +1,4 @@
-import {auth} from '../../javascripts/firebaseConfig';
+import {auth} from '../../javascripts/firebaseconfig';
 import React, { useState } from 'react'
 import { Text, View, TouchableOpacity, TextInput, Alert } from 'react-native'
 
@@ -15,6 +15,7 @@ export default function LoginScreen({ navigation }) {
         .then(userCredentials => {
           const user = userCredentials.user
           console.log('Logged in with:', user.email)
+          navigation.navigate("명집사")
         })
     } catch (error) {
       console.error('Error login:', error)
@@ -31,7 +32,7 @@ export default function LoginScreen({ navigation }) {
       <View style={LoginStyle.inputContainer}>
         <TextInput
           style={LoginStyle.input}
-          placeholder='   Email'
+          placeholder='   이메일'
           value={email}
           autoCapitalize='none'
           blurOnSubmit={false}
@@ -40,7 +41,7 @@ export default function LoginScreen({ navigation }) {
         />
         <TextInput
           style={LoginStyle.input}
-          placeholder='   Password'
+          placeholder='   비밀번호'
           value={password}
           autoCapitalize='none'
           secureTextEntry={true}
