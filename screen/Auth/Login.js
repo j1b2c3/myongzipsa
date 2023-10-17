@@ -1,28 +1,16 @@
-import {auth} from '../../javascripts/FirebaseConfigFile';
-import React, { useState } from 'react'
-import { Text, View, TouchableOpacity, TextInput, Alert } from 'react-native'
+//import {auth} from '../../javascripts/FirebaseConfigFile';
+import React, { useState, useEffect, createRef } from 'react'
+import { Text, View, TouchableOpacity, TextInput, Image, Alert } from 'react-native'
 
 // 스타일 import
 import LoginStyle from '../../styles/Auth/LoginStyle'
 
 export default function LoginScreen({ navigation }) {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const idInputRef = createRef();
+    const pwInputRef = createRef();
 
-  const handleLogin = async () => {
-    try {
-        await auth.signInWithEmailAndPassword(email, password)
-        .then(userCredentials => {
-          const user = userCredentials.user
-          console.log('Logged in with:', user.email)
-          navigation.navigate('명집사')
-        })
-    } catch (error) {
-      console.error('Error login:', error)
-      alert('로그인 오류 발생')
-    }
-  }
-
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
     return (
     <View style={LoginStyle.container}>
         <View style={LoginStyle.titleContainer}>
