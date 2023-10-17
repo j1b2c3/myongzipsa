@@ -1,4 +1,4 @@
-import { auth } from '../../javascripts/firebaseconfig'
+import { auth } from '../../javascripts/FirebaseConfigFile'
 import React, { useState } from 'react'
 import { Text, View, TouchableOpacity, TextInput } from 'react-native'
 import MemberShipStyle from '../../styles/Auth/MemberShipStyle'
