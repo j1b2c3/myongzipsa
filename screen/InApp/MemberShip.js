@@ -23,6 +23,7 @@ const MemberShipScreen = () => {
         .then(userCredentials => {
           const user = userCredentials.user
           console.log('User registered successfully:', user.email)
+          alert('회원가입 완료', user.email)
         })
     } catch (error) {
       console.error('Error signing up:', error)
