@@ -8,7 +8,8 @@ const firebaseConfig = {
   projectId: "myongzipsadb",
   storageBucket: "myongzipsadb.appspot.com",
   messagingSenderId: "395432457229",
-  appId: "1:395432457229:web:792d1cf44eb5932b041144"
+  appId: "1:395432457229:web:792d1cf44eb5932b041144",
+  databaseURL: "https://myongzipsadb-default-rtdb.asia-southeast1.firebasedatabase.app/";
 };
 
 firebase.initializeApp(firebaseConfig);
