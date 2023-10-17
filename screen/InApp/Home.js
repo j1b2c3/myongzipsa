@@ -1,7 +1,7 @@
 import React, { useState, useEffect, createRef } from "react";
 import { StatusBar } from 'expo-status-bar';
 import { Text, View, TouchableOpacity, TextInput } from 'react-native';
-import firebase from '../../javascripts/firebaseConfig';
+import firebase from '../../firebaseconfig';
 import 'firebase/database';
 
 // 스타일 import

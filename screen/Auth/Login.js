@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Text, View, TouchableOpacity, TextInput, Alert } from "react-native";
-import firebase from '../../javascripts/firebaseConfig';
 
 // 스타일 import
 import LoginStyle from "../../styles/Auth/LoginStyle";
@@ -8,6 +7,9 @@ import LoginStyle from "../../styles/Auth/LoginStyle";
 export default function LoginScreen({ navigation }) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+
+    const idInputRef = useRef(null);
+    const pwInputRef = useRef(null);
 
     const handleLogin = async () => {
         try {
