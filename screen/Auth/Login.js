@@ -1,6 +1,6 @@
 import {auth} from '../../javascripts/FirebaseConfigFile';
 import React, { useState } from 'react'
-import { Text, View, TouchableOpacity, TextInput, Alert } from 'react-native'
+import { Text, View, TouchableOpacity, TextInput, Alert, Image } from 'react-native'
 
 // 스타일 import
 import LoginStyle from '../../styles/Auth/LoginStyle'
@@ -8,6 +8,9 @@ import LoginStyle from '../../styles/Auth/LoginStyle'
 export default function LoginScreen({ navigation }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    const idInputRef = React.createRef();
+    const pwInputRef = React.createRef();
 
   const handleLogin = async () => {
     try {
