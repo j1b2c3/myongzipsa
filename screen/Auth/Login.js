@@ -1,4 +1,4 @@
-import {auth} from '../../javascripts/firebaseconfig';
+//rimport {auth} from '../../javascripts/firebaseconfig';
 import React, { useState, useEffect, createRef } from "react";
 import { Text, View, TouchableOpacity, TextInput, Image , StatusBar, Alert } from 'react-native';
 
