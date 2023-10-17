@@ -1,6 +1,6 @@
-import {auth} from '../../javascripts/firebaseConfig';
 import React, { useState } from 'react'
 import { Text, View, TouchableOpacity, TextInput, Alert } from 'react-native'
+import {auth} from '../../javascripts/firebaseconfig';
 
 // 스타일 import
 import LoginStyle from '../../styles/Auth/LoginStyle'
@@ -32,7 +32,7 @@ export default function LoginScreen({ navigation }) {
       <View style={LoginStyle.inputContainer}>
         <TextInput
           style={LoginStyle.input}
-          placeholder='   Email'
+          placeholder='   이메일'
           value={email}
           autoCapitalize='none'
           blurOnSubmit={false}
@@ -41,7 +41,7 @@ export default function LoginScreen({ navigation }) {
         />
         <TextInput
           style={LoginStyle.input}
-          placeholder='   Password'
+          placeholder='   비밀번호'
           value={password}
           autoCapitalize='none'
           secureTextEntry={true}

@@ -1,9 +1,10 @@
-import { auth } from '../../javascripts/firebaseConfig'
+import { auth } from '../../javascripts/firebaseconfig'
 import React, { useState } from 'react'
 import { Text, View, TouchableOpacity, TextInput } from 'react-native'
 import MemberShipStyle from '../../styles/Auth/MemberShipStyle'
 
 const MemberShipScreen = () => {
+  const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [passwordCheck, setPasswordCheck] = useState('')
@@ -38,6 +39,12 @@ const MemberShipScreen = () => {
       </View>
 
       <View style={MemberShipStyle.inputContainer}>
+        <TextInput
+          style={MemberShipStyle.input}
+          placeholder="이름"
+          value={name}
+          onChangeText={text => setName(text)}
+        />
         <TextInput
           style={MemberShipStyle.input}
           placeholder='이메일'
