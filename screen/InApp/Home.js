@@ -36,14 +36,42 @@ export default function HomeScreen({navigation}) {
 
         {/* 명집사의 특색 */}
         <View style={HomeStyle.zipsaContainer}>
-          <Text style={HomeStyle.zipsa}>안녕하세요 명집사입니다. </Text>
+          <Text style={HomeStyle.zipsa}>안녕하세요 명집사입니 다. </Text>
           <Text style={HomeStyle.zipsa}>OOO님 오늘도 좋은 아침입니다.</Text>
           <Text style={HomeStyle.zipsa}>무엇을 도와드릴까요?</Text>
         </View>
 
         {/* 현재 이용 상황 */}
         <View style={HomeStyle.usingContainer}>
-          <Text>1번 세탁기 사용중입니다.</Text>
+          <TouchableOpacity style={HomeStyle.firstButton}>
+            <Text style={HomeStyle.useBtext}>세탁기</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={HomeStyle.secondButton}>
+            <Text style={HomeStyle.useBtext}>건조기</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={HomeStyle.thirdButton}>
+            <Text style={HomeStyle.useBtext}>헬스장</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={HomeStyle.finalButton}>
+            <Text style={HomeStyle.useBtext}>주차장</Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style={HomeStyle.usingContainer2}>
+        <TouchableOpacity style={HomeStyle.useButton}>
+          <Text style={HomeStyle.useBtext1}>사용중</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={HomeStyle.reserveButton}>
+            <Text style={HomeStyle.useBtext1}>예약중</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={HomeStyle.recommendButton}>
+            <Text style={HomeStyle.useBtext1}>추천</Text>
+          </TouchableOpacity>
         </View>
 
         {/* 세탁기 건조기 부분(중간고사) 헬스장(기말), 주차장(미정) */}
