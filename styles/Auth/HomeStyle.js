@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
         height: "10%",
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: 'yellow',
+        //backgroundColor: 'yellow',
     },
 
     advert: {
@@ -76,10 +76,141 @@ const styles = StyleSheet.create({
 
     usingContainer: {
         width:"100%",
-        height: "25%",
+        height: "8%",
+        justifyContent: "flex-start",
+        flexDirection: "row",
+        //backgroundColor: 'skyblue',
+    },
+
+
+    usingContainer2: {
+        width:"93%",
+        height: "13%",
+        justifyContent: "flex-start",
+        flexDirection: "row",
+        //borderWidth: 1,
+        borderRadius: 30,
+        borderColor: "gray",
+        backgroundColor: "#c8c8c8",
+        marginBottom: 35,
+        paddingTop: 10,
+        paddingBottom: 22,
+    },
+
+
+    firstButton:{
+        top:0,
+        left: 35,
+        height: 50,
+        width: 60,
         justifyContent: "center",
         alignItems: "center",
-        //backgroundColor: 'green',
+        //borderWidth: 1,
+        marginTop:18,
+        borderTopEndRadius: 20,
+        borderColor: "gray",
+        backgroundColor: "#c8c8c8",
+        //marginHorizontal: 10
+    },
+
+    secondButton:{
+        top:0,
+        left: 70,
+        //height: 150,
+        width: 60,
+        justifyContent: "center",
+        alignItems: "center",
+        //borderWidth: 1,
+        marginTop:18,
+        borderTopEndRadius: 20,
+        borderColor: "gray",
+        backgroundColor: "#D7F1FA",
+        //marginHorizontal: 10
+    },
+
+    thirdButton:{
+        top:0,
+        left: 105,
+        //height: 150,
+        width: 60,
+        justifyContent: "center",
+        alignItems: "center",
+        //borderWidth: 1,
+        marginTop:18,
+        borderTopEndRadius: 20,
+        borderColor: "gray",
+        backgroundColor: "#FFD9E4",
+        //marginHorizontal: 10
+    },
+
+    finalButton:{
+        top:0,
+        left: 140,
+        //height: 150,
+        width: 60,
+        justifyContent: "center",
+        alignItems: "center",
+        //borderWidth: 1,
+        marginTop:18,
+        borderTopEndRadius: 20,
+        borderColor: "gray",
+        backgroundColor: "#E6FFE6",
+        //marginHorizontal: 10
+    },
+
+    useButton:{
+        top:0,
+        left: 50,
+        height: 75,
+        width: 75,
+        justifyContent: "center",
+        alignItems: "center",
+        //borderWidth: 1,
+        borderRadius: 360,
+        borderColor: "gray",
+        backgroundColor:"#dcdcdc",
+        //marginHorizontal: 10
+    },
+
+    reserveButton:{
+        top:0,
+        left: 75,
+        height: 75,
+        width: 75,
+        justifyContent: "center",
+        alignItems: "center",
+        //borderWidth: 1,
+        borderRadius: 360,
+        borderColor: "gray",
+        backgroundColor:"#dcdcdc",
+        //marginHorizontal: 10
+    },
+
+    recommendButton:{
+        top:0,
+        left: 100,
+        height: 75,
+        width: 75,
+        justifyContent: "center",
+        alignItems: "center",
+        //borderWidth: 1,
+        borderRadius: 360,
+        borderColor: "gray",
+        backgroundColor:"#dcdcdc",
+        //marginHorizontal: 10
+        
+    },
+
+    useBtext:{
+        //top:47,
+        fontSize: 13,
+        fontWeight: 'bold',
+    },
+
+    useBtext1:{
+        top:47,
+        fontSize: 13,
+        fontWeight: 'bold',
     },
 
     iconContainer:{
