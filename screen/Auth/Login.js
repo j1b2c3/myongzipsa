@@ -57,10 +57,10 @@ export default function LoginScreen({ navigation }) {
         />
         <TouchableOpacity
           style={LoginStyle.loginButton}
-          // 로그인 체크 필요
-          onPress={() => navigation.navigate('명집사')}
+          onPress={handleLogin}
         >
           <Text style={LoginStyle.loginText}>로그인</Text>
+
         </TouchableOpacity>
       </View>
       <View style={LoginStyle.subContainer}>
