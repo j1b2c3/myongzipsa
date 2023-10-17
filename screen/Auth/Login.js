@@ -5,9 +5,9 @@ import { Text, View, TouchableOpacity, TextInput, Alert } from 'react-native'
 // 스타일 import
 import LoginStyle from '../../styles/Auth/LoginStyle'
 
-export default function LoginScreen ({ navigation }) {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+export default function LoginScreen({ navigation }) {
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
 
   const handleLogin = async () => {
     try {

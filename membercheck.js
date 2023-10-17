@@ -1,12 +1,11 @@
-import firebase from '/javascripts/firebaseConfig';
-
+import { auth } from 'firebaseconfig';
 
 const checkUserInfo = () => {
-    const user = firebase.auth().currentUser;
+    const user = auth.currentUser;
 
     if (user) {
         console.log('User is signed in:', user);
-        console.log('User name:', user.name);
+        console.log('User name:', user.displayName); 
     } else {
         console.log('No user is signed in.');
     }

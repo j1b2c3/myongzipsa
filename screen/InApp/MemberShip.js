@@ -2,46 +2,41 @@ import {auth} from '../../javascripts/firebaseConfig';
 import React, { useState } from 'react';
 import { Text, View, TouchableOpacity, TextInput } from 'react-native';
 import MemberShipStyle from '../../styles/Auth/MemberShipStyle';
+import { auth, database } from '../../firebaseconfig';
 
 const MemberShipScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordCheck, setPasswordCheck] = useState('');
 
-
-  const handleSignUp = async() => {
-    if (password !== passwordCheck) {
-      alert('비밀번호가 일치하지 않습니다.');
-      return;
-    }
-    // Add this check
-    if (password.length < 6) {
-      alert('비밀번호는 최소 6자 이상이어야 합니다.');
-      return;
-    }
+  const handleSignUp = async () => {
     try {
-      await auth.createUserWithEmailAndPassword(email, password)
-        .then(userCredentials => {
-          const user = userCredentials.user;
-          console.log('User registered successfully:', user.email);
-        })
+      // 사용자 생성
+      const userCredential = await firebase.auth().createUserWithEmailAndPassword(username, password);
+      const user = userCredential.user;
+
+      // 사용자 데이터 저장
+      await firebase.database().ref('users/' + user.uid).set({
+        name,
+        username,
+        password
+      });
       
+      console.log('User registered successfully:', user);
     } catch (error) {
       console.error('Error signing up:', error);
-      alert("회원가입 오류 발생")
+      alert('회원가입 오류 발생');
     }
   };
-  
-  
 
 
   return (
     <View style={MemberShipStyle.container}>
-        <View style={MemberShipStyle.titleContainer}>
-          <Text style={MemberShipStyle.title}>
-            회원가입하기
-          </Text>
-        </View>
+      <View style={MemberShipStyle.titleContainer}>
+        <Text style={MemberShipStyle.title}>
+          회원가입하기
+        </Text>
+      </View>
 
       <View style={MemberShipStyle.inputContainer}>
         <TextInput
@@ -66,17 +61,16 @@ const MemberShipScreen = () => {
         />
       </View>
 
-        <View style={MemberShipStyle.SignUpContainer}>
-          <TouchableOpacity
-            style={MemberShipStyle.button}
-            onPress={handleSignUp}
-          >
-            <Text style={MemberShipStyle.buttonText}>
-              가입하기
-            </Text>
-          </TouchableOpacity>
-        </View>
-
+      <View style={MemberShipStyle.SignUpContainer}>
+        <TouchableOpacity
+          style={MemberShipStyle.button}
+          onPress={handleSignUp}
+        >
+          <Text style={MemberShipStyle.buttonText}>
+            가입하기
+          </Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
