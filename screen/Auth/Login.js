@@ -1,7 +1,6 @@
 import {auth} from '../../javascripts/FirebaseConfigFile';
 import React, { useState } from 'react'
 import { Text, View, TouchableOpacity, TextInput, Alert } from 'react-native'
-import {auth} from '../../javascripts/firebaseconfig';
 
 // 스타일 import
 import LoginStyle from '../../styles/Auth/LoginStyle'
