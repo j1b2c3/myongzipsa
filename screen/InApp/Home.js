@@ -31,7 +31,7 @@ export default function HomeScreen({navigation}) {
             style={HomeStyle.title}
             source = {require("../../img/icon.png")}
           /> */}
-          <Text style={HomeStyle.titleText}>명집사</Text>
+          <Text style={HomeStyle.titleText}>명 집 사</Text>
         </View>
 
         {/* 명집사의 특색 */}
