@@ -15,6 +15,7 @@ export default function LoginScreen({ navigation }) {
         .then(userCredentials => {
           const user = userCredentials.user
           console.log('Logged in with:', user.email)
+          navigation.navigate('명집사')
         })
     } catch (error) {
       console.error('Error login:', error)
