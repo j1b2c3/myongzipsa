@@ -1,4 +1,4 @@
-import { auth } from '../../javascripts/FirebaseConfigFile'
+import { auth, database } from '../../javascripts/FirebaseConfigFile'
 import React, { useState } from 'react'
 import { Text, View, TouchableOpacity, TextInput } from 'react-native'
 import MemberShipStyle from '../../styles/Auth/MemberShipStyle'
@@ -24,6 +24,12 @@ const MemberShipScreen = () => {
         .then(userCredentials => {
           const user = userCredentials.user
           console.log('User registered successfully:', user.email)
+
+          // Add the name to the realtime database
+          database.ref('users/' + user.uid).set({
+            username: name,
+            email: user.email
+          })
           alert('회원가입 완료', user.email)
         })
     } catch (error) {
@@ -41,7 +47,7 @@ const MemberShipScreen = () => {
       <View style={MemberShipStyle.inputContainer}>
         <TextInput
           style={MemberShipStyle.input}
-          placeholder="이름"
+          placeholder='이름'
           value={name}
           onChangeText={text => setName(text)}
         />
