@@ -8,7 +8,7 @@ const MemberShipScreen = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [passwordCheck, setPasswordCheck] = useState('')
-
+  const [phone, setPhone] = useState('')
   const handleSignUp = async () => {
     if (password !== passwordCheck) {
       alert('비밀번호가 일치하지 않습니다.')
@@ -16,6 +16,10 @@ const MemberShipScreen = () => {
     }
     if (password.length < 6) {
       alert('비밀번호는 최소 6자 이상이어야 합니다.')
+      return
+    }
+    if (phone.length < 11 || phone.length > 11) {
+      alert('올바른 휴대폰 번호를 입력해주세요.')
       return
     }
     try {
@@ -28,13 +32,18 @@ const MemberShipScreen = () => {
           // Add the name to the realtime database
           database.ref('users/' + user.uid).set({
             username: name,
-            email: user.email
+            email: user.email,
+            phone: phone
           })
           alert('회원가입 완료', user.email)
         })
     } catch (error) {
       console.error('Error signing up:', error)
-      alert('회원가입 오류 발생')
+      if (error.code === 'auth/email-already-in-use') {
+        alert('이미 사용 중인 이메일 주소입니다.')
+      } else {
+        alert('회원가입 오류 발생')
+      }
     }
   }
 
@@ -57,6 +66,12 @@ const MemberShipScreen = () => {
           value={email}
           onChangeText={text => setEmail(text)}
         />
+        <TextInput 
+           style={MemberShipStyle.input}
+           placeholder='전화번호'
+           value={phone}
+           onChangeText={text => setPhone(text)}
+         />
         <TextInput
           style={MemberShipStyle.input}
           placeholder='비밀번호'
