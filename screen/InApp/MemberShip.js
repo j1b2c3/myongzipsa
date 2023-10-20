@@ -28,8 +28,6 @@ const MemberShipScreen = () => {
         .then(userCredentials => {
           const user = userCredentials.user
           console.log('User registered successfully:', user.email)
-
-          // Add the name to the realtime database
           database.ref('users/' + user.uid).set({
             username: name,
             email: user.email,
@@ -67,11 +65,11 @@ const MemberShipScreen = () => {
           onChangeText={text => setEmail(text)}
         />
         <TextInput 
-           style={MemberShipStyle.input}
-           placeholder='전화번호'
-           value={phone}
-           onChangeText={text => setPhone(text)}
-         />
+          style={MemberShipStyle.input}
+          placeholder='전화번호'
+          value={phone}
+          onChangeText={text => setPhone(text)}
+        />
         <TextInput
           style={MemberShipStyle.input}
           placeholder='비밀번호'

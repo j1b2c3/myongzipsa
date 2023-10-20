@@ -70,6 +70,7 @@ export default function HomeScreen ({ navigation }) {
 
         <TouchableOpacity style={HomeStyle.recommendButton}>
           <Text style={HomeStyle.useBtext1}>추천</Text>
+          {/* onPress = 세탁기 빠른 예약 함수 */}
         </TouchableOpacity>
       </View>
 
