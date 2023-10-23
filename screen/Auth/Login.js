@@ -5,7 +5,7 @@ import { Text, View, TouchableOpacity, TextInput, Alert, Image } from 'react-nat
 // 스타일 import
 import LoginStyle from '../../styles/Auth/LoginStyle'
 
-export default function LoginScreen ({ navigation }) {
+export default function LoginScreen({ navigation }) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
