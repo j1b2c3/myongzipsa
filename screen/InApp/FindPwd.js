@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { View, Text, TouchableOpacity, TextInput, Alert } from 'react-native'
 import { auth } from '../../javascripts/FirebaseConfigFile'
-//스타일 추가
+//스타일 추가!
 import FindPwdStyle from '../../styles/Auth/FindPwdStyle'
 const FindPwdScreen = () => {
   const [email, setEmail] = useState('')
