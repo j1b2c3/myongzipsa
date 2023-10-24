@@ -1,46 +1,34 @@
-import React, { useState, useEffect, createRef } from "react";
-import { StatusBar } from 'expo-status-bar';
-import { Text, View, TouchableOpacity, TextInput,Button,Alert } from 'react-native';
-
-//스타일 import
-import FindPwdStyle from "../../styles/Auth/FindPwdStyle";
+import React, { useState } from "react";
+import { View, Text, TouchableOpacity, TextInput, Alert } from 'react-native';
+import { auth } from '../../javascripts/FirebaseConfigFile';
 
 const FindPwdScreen = () => {
-  const [name, setName] = useState('');
-  const [id, setId] = useState('');
+  const [email, setEmail] = useState('');
 
   const handlePasswordRecovery = () => {
-    // 비밀번호 찾기 동작 처리하는 로직
-    Alert.alert('비밀번호는 XXXX입니다.');
+    auth.sendPasswordResetEmail(email)
+      .then(() => {
+        Alert.alert('비밀번호 재설정 이메일이 전송되었습니다.');
+      })
+      .catch((error) => {
+        Alert.alert('비밀번호 재설정 오류');
+        console.error('Error finding ID:', error);
+
+      });
   };
 
   return (
-    <View style={FindPwdStyle.container}>
-      <View style={FindPwdStyle.inputContainer}>
-        <TextInput
-          style={FindPwdStyle.input}
-          placeholder="이름을 입력하세요"
-          value={name}
-          onChangeText={setName}
-        />
-        <TextInput
-          style={FindPwdStyle.input}
-          placeholder="아이디를 입력하세요"
-          value={id}
-          onChangeText={setId}
-        />
-      </View>
-      <View style={FindPwdStyle.buttonContainer}>
-        {/* <Button title="비밀번호 찾기" onPress={handlePasswordRecovery} /> */}
-        <TouchableOpacity
-          onPress={handlePasswordRecovery}
-        >   
-            <Text>비밀번호 찾기</Text>
-        </TouchableOpacity>
-      </View>
+    <View>
+      <TextInput
+        placeholder="이메일을 입력하세요"
+        value={email}
+        onChangeText={setEmail}
+      />
+      <TouchableOpacity onPress={handlePasswordRecovery}>
+        <Text>비밀번호 찾기</Text>
+      </TouchableOpacity>
     </View>
   );
 };
-
 
 export default FindPwdScreen;

@@ -1,9 +1,9 @@
+
 import React, { useState } from "react";
 import { Text, View, TouchableOpacity, TextInput, Alert } from 'react-native';
 import firebase from "firebase/app";
 import 'firebase/database';
 import { auth, database } from '../../javascripts/FirebaseConfigFile';
-
 
 // 스타일 import
 import FindIDStyle from "../../styles/Auth/FindIDStyle";
@@ -13,23 +13,24 @@ const FindIDScreen = () => {
     const [name, setName] = useState('');
 
     const FindID = () => {
-        const userRef = database.ref('users');
+        let userRef = database.ref('users');
         userRef
-        .orderByChild('phoneNumber')
-        .equalTo(phoneNumber)
-        .once('value')
-        .then((snapshot) => {
-            snapshot.forEach((childSnapshot) => {
-                const user = childSnapshot.val();
-                if (user.name === name) {
-                    const email = user.email;
-                    Alert.alert(`아이디는 ${email}입니다.`);
-                }
+            .orderByChild('phoneNumber')
+            .equalTo(phoneNumber)
+            .once('value')
+            .then((snapshot) => {
+                snapshot.forEach((childSnapshot) => {
+                    let user = childSnapshot.val();
+                    if (user.name === name) {
+                        let email = user.email;
+                        Alert.alert(`아이디는 ${email}입니다.`);
+                    }
+                });
+            })
+            .catch((error) => {
+                Alert.alert(`아이디 찾기 오류`);
+                console.error('Error finding ID:', error);
             });
-        })
-        .catch((error) => {
-            console.error('Error finding ID:', error);
-        });
     }
 
     return (
@@ -51,7 +52,7 @@ const FindIDScreen = () => {
             <View style={FindIDStyle.FindIDContainer}>
                 <TouchableOpacity
                     onPress={FindID}
-                >   
+                >
                     <Text>아이디 찾기</Text>
                 </TouchableOpacity>
             </View>
