@@ -6,24 +6,10 @@ import { Text, View, TouchableOpacity, TextInput, Image, StatusBar } from 'react
 // 스타일 import
 import HomeStyle from "../../styles/Auth/HomeStyle";
 
-export default function HomeScreen({navigation}) {
-    // React.useLayoutEffect(() => {
-    //   navigation.setOptions({
-    //     headerStyle: HomeStyle.head_navigation,
-    //     headerTitleStyle: HomeStyle.title,
-    //     headerLeft: () => (
-    //       // 뒤로가기 버튼 아이콘 설정
-    //       <Text 
-    //       style={HomeStyle.backButton} 
-    //       onPress={() => navigation.goBack()}
-    //       >
-    //         {'〈'} {/* 뒤로가기 아이콘 */}
-    //       </Text>
-    //     ),
-    //     headerTitleAlign : 'center',
-    //   })
-    // }, [navigation])
+//화면 연결
+import ChartScreen from "../InApp/Chart";
 
+export default function HomeScreen({navigation}) {
     return (
       <View style={HomeStyle.container}>
         <StatusBar />
@@ -84,7 +70,8 @@ export default function HomeScreen({navigation}) {
         {/* 세탁기 건조기 부분(중간고사) 헬스장(기말), 주차장(미정) */}
         <View style={HomeStyle.iconContainer}>
           {/*세탁기*/}
-          <TouchableOpacity style={HomeStyle.leftButton}>
+          <TouchableOpacity style={HomeStyle.leftButton}
+          onPress={() => navigation.navigate("배치도")}>
             <Image style={HomeStyle.icon}
               source = {require("../../img/icon_washing_machine.jpg")}/>
               <Text>세탁기</Text>
@@ -92,7 +79,8 @@ export default function HomeScreen({navigation}) {
             </TouchableOpacity>
 
           {/*건조기*/}
-          <TouchableOpacity style={HomeStyle.rightButton}>
+          <TouchableOpacity style={HomeStyle.rightButton}
+          onPress={() => navigation.navigate("배치도")}>
             <Image style={HomeStyle.icon}
               source = {require("../../img/icon_drying_machine.jpg")}/>
               <Text>건조기</Text>
