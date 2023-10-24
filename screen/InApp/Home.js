@@ -64,11 +64,15 @@ export default function HomeScreen({navigation}) {
         </View>
 
         <View style={HomeStyle.usingContainer2}>
-        <TouchableOpacity style={HomeStyle.useButton}>
+        <TouchableOpacity style={HomeStyle.useButton}
+          onPress={()=>navigation.navigate("사용현황")}
+        >
           <Text style={HomeStyle.useBtext1}>사용중</Text>
-          </TouchableOpacity>
+        </TouchableOpacity>
 
-          <TouchableOpacity style={HomeStyle.reserveButton}>
+          <TouchableOpacity style={HomeStyle.reserveButton}
+            onPress={()=>navigation.navigate("예약현황")}
+          >
             <Text style={HomeStyle.useBtext1}>예약중</Text>
           </TouchableOpacity>
 

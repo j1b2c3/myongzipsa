@@ -20,6 +20,9 @@ import FindingScreen from "./screen/InApp/Finding";
 import FindIDScreen from "./screen/InApp/FindID";
 import FindPwdScreen from "./screen/InApp/FindPwd";
 
+import UsageStatus from "./screen/InApp/UsageStatus";
+import ReservationStatus from "./screen/InApp/ReservationStatus";
+
 
 export default function App() {
   return (
@@ -44,6 +47,16 @@ export default function App() {
           name="아이디/비밀번호 찾기"  
 
           component={FindingScreen} 
+          //options={{headerShown : false}}
+        />
+        <Stack.Screen 
+          name="사용현황"  
+          component={UsageStatus} 
+          //options={{headerShown : false}}
+        />
+        <Stack.Screen 
+          name="예약현황"  
+          component={ReservationStatus} 
           //options={{headerShown : false}}
         />
         
