@@ -60,6 +60,7 @@ const MemberShipStyle = StyleSheet.create({
   },
 });
 
+
 export default MemberShipStyle;
 
 
