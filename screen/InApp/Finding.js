@@ -6,7 +6,7 @@ import FindIDScreen from './FindID';
 import FindPwdScreen from './FindPwd';
 
 const Tab = createMaterialTopTabNavigator();
-
+ 
 //FindingScreen 상단탭바에 FindingIDScreen,FindingPwdScreen 추가
 export default function FindingScreen() {
     return (
