@@ -1,4 +1,4 @@
-import { auth } from '../../javascripts/FirebaseConfigFile'
+import { auth, database } from '../../javascripts/FirebaseConfigFile'
 import React, { useState } from 'react'
 import { Text, View, TouchableOpacity, TextInput } from 'react-native'
 import MemberShipStyle from '../../styles/Auth/MemberShipStyle'
@@ -8,7 +8,7 @@ const MemberShipScreen = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [passwordCheck, setPasswordCheck] = useState('')
-
+  const [phone, setPhone] = useState('')
   const handleSignUp = async () => {
     if (password !== passwordCheck) {
       alert('비밀번호가 일치하지 않습니다.')
@@ -18,17 +18,30 @@ const MemberShipScreen = () => {
       alert('비밀번호는 최소 6자 이상이어야 합니다.')
       return
     }
+    if (phone.length < 11 || phone.length > 11) {
+      alert('올바른 휴대폰 번호를 입력해주세요.')
+      return
+    }
     try {
       await auth
         .createUserWithEmailAndPassword(email, password)
         .then(userCredentials => {
           const user = userCredentials.user
           console.log('User registered successfully:', user.email)
+          database.ref('users/' + user.uid).set({
+            username: name,
+            email: user.email,
+            phone: phone
+          })
           alert('회원가입 완료', user.email)
         })
     } catch (error) {
       console.error('Error signing up:', error)
-      alert('회원가입 오류 발생')
+      if (error.code === 'auth/email-already-in-use') {
+        alert('이미 사용 중인 이메일 주소입니다.')
+      } else {
+        alert('회원가입 오류 발생')
+      }
     }
   }
 
@@ -41,7 +54,7 @@ const MemberShipScreen = () => {
       <View style={MemberShipStyle.inputContainer}>
         <TextInput
           style={MemberShipStyle.input}
-          placeholder="이름"
+          placeholder='이름'
           value={name}
           onChangeText={text => setName(text)}
         />
@@ -50,6 +63,12 @@ const MemberShipScreen = () => {
           placeholder='이메일'
           value={email}
           onChangeText={text => setEmail(text)}
+        />
+        <TextInput 
+          style={MemberShipStyle.input}
+          placeholder='전화번호'
+          value={phone}
+          onChangeText={text => setPhone(text)}
         />
         <TextInput
           style={MemberShipStyle.input}

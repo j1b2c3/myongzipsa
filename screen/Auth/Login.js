@@ -1,21 +1,20 @@
-import { auth } from '../../javascripts/FirebaseConfigFile'
-import React, { useState } from 'react'
-import { Text, View, TouchableOpacity, TextInput, Alert, Image } from 'react-native'
+import { auth } from '../../javascripts/FirebaseConfigFile';
+import React, { useState, useEffect, createRef } from 'react'
+import { Text, View, TouchableOpacity, TextInput, Image, Alert } from 'react-native'
 
 // 스타일 import
 import LoginStyle from '../../styles/Auth/LoginStyle'
 
 export default function LoginScreen({ navigation }) {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const idInputRef = createRef();
+  const pwInputRef = createRef();
 
-  const idInputRef = React.createRef();
-  const pwInputRef = React.createRef();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleLogin = async () => {
     try {
-      await auth
-        .signInWithEmailAndPassword(email, password)
+      await auth.signInWithEmailAndPassword(email, password)
         .then(userCredentials => {
           const user = userCredentials.user
           console.log('Logged in with:', user.email)
@@ -58,10 +57,10 @@ export default function LoginScreen({ navigation }) {
         />
         <TouchableOpacity
           style={LoginStyle.loginButton}
-          // 로그인 체크 필요
-          onPress={() => navigation.navigate('명집사')}
+          onPress={handleLogin}
         >
           <Text style={LoginStyle.loginText}>로그인</Text>
+
         </TouchableOpacity>
       </View>
       <View style={LoginStyle.subContainer}>
