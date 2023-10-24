@@ -79,5 +79,5 @@ export default function LoginScreen({ navigation }) {
         </TouchableOpacity>
       </View>
     </View>
-  )
+    )
 }
