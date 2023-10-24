@@ -28,8 +28,8 @@ const ReservationStatus = () => {
 
     const handleCancelReservation = () => {
         // 예약 취소 로직
-        setMachineNumber(null);
-        setReservationTime(null);
+        setMachineNumber(' ');
+        setReservationTime(' ');
     };
 
     return (
@@ -45,7 +45,7 @@ const ReservationStatus = () => {
 
                 <View style={ReservationStatusStyle.section}>
                     <Text style={ReservationStatusStyle.sectionTitle}>예약된 시간 : </Text>
-                    <Text style={ReservationStatusStyle.infoText}>{reservationTime + '분' || ' '}</Text>
+                    <Text style={ReservationStatusStyle.infoText}>{reservationTime + '분'}</Text>
                    <TouchableOpacity style={ReservationStatusStyle.cancelButton}
                         onPress={handleCancelReservation}>
                         <Text>예약 취소하기</Text>

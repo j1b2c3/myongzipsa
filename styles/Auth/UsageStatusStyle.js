@@ -27,12 +27,12 @@ const UsageStatusStyle = StyleSheet.create({
         backgroundColor: '#ccc', 
         borderWidth: 2,
         borderRadius: 3, 
-        //padding: 5, // 내용 주변에 공간 추가
+        //padding: 5, 
     },
     infoText: {
         fontSize: 20,
         backgroundColor: '#FFD700', 
-        borderRadius: 10, // 테두리를 둥글게 만들기
+        borderRadius: 10, 
     },
 });
 
