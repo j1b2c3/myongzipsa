@@ -25,7 +25,6 @@ const FindPwdScreen = () => {
         onChangeText={setEmail}
       />
       <TouchableOpacity onPress={handlePasswordRecovery}>
-
         <Text>비밀번호 찾기</Text>
       </TouchableOpacity>
     </View>
