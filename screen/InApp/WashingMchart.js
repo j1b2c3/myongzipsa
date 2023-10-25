@@ -59,7 +59,7 @@ const WashingMchartScreen = () => {
         firebase.database().ref(`washingMachines/${machineNumber}`).update({
             available: false,
             reservedBy: userId,
-            remainingTime: initialRemainingTime
+            remainingTime: initialRemainingTime,
         });
 
         if (initialRemainingTime <= 5) {
@@ -70,16 +70,20 @@ const WashingMchartScreen = () => {
 
         // 남은 시간을 감소시키는 타이머 시작
         const timer = setInterval(() => {
-            const updatedRemainingTime = washingMachines[machineNumber].remainingTime - 1;
-            firebase.database().ref(`washingMachines/${machineNumber}`).update({
-                remainingTime: updatedRemainingTime
-            });
+            if (washingMachines[machineNumber]) {
+                const updatedRemainingTime = washingMachines[machineNumber].remainingTime - 1;
+                firebase.database().ref(`washingMachines/${machineNumber}`).update({
+                    remainingTime: updatedRemainingTime,
+                });
 
-            if (updatedRemainingTime <= 5) {
-                Alert.alert(`세탁기 ${machineNumber} 남은 시간: ${updatedRemainingTime}분. (5분 이하)`);
-            }
+                if (updatedRemainingTime <= 5) {
+                    Alert.alert(`세탁기 ${machineNumber} 남은 시간: ${updatedRemainingTime}분. (5분 이하)`);
+                }
 
-            if (updatedRemainingTime <= 0) {
+                if (updatedRemainingTime <= 0) {
+                    clearInterval(timer);
+                }
+            } else {
                 clearInterval(timer);
             }
         }, 60000); // 1분마다 감소 (60,000 밀리초)
@@ -90,7 +94,7 @@ const WashingMchartScreen = () => {
     };
 
     const autoReserveMachine = (userId) => {
-        let availableMachines = Object.entries(washingMachines)
+        const availableMachines = Object.entries(washingMachines)
             .filter(([_, machine]) => machine.available && machine.remainingTime !== null)
             .sort(([, a], [, b]) => a.remainingTime - b.remainingTime);
 
@@ -129,71 +133,73 @@ const WashingMchartScreen = () => {
                 </View>
             ) : (
                 // 세탁기 상태 표시
-                <View style={WashingMchartStyle.iconContainer}>
-                    <TouchableOpacity style={WashingMchartStyle.rightButton} onPress={() => handleMachineClick('1')}>
-                        <Text>1번 세탁기</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={WashingMchartStyle.rightButton} onPress={() => handleMachineClick('4')}>
-                        <Text>4번 세탁기</Text>
-                    </TouchableOpacity>
-                </View>
+                <>
+                    <View style={WashingMchartStyle.iconContainer}>
+                        <TouchableOpacity style={WashingMchartStyle.rightButton} onPress={() => handleMachineClick('1')}>
+                            <Text>1번 세탁기</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={WashingMchartStyle.rightButton} onPress={() => handleMachineClick('4')}>
+                            <Text>4번 세탁기</Text>
+                        </TouchableOpacity>
+                    </View>
 
-                                <View style={WashingMchartStyle.iconContainer}>
-                <TouchableOpacity style={WashingMchartStyle.rightButton} onPress={() => handleMachineClick('2', 'user1')}>
-                    <Text>2번 세탁기</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={WashingMchartStyle.rightButton} onPress={() => handleMachineClick('5', 'user1')}>
-                    <Text>5번 세탁기</Text>
-                </TouchableOpacity>
-            </View>
+                    <View style={WashingMchartStyle.iconContainer}>
+                        <TouchableOpacity style={WashingMchartStyle.rightButton} onPress={() => handleMachineClick('2', 'user1')}>
+                            <Text>2번 세탁기</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={WashingMchartStyle.rightButton} onPress={() => handleMachineClick('5', 'user1')}>
+                            <Text>5번 세탁기</Text>
+                        </TouchableOpacity>
+                    </View>
 
-            <View style={WashingMchartStyle.iconContainer}>
-                <TouchableOpacity style={WashingMchartStyle.rightButton} onPress={() => handleMachineClick('3', 'user1')}>
-                    <Text>3번 세탁기</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={WashingMchartStyle.rightButton} onPress={() => handleMachineClick('6', 'user1')}>
-                    <Text>6번 세탁기</Text>
-                </TouchableOpacity>
-            </View>
+                    <View style={WashingMchartStyle.iconContainer}>
+                        <TouchableOpacity style={WashingMchartStyle.rightButton} onPress={() => handleMachineClick('3', 'user1')}>
+                            <Text>3번 세탁기</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={WashingMchartStyle.rightButton} onPress={() => handleMachineClick('6', 'user1')}>
+                            <Text>6번 세탁기</Text>
+                        </TouchableOpacity>
+                    </View>
 
-            <View style={WashingMchartStyle.iconContainer}>
-                <TouchableOpacity style={WashingMchartStyle.rightButton} onPress={() => handleMachineClick('7', 'user1')}>
-                    <Text>7번 세탁기</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={WashingMchartStyle.rightButton}>
-                    <Text>1번 건조기</Text>
-                </TouchableOpacity>
-            </View>
+                    <View style={WashingMchartStyle.iconContainer}>
+                        <TouchableOpacity style={WashingMchartStyle.rightButton} onPress={() => handleMachineClick('7', 'user1')}>
+                            <Text>7번 세탁기</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={WashingMchartStyle.rightButton}>
+                            <Text>1번 건조기</Text>
+                        </TouchableOpacity>
+                    </View>
 
-            <View style={WashingMchartStyle.iconContainer}>
-                <TouchableOpacity style={WashingMchartStyle.rightButton} onPress={() => handleMachineClick('8', 'user1')}>
-                    <Text>8번 세탁기</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={WashingMchartStyle.rightButton}>
-                    <Text>2번 건조기</Text>
-                </TouchableOpacity>
-            </View>
+                    <View style={WashingMchartStyle.iconContainer}>
+                        <TouchableOpacity style={WashingMchartStyle.rightButton} onPress={() => handleMachineClick('8', 'user1')}>
+                            <Text>8번 세탁기</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={WashingMchartStyle.rightButton}>
+                            <Text>2번 건조기</Text>
+                        </TouchableOpacity>
+                    </View>
 
-            <View style={WashingMchartStyle.iconContainer}>
-                <TouchableOpacity style={WashingMchartStyle.rightButton} onPress={() => autoReserveMachine('user1')}>
-                    <Text>자동 추천</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={WashingMchartStyle.rightButton}>
-                    <Text>3번 건조기</Text>
-                </TouchableOpacity>
-            </View>
+                    <View style={WashingMchartStyle.iconContainer}>
+                        <TouchableOpacity style={WashingMchartStyle.rightButton} onPress={() => autoReserveMachine('user1')}>
+                            <Text>자동 추천</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={WashingMchartStyle.rightButton}>
+                            <Text>3번 건조기</Text>
+                        </TouchableOpacity>
+                    </View>
 
-            <View style={WashingMchartStyle.iconContainer}>
-                <TouchableOpacity style={WashingMchartStyle.rightButton}>
-                    <Text>4번 건조기</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={WashingMchartStyle.rightButton} onPress={() => Alert.alert('입구입니다.')}>
-                    <Text>입구</Text>
-                </TouchableOpacity>
-            </View>
+                    <View style={WashingMchartStyle.iconContainer}>
+                        <TouchableOpacity style={WashingMchartStyle.rightButton}>
+                            <Text>4번 건조기</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={WashingMchartStyle.rightButton} onPress={() => Alert.alert('입구입니다.')}>
+                            <Text>입구</Text>
+                        </TouchableOpacity>
+                    </View>
+                </>
+            )}
         </View>
     );
-};)
-
+};
 
 export default WashingMchartScreen;
