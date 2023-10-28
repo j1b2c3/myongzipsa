@@ -54,7 +54,7 @@ const WashingMchartScreen = () => {
     };
 
     const reserveMachine = (machineNumber, userId) => {
-        const initialRemainingTime = parseInt(remainingTimeInput, 10) || 30; // 입력된 남은 시간 또는 기본 값 (예: 30분)
+        const initialRemainingTime = parseInt(remainingTimeInput, 10) || 60; // 입력된 남은 시간 또는 기본 값
 
         firebase.database().ref(`washingMachines/${machineNumber}`).update({
             available: false,
@@ -192,7 +192,7 @@ const WashingMchartScreen = () => {
                         <TouchableOpacity style={WashingMchartStyle.rightButton}>
                             <Text>4번 건조기</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={WashingMchartStyle.rightButton} onPress={() => Alert.alert('입구입니다.')}>
+                        <TouchableOpacity style={WashingMchartStyle.rightButton}>
                             <Text>입구</Text>
                         </TouchableOpacity>
                     </View>
