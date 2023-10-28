@@ -24,15 +24,15 @@ const ReservationStatusStyle = StyleSheet.create({
     },
     statusText: {
         fontSize: 30,
-        backgroundColor: '#ccc', // 배경색 추가 (예: 노란색)
+        backgroundColor: '#ccc', 
         borderWidth: 2,
-        borderRadius: 3, // 테두리를 둥글게 만들기
+        borderRadius: 3,
         //padding: 5, // 내용 주변에 공간 추가
     },
     infoText: {
         fontSize: 20,
-        backgroundColor: '#FFD700', // 배경색 추가 (예: 노란색)
-        borderRadius: 10, // 테두리를 둥글게 만들기
+        backgroundColor: '#FFD700', 
+        borderRadius: 10, 
         marginRight: 8,
     },
     cancelButton: {

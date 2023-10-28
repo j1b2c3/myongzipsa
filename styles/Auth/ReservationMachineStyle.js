@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-const UsageStatusStyle = StyleSheet.create({
+const ReservationMachineStyle = StyleSheet.create({
     container: {
         padding: 20,
 
@@ -22,18 +22,24 @@ const UsageStatusStyle = StyleSheet.create({
         marginBottom: 5,
         marginRight: 8,
     },
-    statusText: {
-        fontSize: 20,
-        backgroundColor: '#ccc', 
-        borderWidth: 2,
-        borderRadius: 3, 
-        //padding: 5, 
-    },
     infoText: {
         fontSize: 20,
         backgroundColor: '#FFD700', 
         borderRadius: 10, 
     },
+    Button: {
+        width: 170,
+        height: 40,
+        backgroundColor: '#ccc',
+        padding: 10,
+        borderRadius: 10,
+        alignItems: 'center',
+        
+    },
+    ButtonText:{
+        fontSize: 15,
+    }
+
 });
 
-export default UsageStatusStyle;
+export default ReservationMachineStyle;
