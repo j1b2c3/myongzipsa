@@ -10,13 +10,17 @@ export default function WashingMchartScreen({navigation}) {
         <View>
             <View style={WashingMchartStyle.iconContainer}>
                 {/*세탁기1*/}
-                <TouchableOpacity style={WashingMchartStyle.rightButton}>
+                <TouchableOpacity style={WashingMchartStyle.rightButton}
+                //'사용가능'이라고 가정하고 세탁시간 입력하는 페이지로 이동코드 임시로 추가
+                onPress={()=>navigation.navigate("세탁시간입력")}>
                 {/* onPress={() => navigation.navigate("배치도")}> */}
                     <Text>1번 세탁기</Text>
                 </TouchableOpacity>
 
                 {/*세탁기4*/}
-                <TouchableOpacity style={WashingMchartStyle.rightButton}>
+                <TouchableOpacity style={WashingMchartStyle.rightButton}
+                //'예약가능'이라고 가정하고 예약페이지로 이동코드 임시로 추가
+                onPress={()=>navigation.navigate("예약하기")}>
                 {/* onPress={() => navigation.navigate("배치도")}> */}
                     <Text>4번 세탁기</Text>
                 </TouchableOpacity>
