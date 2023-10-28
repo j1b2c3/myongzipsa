@@ -37,7 +37,7 @@ const ReservationMachineStyle = StyleSheet.create({
         
     },
     ButtonText:{
-        fontSize: 20,
+        fontSize: 15,
     }
 
 });

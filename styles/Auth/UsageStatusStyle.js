@@ -23,7 +23,7 @@ const UsageStatusStyle = StyleSheet.create({
         marginRight: 8,
     },
     statusText: {
-        fontSize: 30,
+        fontSize: 20,
         backgroundColor: '#ccc', 
         borderWidth: 2,
         borderRadius: 3, 
