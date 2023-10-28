@@ -62,7 +62,9 @@ export default function HomeScreen({ navigation }) {
           <Text style={HomeStyle.useBtext1}>사용중</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={HomeStyle.reserveButton} onPress={() => navigation.navigate("예약현황")}>
+        <TouchableOpacity style={HomeStyle.reserveButton}
+          onPress={() => navigation.navigate("예약현황")}
+        >
           <Text style={HomeStyle.useBtext1}>예약중</Text>
         </TouchableOpacity>
 
@@ -73,32 +75,42 @@ export default function HomeScreen({ navigation }) {
 
       {/* 세탁기 건조기 부분(중간고사) 헬스장(기말), 주차장(미정) */}
       <View style={HomeStyle.iconContainer}>
-        {/* 세탁기 */}
-        <TouchableOpacity style={HomeStyle.leftButton} onPress={() => navigation.navigate("배치도")}>
-          <Image style={HomeStyle.icon} source={require("../../img/icon_washing_machine.jpg")} />
+        {/*세탁기*/}
+        <TouchableOpacity style={HomeStyle.leftButton}
+          onPress={() => navigation.navigate("배치도", {
+            pageName: "세탁기"
+          })}>
+          <Image style={HomeStyle.icon}
+            source={require("../../img/icon_washing_machine.jpg")} />
           <Text>세탁기</Text>
           {/* onPress = */}
         </TouchableOpacity>
 
-        {/* 건조기 */}
-        <TouchableOpacity style={HomeStyle.rightButton} onPress={() => navigation.navigate("배치도")}>
-          <Image style={HomeStyle.icon} source={require("../../img/icon_drying_machine.jpg")} />
+        {/*건조기*/}
+        <TouchableOpacity style={HomeStyle.rightButton}
+          onPress={() => navigation.navigate("배치도", {
+            pageName: "건조기"
+          })}>
+          <Image style={HomeStyle.icon}
+            source={require("../../img/icon_drying_machine.jpg")} />
           <Text>건조기</Text>
           {/* onPress = */}
         </TouchableOpacity>
       </View>
 
       <View style={HomeStyle.iconContainer2}>
-        {/* 헬스장 */}
+        {/*헬스장*/}
         <TouchableOpacity style={HomeStyle.leftButton}>
-          <Image style={HomeStyle.icon2} source={require("../../img/icon_gym.jpg")} />
+          <Image style={HomeStyle.icon2}
+            source={require("../../img/icon_gym.jpg")} />
           <Text>헬스장</Text>
           {/* onPress = */}
         </TouchableOpacity>
 
-        {/* 주차장 */}
+        {/*주차장*/}
         <TouchableOpacity style={HomeStyle.rightButton}>
-          <Image style={HomeStyle.icon2} source={require("../../img/icon_parking.jpg")} />
+          <Image style={HomeStyle.icon2}
+            source={require("../../img/icon_parking.jpg")} />
           <Text>주차장</Text>
           {/* onPress = */}
         </TouchableOpacity>
@@ -106,8 +118,9 @@ export default function HomeScreen({ navigation }) {
 
       {/* 광고 배너 부분 */}
       <View style={HomeStyle.advContainer}>
-        <TouchableOpacity>
-          <Image style={HomeStyle.advert} source={require("../../img/blank.png")} />
+        <TouchableOpacity >
+          <Image style={HomeStyle.advert}
+            source={require("../../img/blank.png")} />
         </TouchableOpacity>
       </View>
 

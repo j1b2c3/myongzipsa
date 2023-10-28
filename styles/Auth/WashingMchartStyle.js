@@ -8,36 +8,28 @@ const styles = StyleSheet.create({
         //backgroundColor: 'skyblue',
     },
 
-    iconContainer2:{
-        width:"100%",
-        height: "14%",
-        justifyContent: "flex-start",
-        flexDirection: "row",
-        //backgroundColor: 'skyblue',
-    },
-
     leftButton:{
-        top:20,
-        left: 25,
-        height: 150,
-        width: 150,
+        top:40,
+        left: 40,
+        height: 80,
+        width: 120,
         justifyContent: "center",
         alignItems: "center",
-        borderWidth: 1,
+        borderWidth: 4,
         borderRadius: 10,
         borderColor: "gray",
         marginHorizontal: 10
     },
 
     rightButton:{
-        top:20,
-        left: 45,
-        height: 150,
-        width: 150,
+        top:40,
+        left: 90,
+        height: 80,
+        width: 120,
         justifyContent: "center",
         alignItems: "center",
-        //borderWidth: 1,
-        //borderRadius: 10,
+        borderWidth: 4,
+        borderRadius: 10,
         borderColor: "gray",
         marginHorizontal: 10
     },
