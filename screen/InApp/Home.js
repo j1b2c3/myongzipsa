@@ -71,7 +71,9 @@ export default function HomeScreen({navigation}) {
         <View style={HomeStyle.iconContainer}>
           {/*세탁기*/}
           <TouchableOpacity style={HomeStyle.leftButton}
-          onPress={() => navigation.navigate("배치도")}>
+          onPress={() => navigation.navigate("배치도", {
+            pageName: "세탁기"
+          })}>
             <Image style={HomeStyle.icon}
               source = {require("../../img/icon_washing_machine.jpg")}/>
               <Text>세탁기</Text>
@@ -80,7 +82,9 @@ export default function HomeScreen({navigation}) {
 
           {/*건조기*/}
           <TouchableOpacity style={HomeStyle.rightButton}
-          onPress={() => navigation.navigate("배치도")}>
+          onPress={() => navigation.navigate("배치도", {
+            pageName: "건조기"
+          })}>
             <Image style={HomeStyle.icon}
               source = {require("../../img/icon_drying_machine.jpg")}/>
               <Text>건조기</Text>

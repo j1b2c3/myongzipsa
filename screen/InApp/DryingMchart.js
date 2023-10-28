@@ -10,7 +10,7 @@ export default function DryingMchartScreen({navigation}) {
         <View>
             <View style={DryingMchartStyle.iconContainer}>
                 {/*세탁기1*/}
-                <TouchableOpacity style={DryingMchartStyle.rightButton}>
+                <TouchableOpacity style={DryingMchartStyle.leftButton}>
                 {/* onPress={() => navigation.navigate("배치도")}> */}
                     <Text>1번 세탁기</Text>
                 </TouchableOpacity>
@@ -24,7 +24,7 @@ export default function DryingMchartScreen({navigation}) {
 
             <View style={DryingMchartStyle.iconContainer}>
                 {/*세탁기2*/}
-                <TouchableOpacity style={DryingMchartStyle.rightButton}>
+                <TouchableOpacity style={DryingMchartStyle.leftButton}>
                 {/* onPress={() => navigation.navigate("배치도")}> */}
                     <Text>2번 세탁기</Text>
                 </TouchableOpacity>
@@ -38,7 +38,7 @@ export default function DryingMchartScreen({navigation}) {
 
             <View style={DryingMchartStyle.iconContainer}>
                 {/*세탁기3*/}
-                <TouchableOpacity style={DryingMchartStyle.rightButton}>
+                <TouchableOpacity style={DryingMchartStyle.leftButton}>
                 {/* onPress={() => navigation.navigate("배치도")}> */}
                     <Text>3번 세탁기</Text>
                 </TouchableOpacity>
@@ -52,7 +52,7 @@ export default function DryingMchartScreen({navigation}) {
 
             <View style={DryingMchartStyle.iconContainer}>
                 {/*건조기1*/}
-                <TouchableOpacity style={DryingMchartStyle.rightButton}>
+                <TouchableOpacity style={DryingMchartStyle.leftButton}>
                 {/* onPress={() => navigation.navigate("배치도")}> */}
                     <Text>1번 건조기</Text>
                 </TouchableOpacity>
@@ -66,7 +66,7 @@ export default function DryingMchartScreen({navigation}) {
 
             <View style={DryingMchartStyle.iconContainer}>
                 {/*건조기2*/}
-                <TouchableOpacity style={DryingMchartStyle.rightButton}>
+                <TouchableOpacity style={DryingMchartStyle.leftButton}>
                 {/* onPress={() => navigation.navigate("배치도")}> */}
                     <Text>2번 건조기</Text>
                 </TouchableOpacity>
@@ -80,7 +80,7 @@ export default function DryingMchartScreen({navigation}) {
 
             <View style={DryingMchartStyle.iconContainer}>
                 {/*입구*/}
-                <TouchableOpacity style={DryingMchartStyle.rightButton}>
+                <TouchableOpacity style={DryingMchartStyle.leftButton}>
                 {/* onPress={() => navigation.navigate("배치도")}> */}
                     <Text>자동 추천</Text>
                 </TouchableOpacity>
@@ -94,7 +94,7 @@ export default function DryingMchartScreen({navigation}) {
 
             <View style={DryingMchartStyle.iconContainer}>
                 {/*입구*/}
-                <TouchableOpacity style={DryingMchartStyle.rightButton}>
+                <TouchableOpacity style={DryingMchartStyle.leftButton}>
                 {/* onPress={() => navigation.navigate("배치도")}> */}
                     <Text>입구</Text>
                 </TouchableOpacity>
