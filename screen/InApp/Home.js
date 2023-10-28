@@ -1,7 +1,7 @@
 import React, { useState, useEffect, createRef } from "react";
 // import { StatusBar } from 'expo-status-bar';
 import 'firebase/database';
-import { Text, View, TouchableOpacity, TextInput, Image, StatusBar } from 'react-native';
+import { Text, View, TouchableOpacity, TextInput, Image, StatusBar, SafeAreaView } from 'react-native';
 import { auth, database } from '../../javascripts/FirebaseConfigFile'
 // 스타일 import
 import HomeStyle from '../../styles/Auth/HomeStyle'
@@ -23,7 +23,7 @@ export default function HomeScreen ({ navigation }) {
     }
   }, [])
   return (
-    <View style={HomeStyle.container}>
+    <SafeAreaView style={HomeStyle.container}>
       <StatusBar />
       {/*명집사 */}
       <View style={HomeStyle.titleContainer}>
@@ -133,6 +133,6 @@ export default function HomeScreen ({ navigation }) {
         <TouchableOpacity style={HomeStyle.recommendButton}>
           <Text style={HomeStyle.useBtext1}>추천</Text>
         </TouchableOpacity>
-      </View>
+      </SafeAreaView>
   )
 }

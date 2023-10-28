@@ -75,9 +75,9 @@ const styles = StyleSheet.create({
     },
 
     usingContainer: {
-        width:"100%",
+        width:"93%",
         height: "8%",
-        justifyContent: "flex-start",
+        justifyContent: "space-evenly",
         flexDirection: "row",
         //backgroundColor: 'skyblue',
     },
@@ -99,8 +99,6 @@ const styles = StyleSheet.create({
 
 
     firstButton:{
-        top:0,
-        left: 35,
         height: 50,
         width: 60,
         justifyContent: "center",
@@ -114,8 +112,6 @@ const styles = StyleSheet.create({
     },
 
     secondButton:{
-        top:0,
-        left: 70,
         //height: 150,
         width: 60,
         justifyContent: "center",
@@ -129,8 +125,6 @@ const styles = StyleSheet.create({
     },
 
     thirdButton:{
-        top:0,
-        left: 105,
         //height: 150,
         width: 60,
         justifyContent: "center",
@@ -144,8 +138,6 @@ const styles = StyleSheet.create({
     },
 
     finalButton:{
-        top:0,
-        left: 140,
         //height: 150,
         width: 60,
         justifyContent: "center",
