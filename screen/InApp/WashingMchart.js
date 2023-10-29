@@ -260,9 +260,9 @@ const WashingMchartScreen = ({ navigation }) => {
             if (shortestTimeMachine.length > 0) {
                 const [machineNumber] = shortestTimeMachine[0];
                 const reservationTime = washingMachines[machineNumber].reservationTime;
-                const remainingTime = washingMachines[machineNumber].remainingTime;
+                const useTime = washingMachines[machineNumber].useTime;
                 const currentTime = new Date().getTime();
-                if (reservationTime && (currentTime + remainingTime - reservationTime) >= 5 * 60 * 1000) {
+                if (reservationTime && (currentTime + useTime - reservationTime) >= 5 * 60 * 1000) {
                     // 예약한 사용자가 5분 이내에 사용하지 않은 경우
                     database.ref(`washingMachines/${machineNumber}`).transaction((machine) => {
                         if (machine && machine.available) {
