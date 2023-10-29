@@ -1,78 +1,32 @@
-//InputTime.js
 import React, { useState } from 'react';
-import { database } from '../../javascripts/FirebaseConfigFile';
-import { View, TextInput, Alert, TouchableOpacity, Text } from 'react-native';
-import InputTimeStyle from '../../styles/Auth/InputTimeStyle';
+import { View, TextInput, Button, TouchableOpacity, Text } from 'react-native';
 
-const InputTimeScreen = ({ route }) => {
-  const { machineNumber: machineNumberFromParams, userEmail } = route.params;
-  const [remainingTimeInput, setRemainingTimeInput] = useState('');
+//스타일 import
+import InputTimeStyle from "../../styles/Auth/InputTimeStyle";
 
-  const reserveMachine = () => {
-    const initialRemainingTime = parseInt(remainingTimeInput, 10) || 30;
-  
-    if (isNaN(initialRemainingTime)) {
-      Alert.alert('올바른 시간을 입력하세요.');
-      return;
-    }
-  
-    database.ref(`washingMachines/${machineNumberFromParams}`).update({
-      available: true,
-      userId: userEmail,
-      useTime: initialRemainingTime,
-      remainingTime: initialRemainingTime,
-    });
-  
-    if (initialRemainingTime <= 5) {
-      Alert.alert(
-        `세탁기 ${machineNumberFromParams} 예약이 완료되었습니다. 남은 시간: ${initialRemainingTime}분. (5분 이하)`
-      );
-    }
-  
-    const timer = setInterval(() => {
-      const machineRef = database.ref(`washingMachines/${machineNumberFromParams}`);
-  
-      machineRef.once('value').then((snapshot) => {
-        const machine = snapshot.val();
-  
-        if (machine && machine.remainingTime > 0) {
-          const updatedRemainingTime = machine.remainingTime - 1;
-  
-          machineRef.update({
-            remainingTime: updatedRemainingTime,
-          });
-  
-          if (updatedRemainingTime <= 5) {
-            Alert.alert(
-              `세탁기 ${machineNumberFromParams}의 완료까지 ${updatedRemainingTime}분 남았습니다.`
-            );
-          }
-        } else if (machine && machine.remainingTime === 0) {
-          machineRef.update({
-            available: true,
-            remainingTime: 0,
-            useTime: 0,
-            userId: '',
-          });
-  
-          clearInterval(timer);
-        }
-      });
-    }, 10000); // 1분마다 감소 (60,000 밀리초)
-  
-    setRemainingTimeInput('');
+const InputTimeScreen = () => {
+  const [washingTime, setWashingTime] = useState('');
+
+  const handleStartButtonClick = () => {
+    //사용처리 로직
+    //세탁기 상태 바뀌게 하는 로직(사용가능->예약가능)
+    //사용자의 사용현황에 정보 추가
+    //세탁 완료시간을 계산하여 알림창으로 띠움.(ex.0시0분에 세탁물을 찾아가세요.)
+
   };
+
   return (
     <View style={InputTimeStyle.container}>
       <View style={InputTimeStyle.InputContainer}>
         <TextInput
           style={InputTimeStyle.input}
           placeholder="세탁시간 (분단위로 입력)"
-          onChangeText={(text) => setRemainingTimeInput(text)}
+          value={washingTime}
+          onChangeText={(text) => setWashingTime(text)}
         />
         <TouchableOpacity
           style={InputTimeStyle.button}
-          onPress={reserveMachine}
+          onPress={handleStartButtonClick}
         >
           <Text>사용시작</Text>
         </TouchableOpacity>
@@ -82,5 +36,3 @@ const InputTimeScreen = ({ route }) => {
 };
 
 export default InputTimeScreen;
-
-
