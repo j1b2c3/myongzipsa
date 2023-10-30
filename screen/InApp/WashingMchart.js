@@ -603,7 +603,7 @@ const WashingMchartScreen = ({ navigation }) => {
                                 >
                                     {/* <Text>입구</Text> */}
                                     <Image style={WashingMchartStyle.icon}
-                                        source={require("../../img/reserve_possible_color.jpg")} />
+                                        source={require("../../img/reserve_possible_color2.jpg")} />
                                 </TouchableOpacity>
 
                                 {/*건조기4*/}
