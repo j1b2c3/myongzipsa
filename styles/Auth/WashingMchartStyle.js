@@ -1,15 +1,15 @@
 import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
-    iconContainer:{
-        width:"100%",
+    iconContainer: {
+        width: "100%",
         height: "13.5%",
         justifyContent: "flex-start",
         flexDirection: "row",
         //backgroundColor: 'skyblue',
     },
 
-    leftButton:{
-        top:40,
+    leftButton: {
+        top: 40,
         left: 40,
         height: 80,
         width: 120,
@@ -21,8 +21,8 @@ const styles = StyleSheet.create({
         marginHorizontal: 10
     },
 
-    rightButton:{
-        top:40,
+    rightButton: {
+        top: 40,
         left: 90,
         height: 80,
         width: 120,
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
         borderColor: "gray",
         marginHorizontal: 10
     },
-    icon:{
+    icon: {
         width: 135,
         height: 80,
     },

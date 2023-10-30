@@ -427,9 +427,9 @@ const WashingMchartScreen = ({ navigation }) => {
                                         WashingMchartStyle.leftButton,
                                         {
                                             borderColor: washingMachines['1'].available
-                                                ? 'blue'
+                                                ? 'yellow'
                                                 : washingMachines['1'].reserve
-                                                    ? 'green'
+                                                    ? 'blue'
                                                     : 'red',
                                         },
                                     ]}
@@ -444,9 +444,9 @@ const WashingMchartScreen = ({ navigation }) => {
                                         WashingMchartStyle.rightButton,
                                         {
                                             borderColor: washingMachines['4'].available
-                                                ? 'blue'
+                                                ? 'yellow'
                                                 : washingMachines['4'].reserve
-                                                    ? 'green'
+                                                    ? 'blue'
                                                     : 'red',
                                         },
                                     ]}
@@ -463,9 +463,9 @@ const WashingMchartScreen = ({ navigation }) => {
                                         WashingMchartStyle.leftButton,
                                         {
                                             borderColor: washingMachines['2'].available
-                                                ? 'blue'
+                                                ? 'yellow'
                                                 : washingMachines['2'].reserve
-                                                    ? 'green'
+                                                    ? 'blue'
                                                     : 'red',
                                         },
                                     ]}
@@ -480,9 +480,9 @@ const WashingMchartScreen = ({ navigation }) => {
                                         WashingMchartStyle.rightButton,
                                         {
                                             borderColor: washingMachines['5'].available
-                                                ? 'blue'
+                                                ? 'yellow'
                                                 : washingMachines['5'].reserve
-                                                    ? 'green'
+                                                    ? 'blue'
                                                     : 'red',
                                         },
                                     ]}
@@ -499,9 +499,9 @@ const WashingMchartScreen = ({ navigation }) => {
                                         WashingMchartStyle.leftButton,
                                         {
                                             borderColor: washingMachines['3'].available
-                                                ? 'blue'
+                                                ? 'yellow'
                                                 : washingMachines['3'].reserve
-                                                    ? 'green'
+                                                    ? 'blue'
                                                     : 'red',
                                         },
                                     ]}
@@ -516,9 +516,9 @@ const WashingMchartScreen = ({ navigation }) => {
                                         WashingMchartStyle.rightButton,
                                         {
                                             borderColor: washingMachines['6'].available
-                                                ? 'blue'
+                                                ? 'yellow'
                                                 : washingMachines['6'].reserve
-                                                    ? 'green'
+                                                    ? 'blue'
                                                     : 'red',
                                         },
                                     ]}
@@ -543,9 +543,9 @@ const WashingMchartScreen = ({ navigation }) => {
                                         WashingMchartStyle.rightButton,
                                         {
                                             borderColor: washingMachines['7'].available
-                                                ? 'blue'
+                                                ? 'yellow'
                                                 : washingMachines['7'].reserve
-                                                    ? 'green'
+                                                    ? 'blue'
                                                     : 'red',
                                         },
                                     ]}
@@ -562,9 +562,9 @@ const WashingMchartScreen = ({ navigation }) => {
                                         WashingMchartStyle.leftButton,
                                         {
                                             borderColor: washingMachines['8'].available
-                                                ? 'blue'
+                                                ? 'yellow'
                                                 : washingMachines['8'].reserve
-                                                    ? 'green'
+                                                    ? 'blue'
                                                     : 'red',
                                         },
                                     ]}
