@@ -33,5 +33,9 @@ const styles = StyleSheet.create({
         borderColor: "gray",
         marginHorizontal: 10
     },
+    icon:{
+        width: 135,
+        height: 80,
+    },
 })
 export default styles;
