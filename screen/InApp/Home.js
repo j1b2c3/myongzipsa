@@ -3,6 +3,7 @@ import { Text, View, TouchableOpacity, Image, StatusBar } from 'react-native';
 import { auth, database } from '../../javascripts/FirebaseConfigFile';
 import HomeStyle from "../../styles/Auth/HomeStyle";
 import ChartScreen from "../InApp/Chart";
+import { autoReserveMachine } from './WashingMchart';
 
 export default function HomeScreen({ navigation }) {
   const [name, setName] = useState('');
@@ -124,9 +125,8 @@ export default function HomeScreen({ navigation }) {
         </TouchableOpacity>
       </View>
 
-      <TouchableOpacity style={HomeStyle.recommendButton}>
+      <TouchableOpacity style={HomeStyle.recommendButton} onPress={autoReserveMachine}>
         <Text style={HomeStyle.useBtext1}>추천</Text>
-        {/* onPress = 세탁기 빠른 예약 함수 */}
       </TouchableOpacity>
     </View>
   );

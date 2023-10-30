@@ -43,7 +43,8 @@ const WashingMchartScreen = ({ navigation }) => {
             // 세탁기가 사용 가능한 경우 남은 시간 입력 폼을 표시
             setMachineNumber(machineNumber)
             setRemainingTimeInput(''); // remainingTimeInput 초기화
-        } else if (washingMachines[machineNumber].reserveId !== null && washingMachines[machineNumber.reserveID !== userEmail]) {
+        } else if (washingMachines[machineNumber].reserveId !== '' && washingMachines[machineNumber].reserveId !== userEmail
+            && washingMachines[machineNumber].userId !== userEmail) {
             // 이미 다른 사람이 예약중인 경우 알림 표시
             Alert.alert(
                 '이미 다른 사용자가 예약중입니다.'
@@ -111,10 +112,12 @@ const WashingMchartScreen = ({ navigation }) => {
         database.ref(`washingMachines/${machineNumber}`).transaction((machine) => {
             if (machine && machine.available) {
                 machine.available = false;
+                machine.reserve = true;
                 machine.userId = userEmail;
                 machine.useTime = initialRemainingTime;
                 machine.remainingTime = initialRemainingTime;
-                machine.reserveID = null;
+                machine.reserveId = '';
+                machine.reservationTime = null;
             }
             return machine;
         }, (error, committed) => {
@@ -131,56 +134,66 @@ const WashingMchartScreen = ({ navigation }) => {
                                     `${machineNumber}번 세탁기 남은 시간: ${machine.remainingTime}분. (5분 이하)`
                                 );
                             }
+                            machine.remainingTime--;
                         } else if (machine && machine.remainingTime === 0) {
+                            if (machine.userId === userEmail || machine.reserveId === userEmail) {
+                                Alert.alert(`${machineNumber}번 세탁기 사용이 완료되었습니다.`);
+                            }
                             machine.available = true;
+                            machine.reserve = true;
                             machine.remainingTime = 0;
                             machine.useTime = 0;
                             machine.userId = machine.reserveId;
                             machine.reserveId = '';
+                            machine.reservationTime = null;
                             clearInterval(timer);
-                            Alert.alert(`${machineNumber}번 세탁기 사용이 완료되었습니다.`);
                         }
                         return machine;
                     });
                 }, 60000);
+
             } else {
                 Alert.alert('사용 시작에 실패하였습니다.');
             }
         });
     };
 
-
     const reserveMachine = (machineNumber, userEmail) => {
         database.ref(`washingMachines/${machineNumber}`).transaction((machine) => {
-            if (machine && machine.available) {
-                machine.available = false;
-                machine.reservationTime = new Date().getTime();
-                machine.reserveId = userEmail;
-                machine.remainingTime = remainingTime; // Set remainingTime here
+            if (machine) {
+                if (machine.reserve) {
+                    machine.reserve = false;
+                    machine.reservationTime = new Date().getTime();
+                    machine.reserveId = userEmail;
+                    machine.remainingTime = washingMachines[machineNumber].remainingTime;
+                }
             }
             return machine;
         }, (error, committed, snapshot) => {
             if (error) {
                 Alert.alert('예약에 실패하였습니다.');
             } else if (committed) {
-                const machine = snapshot.val(); // Get the updated machine data
+                const machine = snapshot.val();
+                const reserveId = machine.reserveId;
+                const reservationTime = machine.reservationTime;
+
                 Alert.alert(`${machineNumber}번 세탁기 예약이 완료되었습니다. \n남은 시간: ${machine.remainingTime}분.`);
                 const timer = setInterval(() => {
                     database.ref(`washingMachines/${machineNumber}`).transaction((machine) => {
                         if (machine && machine.remainingTime > 0) {
                             machine.remainingTime--;
-                            if (machine.remainingTime <= 5 && machine.userId === userEmail) {
+                            if (machine.remainingTime <= 5 && machine.reserveId === reserveId) {
                                 Alert.alert(
                                     `${machineNumber}번 세탁기 남은 시간: ${machine.remainingTime}분. (5분 이하)`
                                 );
                             }
                         } else if (machine && machine.remainingTime === 0) {
-                            machine.available = true;
+                            machine.reserve = true;
                             machine.remainingTime = 0;
                             machine.useTime = 0;
                             machine.userId = '';
+                            machine.reserveId = '';
                             machine.reservationTime = null;
-                            machine.reserveId = null;
                             clearInterval(timer);
                             Alert.alert(`${machineNumber}번 세탁기 사용이 완료되었습니다.`);
                         }
@@ -197,16 +210,16 @@ const WashingMchartScreen = ({ navigation }) => {
         setRemainingTimeInput('');
     };
 
-
     const cancelUsing = (machineNumber) => {
         database.ref(`washingMachines/${machineNumber}`).transaction((machine) => {
             if (machine && machine.userId === userEmail) {
                 machine.available = true;
-                machine.remainingTime = 3000;
+                machine.reserve = true
+                machine.remainingTime = 0;
                 machine.useTime = 0;
                 machine.userId = '';
                 machine.reservationTime = null;
-                machine.reserveId = null;
+                machine.reserveId = '';
             }
             return machine;
         }, (error, committed) => {
@@ -224,7 +237,8 @@ const WashingMchartScreen = ({ navigation }) => {
     const cancelReservation = (machineNumber) => {
         database.ref(`washingMachines/${machineNumber}`).transaction((machine) => {
             if (machine && machine.reserveId === userEmail) {
-                machine.reserveId = null;
+                machine.reserve = true;
+                machine.reserveId = '';
                 machine.reservationTime = null;
             }
             return machine;
@@ -264,10 +278,11 @@ const WashingMchartScreen = ({ navigation }) => {
                     database.ref(`washingMachines/${machineNumber}`).transaction((machine) => {
                         if (machine && machine.available) {
                             machine.available = false;
+                            machine.reserve = true;
                             machine.userId = '';
                             machine.useTime = '';
                             machine.reservationTime = new Date().getTime();
-                            machine.reserveId = null;
+                            machine.reserveId = '';
                         }
                         return machine;
                     }, (error, committed) => {
