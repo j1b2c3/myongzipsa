@@ -44,11 +44,10 @@ const ReservationMachineScreen = () => {
         </View>
       </View>
       <View style={ReservationMachineStyle.ButtonContainer}>
-        <TouchableOpacity style={ReservationMachineStyle.Button}  onPress={handleReserve} >
-          <Text style={ReservationMachineStyle.ButtonText}>{washingMachineStatus.machineNumber +'번 세탁기 예약하기'}</Text>
+        <TouchableOpacity style={ReservationMachineStyle.Button} onPress={handleReserve} >
+          <Text style={ReservationMachineStyle.ButtonText}>{washingMachineStatus.machineNumber + '번 세탁기 예약하기'}</Text>
         </TouchableOpacity>
       </View>
-
     </View >
   );
 };
