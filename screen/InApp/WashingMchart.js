@@ -48,8 +48,7 @@ const WashingMchartScreen = ({ navigation }) => {
             // 사용자가 이미 사용중인 경우 사용 취소 여부를 묻는 알림 표시
             Alert.alert(
                 `세탁기 ${machineNumber}번`,
-                `사용 중입니다. 사용을 취소하시겠습니까?`,
-                // `남은 시간: ${washingMachines[machineNumber].remainingTime}분`,
+                `사용 중입니다. 사용을 취소하시겠습니까? \n남은 시간: ${washingMachines[machineNumber].remainingTime}분`,
                 [
                     {
                         text: '예',
@@ -65,15 +64,13 @@ const WashingMchartScreen = ({ navigation }) => {
         } else if (washingMachines[machineNumber].reserveId !== '' && washingMachines[machineNumber].reserveId !== userEmail) {
             // 이미 다른 사람이 예약중인 경우 알림 표시
             Alert.alert(
-                '이미 다른 사용자가 예약중입니다.',
-                // `사용 완료까지 남은 시간: ${washingMachines[machineNumber].remainingTime}분`,
+                '이미 다른 사용자가 예약중입니다. \n남은 시간: ${ washingMachines[machineNumber].remainingTime } 분',
             )
         } else if (washingMachines[machineNumber].reserveId === userEmail && washingMachines[machineNumber].available === false) {
             // 사용자가 이미 예약중인 경우 예약 취소 여부를 묻는 알림 표시
             Alert.alert(
                 `세탁기 ${machineNumber}번`,
-                `예약 중입니다. 취소하시겠습니까?`,
-                // `남은 시간: ${washingMachines[machineNumber].remainingTime}분`,
+                `예약 중입니다. 취소하시겠습니까? \n남은 시간: ${washingMachines[machineNumber].remainingTime}분`,
                 [
                     {
                         text: '예',
@@ -106,8 +103,7 @@ const WashingMchartScreen = ({ navigation }) => {
         } else {
             Alert.alert(
                 `${machineNumber}번 세탁기`,
-                `예약하시겠습니까?`,
-                // `남은 시간: ${washingMachines[machineNumber].remainingTime}분`,
+                `예약하시겠습니까? \n남은 시간: ${washingMachines[machineNumber].remainingTime}분`,
                 [
                     {
                         text: '예',
