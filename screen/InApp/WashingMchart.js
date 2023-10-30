@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, TouchableOpacity, Text, Alert, TextInput } from 'react-native';
+import { View, TouchableOpacity, Text, Alert, TextInput ,Image} from 'react-native';
 import { auth, database } from '../../javascripts/FirebaseConfigFile';
 import WashingMchartStyle from '../../styles/Auth/WashingMchartStyle';
 import InputTimeStyle from "../../styles/Auth/InputTimeStyle";
@@ -373,7 +373,13 @@ const WashingMchartScreen = ({ navigation }) => {
                     <View style={WashingMchartStyle.iconContainer}>
                         {/*세탁기1*/}
                         <TouchableOpacity
-                            style={WashingMchartStyle.leftButton}
+                            style={[WashingMchartStyle.leftButton,
+                            {
+                                borderColor: washingMachines['1'].available ? "yellow" :
+                                washingMachines['1'].reserve ? "blue" :
+                                "red"
+                            }
+                        ]}
                             onPress={() => handleMachineClick('1')}
                         >
                             <Text>1번 세탁기</Text>
@@ -381,7 +387,13 @@ const WashingMchartScreen = ({ navigation }) => {
 
                         {/*세탁기4*/}
                         <TouchableOpacity
-                            style={WashingMchartStyle.rightButton}
+                            style={[WashingMchartStyle.rightButton,
+                            {
+                                borderColor: washingMachines['1'].available ? "yellow" :
+                                washingMachines['1'].reserve ? "blue" :
+                                "red"
+                            }
+                        ]}
                             onPress={() => handleMachineClick('4')}
                         >
                             <Text>4번 세탁기</Text>
@@ -479,7 +491,9 @@ const WashingMchartScreen = ({ navigation }) => {
                         <TouchableOpacity
                             style={WashingMchartStyle.leftButton}
                         >
-                            <Text>입구</Text>
+                            {/* <Text>입구</Text> */}
+                            <Image style={WashingMchartStyle.icon}
+            source={require("../../img/reserve_possible_color.jpg")} />
                         </TouchableOpacity>
 
                         {/*건조기4*/}
