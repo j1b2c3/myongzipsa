@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, TouchableOpacity, Text, Alert, TextInput, ActivityIndicator } from 'react-native';
+import { View, TouchableOpacity, Text, Alert, TextInput, Image, ActivityIndicator } from 'react-native';
 import { auth, database } from '../../javascripts/FirebaseConfigFile';
 import WashingMchartStyle from '../../styles/Auth/WashingMchartStyle';
 import InputTimeStyle from "../../styles/Auth/InputTimeStyle";
@@ -560,7 +560,9 @@ const WashingMchartScreen = ({ navigation }) => {
                                 <TouchableOpacity
                                     style={WashingMchartStyle.leftButton}
                                 >
-                                    <Text>입구</Text>
+                                    {/* <Text>입구</Text> */}
+                                    <Image style={WashingMchartStyle.icon}
+                                        source={require("../../img/reserve_possible_color.jpg")} />
                                 </TouchableOpacity>
 
                                 {/*건조기4*/}
