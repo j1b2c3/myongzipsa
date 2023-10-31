@@ -632,7 +632,7 @@ const WashingMchartScreen = ({ navigation }) => {
                             <View style={WashingMchartStyle.iconContainer}>
                                 {/*입구*/}
                                 <TouchableOpacity
-                                    style={WashingMchartStyle.leftButton}
+                                    style={WashingMchartStyle.leftButton1}
                                 >
                                     {/* <Text>입구</Text> */}
                                     <Image style={WashingMchartStyle.icon}

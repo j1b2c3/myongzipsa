@@ -21,6 +21,19 @@ const styles = StyleSheet.create({
         marginHorizontal: 10
     },
 
+    leftButton1: {
+        top: 90,
+        left: 40,
+        height: 80,
+        width: 120,
+        justifyContent: "center",
+        alignItems: "center",
+        borderWidth: 4,
+        borderRadius: 10,
+        borderColor: "gray",
+        marginHorizontal: 10
+    },
+
     rightButton: {
         top: 40,
         left: 90,
@@ -33,9 +46,10 @@ const styles = StyleSheet.create({
         borderColor: "gray",
         marginHorizontal: 10
     },
+
     icon: {
         width: 135,
-        height: 80,
+        height: 150,
     },
 })
 export default styles;
