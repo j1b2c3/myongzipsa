@@ -45,8 +45,9 @@ const WashingMchartScreen = ({ navigation }) => {
             // 세탁기가 없는 경우
             Alert.alert(`세탁기 ${machineNumber}는 존재하지 않습니다.`);
         } else if (
-            washingMachines[machineNumber].available &&
-            washingMachines[machineNumber].reserveId === ''
+            washingMachines[machineNumber].available && washingMachines[machineNumber].reserve ||
+            washingMachines[machineNumber].available && washingMachines[machineNumber].reserveId === userEmail
+
         ) {
             // 세탁기가 사용 가능한 경우 남은 시간 입력 폼을 표시
             setMachineNumber(machineNumber);
@@ -69,7 +70,7 @@ const WashingMchartScreen = ({ navigation }) => {
                 ]
             );
         } else if (
-            washingMachines[machineNumber].reserveId !== '' &&
+            washingMachines[machineNumber].reserve === false &&
             washingMachines[machineNumber].reserveId !== userEmail
         ) {
             // 이미 다른 사람이 예약중인 경우 알림 표시
@@ -93,31 +94,6 @@ const WashingMchartScreen = ({ navigation }) => {
                         text: '아니오',
                         onPress: () => console.log('취소'),
                         style: 'cancel',
-                    },
-                ]
-            );
-        } else if (
-            washingMachines[machineNumber].reserveId === userEmail &&
-            washingMachines[machineNumber].available === true
-        ) {
-            // 예약중이고 사용할 것인지 묻는 알림 표시
-            Alert.alert(
-                `세탁기 ${machineNumber}번`,
-                `예약 중입니다. 사용하시겠습니까?`,
-                '아니오를 누르면 예약이 취소됩니다.',
-                [
-                    {
-                        text: '예',
-                        onPress: () =>
-                            useMachine(
-                                machineNumber,
-                                userEmail,
-                                washingMachines[machineNumber].useTime
-                            ),
-                    },
-                    {
-                        text: '아니오',
-                        onPress: () => cancelReservation(machineNumber),
                     },
                 ]
             );
@@ -190,21 +166,15 @@ const WashingMchartScreen = ({ navigation }) => {
                                         );
                                     }
                                     machine.available = true;
-                                    machine.reserve = true;
                                     machine.remainingTime = 0;
                                     machine.useTime = 0;
-                                    if (machine.reserveId !== '') {
-                                        machine.userId = reserveId;
-                                    } else if (machine.reserveId === '') {
-                                        machine.userId === '';
-                                    }
-                                    machine.reserveId = '';
+                                    machine.userId = ''
                                     machine.reservationTime = null;
                                     clearInterval(timer);
                                 }
                                 return machine;
                             });
-                    }, 10000);
+                    }, 60000);
                 } else {
                     Alert.alert('사용 시작에 실패하였습니다.');
                 }
@@ -232,7 +202,6 @@ const WashingMchartScreen = ({ navigation }) => {
                 } else if (committed) {
                     const machine = snapshot.val();
                     const reserveId = machine.reserveId;
-                    const reservationTime = machine.reservationTime;
 
                     Alert.alert(
                         `${machineNumber}번 세탁기 예약이 완료되었습니다. \n남은 시간: ${machine.remainingTime}분.`
@@ -253,15 +222,9 @@ const WashingMchartScreen = ({ navigation }) => {
                                     }
                                 } else if (machine && machine.remainingTime === 0) {
                                     machine.available = true;
-                                    machine.reserve = true;
                                     machine.remainingTime = 0;
                                     machine.useTime = 0;
-                                    if (machine.reserveId !== '') {
-                                        machine.userId = reserveId;
-                                    } else if (machine.reserveId === '') {
-                                        machine.userId === '';
-                                    }
-                                    machine.reserveId = '';
+                                    machine.userId = ''
                                     clearInterval(timer);
                                     Alert.alert(
                                         `${machineNumber}번 세탁기 사용이 완료되었습니다.`
@@ -269,7 +232,7 @@ const WashingMchartScreen = ({ navigation }) => {
                                 }
                                 return machine;
                             });
-                    }, 10000);
+                    }, 60000);
                 } else {
                     Alert.alert('예약에 실패하였습니다.');
                 }
@@ -286,16 +249,14 @@ const WashingMchartScreen = ({ navigation }) => {
             (machine) => {
                 if (machine && machine.userId === userEmail) {
                     machine.available = true;
-                    machine.reserve = true;
                     machine.remainingTime = 0;
                     machine.useTime = 0;
                     if (machine.reserveId !== '') {
-                        machine.userId = reserveId;
+                        machine.userId = machine.reserveId;
                     } else if (machine.reserveId === '') {
                         machine.userId === '';
                     }
                     machine.reservationTime = null;
-                    machine.reserveId = '';
                 }
                 return machine;
             },
@@ -336,7 +297,7 @@ const WashingMchartScreen = ({ navigation }) => {
     const autoReserveMachine = () => {
         const availableMachines = Object.entries(washingMachines)
             .filter(
-                ([_, machine]) => machine.available && machine.remainingTime !== null
+                ([_, machine]) => machine.available && machine.remainingTime !== null && machine.reserve === true
             )
             .sort(([, a], [, b]) => a.remainingTime - b.remainingTime);
         if (availableMachines.length > 0) {
@@ -346,7 +307,7 @@ const WashingMchartScreen = ({ navigation }) => {
         } else {
             // 사용 가능한 세탁기가 없을 때
             const shortestTimeMachine = Object.entries(washingMachines)
-                .filter(([_, machine]) => machine.remainingTime !== null)
+                .filter(([_, machine]) => machine.remainingTime !== null && machine.reserve === true && machine.userId !== userEmail)
                 .sort(([, a], [, b]) => a.remainingTime - b.remainingTime);
             if (shortestTimeMachine.length > 0) {
                 const [machineNumber] = shortestTimeMachine[0];
@@ -378,7 +339,7 @@ const WashingMchartScreen = ({ navigation }) => {
                         }
                     );
                 } else {
-                    Alert.alert(`세탁기 ${machineNumber}번 예약하시겠습니까?`, '', [
+                    Alert.alert(`세탁기 ${machineNumber}번 예약하시겠습니까?\n 남은시간: ${washingMachines[machineNumber].remainingTime}`, '', [
                         {
                             text: '예',
                             onPress: () => reserveMachine(machineNumber, userEmail),
@@ -426,11 +387,18 @@ const WashingMchartScreen = ({ navigation }) => {
                                     style={[
                                         WashingMchartStyle.leftButton,
                                         {
-                                            borderColor: washingMachines['1'].available
-                                                ? 'blue'
-                                                : washingMachines['1'].reserve
-                                                    ? 'yellow'
-                                                    : 'red',
+                                            borderColor:
+                                                washingMachines['1'].userId === userEmail
+                                                    ? 'lightblue'
+                                                    : washingMachines['1'].reserveId !== userEmail && washingMachines['1'].reserveId !== '' && washingMachines['1'].available
+                                                        ? 'red'
+                                                        : washingMachines['1'].reserveId === userEmail
+                                                            ? 'green'
+                                                            : washingMachines['1'].available
+                                                                ? 'blue'
+                                                                : washingMachines['1'].reserve
+                                                                    ? 'yellow'
+                                                                    : 'red',
                                         },
                                     ]}
                                     onPress={() => handleMachineClick('1')}
@@ -443,11 +411,18 @@ const WashingMchartScreen = ({ navigation }) => {
                                     style={[
                                         WashingMchartStyle.rightButton,
                                         {
-                                            borderColor: washingMachines['4'].available
-                                                ? 'blue'
-                                                : washingMachines['4'].reserve
-                                                    ? 'yellow'
-                                                    : 'red',
+                                            borderColor:
+                                                washingMachines['4'].userId === userEmail
+                                                    ? 'lightblue'
+                                                    : washingMachines['4'].reserveId !== userEmail && washingMachines['4'].reserveId !== '' && washingMachines['4'].available
+                                                        ? 'red'
+                                                        : washingMachines['4'].reserveId === userEmail
+                                                            ? 'green'
+                                                            : washingMachines['4'].available
+                                                                ? 'blue'
+                                                                : washingMachines['4'].reserve
+                                                                    ? 'yellow'
+                                                                    : 'red',
                                         },
                                     ]}
                                     onPress={() => handleMachineClick('4')}
@@ -462,11 +437,18 @@ const WashingMchartScreen = ({ navigation }) => {
                                     style={[
                                         WashingMchartStyle.leftButton,
                                         {
-                                            borderColor: washingMachines['2'].available
-                                                ? 'blue'
-                                                : washingMachines['2'].reserve
-                                                    ? 'yellow'
-                                                    : 'red',
+                                            borderColor:
+                                                washingMachines['2'].userId === userEmail
+                                                    ? 'lightblue'
+                                                    : washingMachines['2'].reserveId !== userEmail && washingMachines['2'].reserveId !== '' && washingMachines['2'].available
+                                                        ? 'red'
+                                                        : washingMachines['2'].reserveId === userEmail
+                                                            ? 'green'
+                                                            : washingMachines['2'].available
+                                                                ? 'blue'
+                                                                : washingMachines['2'].reserve
+                                                                    ? 'yellow'
+                                                                    : 'red',
                                         },
                                     ]}
                                     onPress={() => handleMachineClick('2')}
@@ -479,11 +461,18 @@ const WashingMchartScreen = ({ navigation }) => {
                                     style={[
                                         WashingMchartStyle.rightButton,
                                         {
-                                            borderColor: washingMachines['5'].available
-                                                ? 'blue'
-                                                : washingMachines['5'].reserve
-                                                    ? 'yellow'
-                                                    : 'red',
+                                            borderColor:
+                                                washingMachines['5'].userId === userEmail
+                                                    ? 'lightblue'
+                                                    : washingMachines['5'].reserveId !== userEmail && washingMachines['5'].reserveId !== '' && washingMachines['5'].available
+                                                        ? 'red'
+                                                        : washingMachines['5'].reserveId === userEmail
+                                                            ? 'green'
+                                                            : washingMachines['5'].available
+                                                                ? 'blue'
+                                                                : washingMachines['5'].reserve
+                                                                    ? 'yellow'
+                                                                    : 'red',
                                         },
                                     ]}
                                     onPress={() => handleMachineClick('5')}
@@ -498,11 +487,18 @@ const WashingMchartScreen = ({ navigation }) => {
                                     style={[
                                         WashingMchartStyle.leftButton,
                                         {
-                                            borderColor: washingMachines['3'].available
-                                                ? 'blue'
-                                                : washingMachines['3'].reserve
-                                                    ? 'yellow'
-                                                    : 'red',
+                                            borderColor:
+                                                washingMachines['3'].userId === userEmail
+                                                    ? 'lightblue'
+                                                    : washingMachines['3'].reserveId !== userEmail && washingMachines['3'].reserveId !== '' && washingMachines['3'].available
+                                                        ? 'red'
+                                                        : washingMachines['3'].reserveId === userEmail
+                                                            ? 'green'
+                                                            : washingMachines['3'].available
+                                                                ? 'blue'
+                                                                : washingMachines['3'].reserve
+                                                                    ? 'yellow'
+                                                                    : 'red',
                                         },
                                     ]}
                                     onPress={() => handleMachineClick('3')}
@@ -515,11 +511,18 @@ const WashingMchartScreen = ({ navigation }) => {
                                     style={[
                                         WashingMchartStyle.rightButton,
                                         {
-                                            borderColor: washingMachines['6'].available
-                                                ? 'blue'
-                                                : washingMachines['6'].reserve
-                                                    ? 'yellow'
-                                                    : 'red',
+                                            borderColor:
+                                                washingMachines['6'].userId === userEmail
+                                                    ? 'lightblue'
+                                                    : washingMachines['6'].reserveId !== userEmail && washingMachines['6'].reserveId !== '' && washingMachines['6'].available
+                                                        ? 'red'
+                                                        : washingMachines['6'].reserveId === userEmail
+                                                            ? 'green'
+                                                            : washingMachines['6'].available
+                                                                ? 'blue'
+                                                                : washingMachines['6'].reserve
+                                                                    ? 'yellow'
+                                                                    : 'red',
                                         },
                                     ]}
                                     onPress={() => handleMachineClick('6')}
@@ -542,11 +545,18 @@ const WashingMchartScreen = ({ navigation }) => {
                                     style={[
                                         WashingMchartStyle.rightButton,
                                         {
-                                            borderColor: washingMachines['7'].available
-                                                ? 'blue'
-                                                : washingMachines['7'].reserve
-                                                    ? 'yellow'
-                                                    : 'red',
+                                            borderColor:
+                                                washingMachines['7'].userId === userEmail
+                                                    ? 'lightblue'
+                                                    : washingMachines['7'].reserveId !== userEmail && washingMachines['7'].reserveId !== '' && washingMachines['7'].available
+                                                        ? 'red'
+                                                        : washingMachines['7'].reserveId === userEmail
+                                                            ? 'green'
+                                                            : washingMachines['7'].available
+                                                                ? 'blue'
+                                                                : washingMachines['7'].reserve
+                                                                    ? 'yellow'
+                                                                    : 'red',
                                         },
                                     ]}
                                     onPress={() => handleMachineClick('7')}
@@ -561,11 +571,18 @@ const WashingMchartScreen = ({ navigation }) => {
                                     style={[
                                         WashingMchartStyle.leftButton,
                                         {
-                                            borderColor: washingMachines['8'].available
-                                                ? 'blue'
-                                                : washingMachines['8'].reserve
-                                                    ? 'yellow'
-                                                    : 'red',
+                                            borderColor:
+                                                washingMachines['8'].userId === userEmail
+                                                    ? 'lightblue'
+                                                    : washingMachines['8'].reserveId !== userEmail && washingMachines['8'].reserveId !== '' && washingMachines['8'].available
+                                                        ? 'red'
+                                                        : washingMachines['8'].reserveId === userEmail
+                                                            ? 'green'
+                                                            : washingMachines['8'].available
+                                                                ? 'blue'
+                                                                : washingMachines['8'].reserve
+                                                                    ? 'yellow'
+                                                                    : 'red',
                                         },
                                     ]}
                                     onPress={() => handleMachineClick('8')}
