@@ -388,17 +388,19 @@ const WashingMchartScreen = ({ navigation }) => {
                                         WashingMchartStyle.leftButton,
                                         {
                                             borderColor:
-                                                washingMachines['1'].userId === userEmail
-                                                    ? 'lightblue'
-                                                    : washingMachines['1'].reserveId !== userEmail && washingMachines['1'].reserveId !== '' && washingMachines['1'].available
-                                                        ? 'red'
-                                                        : washingMachines['1'].reserveId === userEmail
-                                                            ? 'green'
-                                                            : washingMachines['1'].available
-                                                                ? 'blue'
-                                                                : washingMachines['1'].reserve
-                                                                    ? 'yellow'
-                                                                    : 'red',
+                                                washingMachines['1'].reserveId === userEmail && washingMachines['1'].available
+                                                    ? 'orange'
+                                                    : washingMachines['1'].userId === userEmail && washingMachines['1'].available
+                                                        ? 'lightblue'
+                                                        : washingMachines['1'].reserveId !== userEmail && washingMachines['1'].reserveId !== '' && washingMachines['1'].available
+                                                            ? 'red'
+                                                            : washingMachines['1'].reserveId === userEmail
+                                                                ? 'green'
+                                                                : washingMachines['1'].available
+                                                                    ? 'blue'
+                                                                    : washingMachines['1'].reserve
+                                                                        ? 'yellow'
+                                                                        : 'red',
                                         },
                                     ]}
                                     onPress={() => handleMachineClick('1')}
@@ -412,17 +414,19 @@ const WashingMchartScreen = ({ navigation }) => {
                                         WashingMchartStyle.rightButton,
                                         {
                                             borderColor:
-                                                washingMachines['4'].userId === userEmail
-                                                    ? 'lightblue'
-                                                    : washingMachines['4'].reserveId !== userEmail && washingMachines['4'].reserveId !== '' && washingMachines['4'].available
-                                                        ? 'red'
-                                                        : washingMachines['4'].reserveId === userEmail
-                                                            ? 'green'
-                                                            : washingMachines['4'].available
-                                                                ? 'blue'
-                                                                : washingMachines['4'].reserve
-                                                                    ? 'yellow'
-                                                                    : 'red',
+                                                washingMachines['4'].reserveId === userEmail && washingMachines['4'].available
+                                                    ? 'orange'
+                                                    : washingMachines['4'].userId === userEmail && washingMachines['4'].available
+                                                        ? 'lightblue'
+                                                        : washingMachines['4'].reserveId !== userEmail && washingMachines['4'].reserveId !== '' && washingMachines['4'].available
+                                                            ? 'red'
+                                                            : washingMachines['4'].reserveId === userEmail
+                                                                ? 'green'
+                                                                : washingMachines['4'].available
+                                                                    ? 'blue'
+                                                                    : washingMachines['4'].reserve
+                                                                        ? 'yellow'
+                                                                        : 'red',
                                         },
                                     ]}
                                     onPress={() => handleMachineClick('4')}
@@ -438,17 +442,19 @@ const WashingMchartScreen = ({ navigation }) => {
                                         WashingMchartStyle.leftButton,
                                         {
                                             borderColor:
-                                                washingMachines['2'].userId === userEmail
-                                                    ? 'lightblue'
-                                                    : washingMachines['2'].reserveId !== userEmail && washingMachines['2'].reserveId !== '' && washingMachines['2'].available
-                                                        ? 'red'
-                                                        : washingMachines['2'].reserveId === userEmail
-                                                            ? 'green'
-                                                            : washingMachines['2'].available
-                                                                ? 'blue'
-                                                                : washingMachines['2'].reserve
-                                                                    ? 'yellow'
-                                                                    : 'red',
+                                                washingMachines['2'].reserveId === userEmail && washingMachines['2'].available
+                                                    ? 'orange'
+                                                    : washingMachines['2'].userId === userEmail && washingMachines['2'].available
+                                                        ? 'lightblue'
+                                                        : washingMachines['2'].reserveId !== userEmail && washingMachines['2'].reserveId !== '' && washingMachines['2'].available
+                                                            ? 'red'
+                                                            : washingMachines['2'].reserveId === userEmail
+                                                                ? 'green'
+                                                                : washingMachines['2'].available
+                                                                    ? 'blue'
+                                                                    : washingMachines['2'].reserve
+                                                                        ? 'yellow'
+                                                                        : 'red',
                                         },
                                     ]}
                                     onPress={() => handleMachineClick('2')}
@@ -462,17 +468,19 @@ const WashingMchartScreen = ({ navigation }) => {
                                         WashingMchartStyle.rightButton,
                                         {
                                             borderColor:
-                                                washingMachines['5'].userId === userEmail
-                                                    ? 'lightblue'
-                                                    : washingMachines['5'].reserveId !== userEmail && washingMachines['5'].reserveId !== '' && washingMachines['5'].available
-                                                        ? 'red'
-                                                        : washingMachines['5'].reserveId === userEmail
-                                                            ? 'green'
-                                                            : washingMachines['5'].available
-                                                                ? 'blue'
-                                                                : washingMachines['5'].reserve
-                                                                    ? 'yellow'
-                                                                    : 'red',
+                                                washingMachines['5'].reserveId === userEmail && washingMachines['5'].available
+                                                    ? 'orange'
+                                                    : washingMachines['5'].userId === userEmail && washingMachines['5'].available
+                                                        ? 'lightblue'
+                                                        : washingMachines['5'].reserveId !== userEmail && washingMachines['5'].reserveId !== '' && washingMachines['5'].available
+                                                            ? 'red'
+                                                            : washingMachines['5'].reserveId === userEmail
+                                                                ? 'green'
+                                                                : washingMachines['5'].available
+                                                                    ? 'blue'
+                                                                    : washingMachines['5'].reserve
+                                                                        ? 'yellow'
+                                                                        : 'red',
                                         },
                                     ]}
                                     onPress={() => handleMachineClick('5')}
@@ -488,17 +496,19 @@ const WashingMchartScreen = ({ navigation }) => {
                                         WashingMchartStyle.leftButton,
                                         {
                                             borderColor:
-                                                washingMachines['3'].userId === userEmail
-                                                    ? 'lightblue'
-                                                    : washingMachines['3'].reserveId !== userEmail && washingMachines['3'].reserveId !== '' && washingMachines['3'].available
-                                                        ? 'red'
-                                                        : washingMachines['3'].reserveId === userEmail
-                                                            ? 'green'
-                                                            : washingMachines['3'].available
-                                                                ? 'blue'
-                                                                : washingMachines['3'].reserve
-                                                                    ? 'yellow'
-                                                                    : 'red',
+                                                washingMachines['3'].reserveId === userEmail && washingMachines['3'].available
+                                                    ? 'orange'
+                                                    : washingMachines['3'].userId === userEmail && washingMachines['3'].available
+                                                        ? 'lightblue'
+                                                        : washingMachines['3'].reserveId !== userEmail && washingMachines['3'].reserveId !== '' && washingMachines['3'].available
+                                                            ? 'red'
+                                                            : washingMachines['3'].reserveId === userEmail
+                                                                ? 'green'
+                                                                : washingMachines['3'].available
+                                                                    ? 'blue'
+                                                                    : washingMachines['3'].reserve
+                                                                        ? 'yellow'
+                                                                        : 'red',
                                         },
                                     ]}
                                     onPress={() => handleMachineClick('3')}
@@ -512,17 +522,19 @@ const WashingMchartScreen = ({ navigation }) => {
                                         WashingMchartStyle.rightButton,
                                         {
                                             borderColor:
-                                                washingMachines['6'].userId === userEmail
-                                                    ? 'lightblue'
-                                                    : washingMachines['6'].reserveId !== userEmail && washingMachines['6'].reserveId !== '' && washingMachines['6'].available
-                                                        ? 'red'
-                                                        : washingMachines['6'].reserveId === userEmail
-                                                            ? 'green'
-                                                            : washingMachines['6'].available
-                                                                ? 'blue'
-                                                                : washingMachines['6'].reserve
-                                                                    ? 'yellow'
-                                                                    : 'red',
+                                                washingMachines['6'].reserveId === userEmail && washingMachines['6'].available
+                                                    ? 'orange'
+                                                    : washingMachines['6'].userId === userEmail && washingMachines['6'].available
+                                                        ? 'lightblue'
+                                                        : washingMachines['6'].reserveId !== userEmail && washingMachines['6'].reserveId !== '' && washingMachines['6'].available
+                                                            ? 'red'
+                                                            : washingMachines['6'].reserveId === userEmail
+                                                                ? 'green'
+                                                                : washingMachines['6'].available
+                                                                    ? 'blue'
+                                                                    : washingMachines['6'].reserve
+                                                                        ? 'yellow'
+                                                                        : 'red',
                                         },
                                     ]}
                                     onPress={() => handleMachineClick('6')}
@@ -546,17 +558,19 @@ const WashingMchartScreen = ({ navigation }) => {
                                         WashingMchartStyle.rightButton,
                                         {
                                             borderColor:
-                                                washingMachines['7'].userId === userEmail
-                                                    ? 'lightblue'
-                                                    : washingMachines['7'].reserveId !== userEmail && washingMachines['7'].reserveId !== '' && washingMachines['7'].available
-                                                        ? 'red'
-                                                        : washingMachines['7'].reserveId === userEmail
-                                                            ? 'green'
-                                                            : washingMachines['7'].available
-                                                                ? 'blue'
-                                                                : washingMachines['7'].reserve
-                                                                    ? 'yellow'
-                                                                    : 'red',
+                                                washingMachines['7'].reserveId === userEmail && washingMachines['7'].available
+                                                    ? 'orange'
+                                                    : washingMachines['7'].userId === userEmail && washingMachines['7'].available
+                                                        ? 'lightblue'
+                                                        : washingMachines['7'].reserveId !== userEmail && washingMachines['7'].reserveId !== '' && washingMachines['7'].available
+                                                            ? 'red'
+                                                            : washingMachines['7'].reserveId === userEmail
+                                                                ? 'green'
+                                                                : washingMachines['7'].available
+                                                                    ? 'blue'
+                                                                    : washingMachines['7'].reserve
+                                                                        ? 'yellow'
+                                                                        : 'red',
                                         },
                                     ]}
                                     onPress={() => handleMachineClick('7')}
@@ -572,17 +586,19 @@ const WashingMchartScreen = ({ navigation }) => {
                                         WashingMchartStyle.leftButton,
                                         {
                                             borderColor:
-                                                washingMachines['8'].userId === userEmail
-                                                    ? 'lightblue'
-                                                    : washingMachines['8'].reserveId !== userEmail && washingMachines['8'].reserveId !== '' && washingMachines['8'].available
-                                                        ? 'red'
-                                                        : washingMachines['8'].reserveId === userEmail
-                                                            ? 'green'
-                                                            : washingMachines['8'].available
-                                                                ? 'blue'
-                                                                : washingMachines['8'].reserve
-                                                                    ? 'yellow'
-                                                                    : 'red',
+                                                washingMachines['8'].reserveId === userEmail && washingMachines['8'].available
+                                                    ? 'orange'
+                                                    : washingMachines['8'].userId === userEmail && washingMachines['8'].available
+                                                        ? 'lightblue'
+                                                        : washingMachines['8'].reserveId !== userEmail && washingMachines['8'].reserveId !== '' && washingMachines['8'].available
+                                                            ? 'red'
+                                                            : washingMachines['8'].reserveId === userEmail
+                                                                ? 'green'
+                                                                : washingMachines['8'].available
+                                                                    ? 'blue'
+                                                                    : washingMachines['8'].reserve
+                                                                        ? 'yellow'
+                                                                        : 'red',
                                         },
                                     ]}
                                     onPress={() => handleMachineClick('8')}
@@ -634,8 +650,9 @@ const WashingMchartScreen = ({ navigation }) => {
                     )
                     }
                 </View>
-            )}
-        </View>
+            )
+            }
+        </View >
     );
 };
 
