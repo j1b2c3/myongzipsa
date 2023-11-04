@@ -51,15 +51,15 @@ const DryingMchartScreen = ({ navigation }) => {
 
   const handleMachineClick = (machineNumber) => {
     if (!DryingMachines[machineNumber]) {
-      // 세탁기가 없는 경우
-      Alert.alert(`세탁기 ${machineNumber}는 존재하지 않습니다.`);
+      // 건조기가 없는 경우
+      Alert.alert(`건조기 ${machineNumber}는 존재하지 않습니다.`);
     } else if (
       (DryingMachines[machineNumber].available &&
         DryingMachines[machineNumber].reserve) ||
       (DryingMachines[machineNumber].available &&
         DryingMachines[machineNumber].reserveId === userEmail)
     ) {
-      // 세탁기가 사용 가능한 경우 남은 시간 입력 폼을 표시
+      // 건조기 사용 가능한 경우 남은 시간 입력 폼을 표시
       setMachineNumber(machineNumber);
       setRemainingTimeInput(''); // remainingTimeInput 초기화
     } else if (DryingMachines[machineNumber].userId === userEmail) {
@@ -213,7 +213,7 @@ const DryingMchartScreen = ({ navigation }) => {
           const reserveId = machine.reserveId;
 
           Alert.alert(
-            `${machineNumber}번 세탁기 예약이 완료되었습니다. \n남은 시간: ${machine.remainingTime}분.`
+            `${machineNumber}번 건조기 예약이 완료되었습니다. \n남은 시간: ${machine.remainingTime}분.`
           );
           const timer = setInterval(() => {
             database
@@ -226,7 +226,7 @@ const DryingMchartScreen = ({ navigation }) => {
                     machine.reserveId === reserveId
                   ) {
                     Alert.alert(
-                      `${machineNumber}번 세탁기 남은 시간: ${machine.remainingTime}분. (5분 이하)`
+                      `${machineNumber}번 건조기 남은 시간: ${machine.remainingTime}분. (5분 이하)`
                     );
                   }
                 } else if (machine && machine.remainingTime === 0) {
@@ -236,7 +236,7 @@ const DryingMchartScreen = ({ navigation }) => {
                   machine.userId = '';
                   clearInterval(timer);
                   Alert.alert(
-                    `${machineNumber}번 세탁기 사용이 완료되었습니다.`
+                    `${machineNumber}번 건조기 사용이 완료되었습니다.`
                   );
                 }
                 return machine;
@@ -273,7 +273,7 @@ const DryingMchartScreen = ({ navigation }) => {
         if (error) {
           Alert.alert('사용 취소에 실패하였습니다.');
         } else if (committed) {
-          Alert.alert(`${machineNumber}번 세탁기 사용이 취소되었습니다.`);
+          Alert.alert(`${machineNumber}번 건조기 사용이 취소되었습니다.`);
         } else {
           Alert.alert('사용 취소에 실패하였습니다.');
         }
@@ -295,7 +295,7 @@ const DryingMchartScreen = ({ navigation }) => {
         if (error) {
           Alert.alert('예약 취소에 실패하였습니다.');
         } else if (committed) {
-          Alert.alert(`${machineNumber}번 세탁기 예약이 취소되었습니다.`);
+          Alert.alert(`${machineNumber}번 건조기 예약이 취소되었습니다.`);
         } else {
           Alert.alert('예약 취소에 실패하였습니다.');
         }
@@ -313,11 +313,11 @@ const DryingMchartScreen = ({ navigation }) => {
       )
       .sort(([, a], [, b]) => a.remainingTime - b.remainingTime);
     if (availableMachines.length > 0) {
-      // 사용 가능한 세탁기가 있을 때
+      // 사용 가능한 건조기 있을 때
       const [machineNumber] = availableMachines[0];
-      Alert.alert(`사용 가능한 세탁기: ${machineNumber}번`);
+      Alert.alert(`사용 가능한 건조기: ${machineNumber}번`);
     } else {
-      // 사용 가능한 세탁기가 없을 때
+      // 사용 가능한 건조기 없을 때
       const shortestTimeMachine = Object.entries(DryingMachines)
         .filter(
           ([_, machine]) =>
@@ -349,7 +349,7 @@ const DryingMchartScreen = ({ navigation }) => {
               if (error) {
                 Alert.alert('예약에 실패하였습니다.');
               } else if (committed) {
-                Alert.alert(`${machineNumber}번 세탁기 초기화되었습니다.`);
+                Alert.alert(`${machineNumber}번 건조기 초기화되었습니다.`);
               } else {
                 Alert.alert('예약에 실패하였습니다.');
               }
@@ -357,7 +357,7 @@ const DryingMchartScreen = ({ navigation }) => {
           );
         } else {
           Alert.alert(
-            `세탁기 ${machineNumber}번 예약하시겠습니까?\n 남은시간: ${washingMachines[machineNumber].remainingTime}`,
+            `건조기 ${machineNumber}번 예약하시겠습니까?\n 남은시간: ${washingMachines[machineNumber].remainingTime}`,
             '',
             [
               {
@@ -373,7 +373,7 @@ const DryingMchartScreen = ({ navigation }) => {
           );
         }
       } else {
-        Alert.alert('예약 가능한 세탁기가 없습니다.');
+        Alert.alert('예약 가능한 건조기가 없습니다.');
       }
     }
   };
