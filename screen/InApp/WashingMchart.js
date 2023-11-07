@@ -107,9 +107,21 @@ const WashingMchartScreen = ({ navigation }) => {
         ]
       );
     } else {
+      const now = new Date();
+      now.setHours(
+        now.getHours() +
+          9 +
+          Math.floor(washingMachines[machineNumber].remainingTime / 60)
+      ); // 한국 시간으로 변환
+      now.setMinutes(
+        now.getMinutes() + (washingMachines[machineNumber].remainingTime % 60)
+      );
+
       Alert.alert(
         `${machineNumber}번 세탁기`,
-        `예약하시겠습니까? \n남은 시간: ${washingMachines[machineNumber].remainingTime}분`,
+        `예약하시겠습니까? 
+      세탁완료시간: ${now.getHours()}시 ${now.getMinutes()}분.
+      남은 시간: ${washingMachines[machineNumber].remainingTime}분`,
         [
           {
             text: '예',
@@ -149,7 +161,12 @@ const WashingMchartScreen = ({ navigation }) => {
         if (error) {
           Alert.alert('사용 시작에 실패하였습니다.');
         } else if (committed) {
-          const message = `${machineNumber}번 세탁기 사용 시작. 남은 시간: ${initialRemainingTime}분.`;
+          const now = new Date();
+          now.setHours(
+            now.getHours() + 9 + Math.floor(initialRemainingTime / 60)
+          ); // 한국 시간으로 변환
+          now.setMinutes(now.getMinutes() + (initialRemainingTime % 60));
+          const message = `${machineNumber}번 세탁기 사용 시작. ${now.getHours()}시 ${now.getMinutes()}분에 찾아가세요.`;
           Alert.alert(message);
           const timer = setInterval(() => {
             database
@@ -212,8 +229,15 @@ const WashingMchartScreen = ({ navigation }) => {
           const machine = snapshot.val();
           const reserveId = machine.reserveId;
 
+          const now = new Date();
+          now.setHours(
+            now.getHours() + 9 + Math.floor(machine.remainingTime / 60)
+          ); // 한국 시간으로 변환
+          now.setMinutes(now.getMinutes() + (machine.remainingTime % 60));
+
           Alert.alert(
-            `${machineNumber}번 세탁기 예약이 완료되었습니다. \n남은 시간: ${machine.remainingTime}분.`
+            `${machineNumber}번 세탁기 예약이 완료되었습니다. 
+          ${now.getHours()}시 ${now.getMinutes()}분에 사용하세요.`
           );
           const timer = setInterval(() => {
             database
