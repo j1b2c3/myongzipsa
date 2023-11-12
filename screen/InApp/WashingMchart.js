@@ -1,116 +1,141 @@
 import React, { useState, useEffect, createRef } from "react";
 import { StatusBar } from 'expo-status-bar';
-import { Text, View, TouchableOpacity, TextInput, Button, Alert, StyleSheet } from 'react-native';
+import { Text, View, TouchableOpacity, TextInput, Button, Alert, StyleSheet, Image } from 'react-native';
 
 //스타일 import
 import WashingMchartStyle from "../../styles/Auth/WashingMchartStyle";
 
-export default function WashingMchartScreen({navigation}) {
+export default function WashingMchartScreen({ navigation }) {
     const [machineState, setMachineState] = useState("default");
 
     return (
-        <View>
-            <View style={WashingMchartStyle.iconContainer}>
-                {/*세탁기1*/}
-                <TouchableOpacity style={WashingMchartStyle.leftButton}
-                onPress={()=>navigation.navigate("세탁시간입력")}>
-                    <Text>1번 세탁기</Text>
-                </TouchableOpacity>
 
-                {/*세탁기4*/}
-                <TouchableOpacity style={WashingMchartStyle.rightButton}
-                //'예약가능'이라고 가정하고 예약페이지로 이동코드 임시로 추가
-                onPress={()=>navigation.navigate("예약하기")}>
-                {/* onPress={() => navigation.navigate("배치도")}> */}
-                    <Text>4번 세탁기</Text>
+        <View style={WashingMchartStyle.container}>
+            {/* 1행 */}
+            <View style={WashingMchartStyle.row}>
+                <TouchableOpacity
+                    style={WashingMchartStyle.machine}
+                >
+                    <Image style={WashingMchartStyle.machineImage}
+                        source={require("../../img/washing_machine.jpg")} />
+                    <View style={WashingMchartStyle.overlay}>
+                        <Text style={WashingMchartStyle.overlayText}>1</Text>
+                    </View>
                 </TouchableOpacity>
-            </View>
-
-            <View style={WashingMchartStyle.iconContainer}>
-                {/*세탁기2*/}
-                <TouchableOpacity style={WashingMchartStyle.leftButton}>
-                {/* onPress={() => navigation.navigate("배치도")}> */}
-                    <Text>2번 세탁기</Text>
+                <TouchableOpacity
+                    style={WashingMchartStyle.machine}
+                >
+                    <Image style={WashingMchartStyle.machineImage}
+                        source={require("../../img/washing_machine.jpg")} />
+                    <View style={WashingMchartStyle.overlay}>
+                        <Text style={WashingMchartStyle.overlayText}>4</Text>
+                    </View>
                 </TouchableOpacity>
-
-                {/*세탁기5*/}
-                <TouchableOpacity style={WashingMchartStyle.rightButton}>
-                {/* onPress={() => navigation.navigate("배치도")}> */}
-                    <Text>5번 세탁기</Text>
-                </TouchableOpacity>
-            </View>
-
-            <View style={WashingMchartStyle.iconContainer}>
-                {/*세탁기3*/}
-                <TouchableOpacity style={WashingMchartStyle.leftButton}>
-                {/* onPress={() => navigation.navigate("배치도")}> */}
-                    <Text>3번 세탁기</Text>
-                </TouchableOpacity>
-
-                {/*세탁기6*/}
-                <TouchableOpacity style={WashingMchartStyle.rightButton}>
-                {/* onPress={() => navigation.navigate("배치도")}> */}
-                    <Text>6번 세탁기</Text>
+                <TouchableOpacity
+                    style={WashingMchartStyle.machine}
+                >
+                    <Image style={WashingMchartStyle.machineImage}
+                        source={require("../../img/Possible_status.jpg")} />
                 </TouchableOpacity>
             </View>
+            {/* 2행 */}
+            <View style={WashingMchartStyle.row}>
 
-            <View style={WashingMchartStyle.iconContainer}>
-                {/*건조기1*/}
-                <TouchableOpacity style={WashingMchartStyle.leftButton}>
-                {/* onPress={() => navigation.navigate("배치도")}> */}
-                    <Text>1번 건조기</Text>
+                <TouchableOpacity
+                    style={WashingMchartStyle.machine}
+                >
+                    <Image style={WashingMchartStyle.machineImage}
+                        source={require("../../img/washing_machine.jpg")} />
+                    <View style={WashingMchartStyle.overlay}>
+                        <Text style={WashingMchartStyle.overlayText}>2</Text>
+                    </View>
                 </TouchableOpacity>
-
-                {/*세탁기7*/}
-                <TouchableOpacity style={WashingMchartStyle.rightButton}>
-                {/* onPress={() => navigation.navigate("배치도")}> */}
-                    <Text>7번 세탁기</Text>
-                </TouchableOpacity>
-            </View>
-
-            <View style={WashingMchartStyle.iconContainer}>
-                {/*건조기2*/}
-                <TouchableOpacity style={WashingMchartStyle.leftButton}>
-                {/* onPress={() => navigation.navigate("배치도")}> */}
-                    <Text>2번 건조기</Text>
-                </TouchableOpacity>
-
-                {/*세탁기8*/}
-                <TouchableOpacity style={WashingMchartStyle.rightButton}>
-                {/* onPress={() => navigation.navigate("배치도")}> */}
-                    <Text>8번 세탁기</Text>
+                <TouchableOpacity
+                    style={WashingMchartStyle.machine}
+                >
+                    <Image style={WashingMchartStyle.machineImage}
+                        source={require("../../img/washing_machine.jpg")} />
+                    <View style={WashingMchartStyle.overlay}>
+                        <Text style={WashingMchartStyle.overlayText}>5</Text>
+                    </View>
                 </TouchableOpacity>
             </View>
-
-            <View style={WashingMchartStyle.iconContainer}>
-                {/*입구*/}
-                <TouchableOpacity style={WashingMchartStyle.leftButton}>
-                {/* onPress={() => navigation.navigate("배치도")}> */}
-                    <Text>자동 추천</Text>
+            {/* 3행 */}
+            <View style={WashingMchartStyle.row}>
+                <TouchableOpacity
+                    style={WashingMchartStyle.machine}
+                >
+                    <Image style={WashingMchartStyle.machineImage}
+                        source={require("../../img/washing_machine.jpg")} />
+                    <View style={WashingMchartStyle.overlay}>
+                        <Text style={WashingMchartStyle.overlayText}>3</Text>
+                    </View>
                 </TouchableOpacity>
-
-                {/*건조기3*/}
-                <TouchableOpacity style={WashingMchartStyle.rightButton}>
-                {/* onPress={() => navigation.navigate("배치도")}> */}
-                    <Text>3번 건조기</Text>
+                <TouchableOpacity
+                    style={WashingMchartStyle.machine}
+                >
+                    <Image style={WashingMchartStyle.machineImage}
+                        source={require("../../img/washing_machine.jpg")} />
+                    <View style={WashingMchartStyle.overlay}>
+                        <Text style={WashingMchartStyle.overlayText}>6</Text>
+                    </View>
                 </TouchableOpacity>
             </View>
+            {/* 4행 */}
+            <View style={WashingMchartStyle.row}>
+                <TouchableOpacity
+                    style={WashingMchartStyle.machine}
+                >
+                    <Image style={WashingMchartStyle.machineImage}
+                        source={require("../../img/non_drying_machine.jpg")} />
+                    {/* <Text>건조기</Text> */}
+                </TouchableOpacity>
+                <TouchableOpacity
+                    style={WashingMchartStyle.machine}
+                >
+                    <Image style={WashingMchartStyle.machineImage}
+                        source={require("../../img/washing_machine.jpg")} />
 
-            <View style={WashingMchartStyle.iconContainer}>
-                {/*입구*/}
-                <TouchableOpacity style={WashingMchartStyle.leftButton}>
-                {/* onPress={() => navigation.navigate("배치도")}> */}
-                    <Text>입구</Text>
+                    <View style={WashingMchartStyle.overlay}>
+                        <Text style={WashingMchartStyle.overlayText}>7</Text>
+                    </View>
+                </TouchableOpacity>
+                <TouchableOpacity
+                    style={WashingMchartStyle.machine}
+                >
+                    <Image style={WashingMchartStyle.machineImage}
+                        source={require("../../img/non_drying_machine.jpg")} />
+                    {/* <Text>건조기</Text> */}
+                </TouchableOpacity>
+            </View>
+            {/* 5행 */}
+            <View style={WashingMchartStyle.row}>
+                <TouchableOpacity
+                    style={WashingMchartStyle.machine}
+                >
+                    <Image style={WashingMchartStyle.machineImage}
+                        source={require("../../img/non_drying_machine.jpg")} />
+                    {/* <Text>건조기</Text> */}
+                </TouchableOpacity>
+                <TouchableOpacity
+                    style={WashingMchartStyle.machine}
+                >
+                    <Image style={WashingMchartStyle.machineImage}
+                        source={require("../../img/washing_machine.jpg")} />
+                    <View style={WashingMchartStyle.overlay}>
+                        <Text style={WashingMchartStyle.overlayText}>8</Text>
+                    </View>
                 </TouchableOpacity>
 
-                {/*건조기4*/}
-                <TouchableOpacity style={WashingMchartStyle.rightButton}>
-                {/* onPress={() => navigation.navigate("배치도")}> */}
-                    <Text>4번 건조기</Text>
+                <TouchableOpacity
+                    style={WashingMchartStyle.machine}
+                >
+                    <Image style={WashingMchartStyle.machineImage}
+                        source={require("../../img/non_drying_machine.jpg")} />
+                    {/* <Text>건조기</Text> */}
                 </TouchableOpacity>
             </View>
         </View>
-
     );
 }
 

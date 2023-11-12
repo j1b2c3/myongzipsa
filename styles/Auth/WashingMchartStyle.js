@@ -1,37 +1,48 @@
 import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
-    iconContainer:{
-        width:"100%",
-        height: "13.5%",
-        justifyContent: "flex-start",
-        flexDirection: "row",
-        //backgroundColor: 'skyblue',
-    },
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    //alignItems: 'center',
+  },
+  row: {
+    left: 30,
+    flexDirection: 'row',
+    marginBottom: 3,
 
-    leftButton:{
-        top:40,
-        left: 40,
-        height: 80,
-        width: 120,
-        justifyContent: "center",
-        alignItems: "center",
-        borderWidth: 4,
-        borderRadius: 10,
-        borderColor: "gray",
-        marginHorizontal: 10
-    },
-
-    rightButton:{
-        top:40,
-        left: 90,
-        height: 80,
-        width: 120,
-        justifyContent: "center",
-        alignItems: "center",
-        borderWidth: 4,
-        borderRadius: 10,
-        borderColor: "gray",
-        marginHorizontal: 10
-    },
+  },
+  machine: {
+    width: 100,
+    height: 120,
+    //borderWidth: 1,
+    borderColor: 'black',
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: 5,
+  },
+  machineImage: {
+    flex: 1,
+    resizeMode: 'contain',
+  },
+  // machineContainer: {
+  //   position: 'relative',
+  // },
+  overlay: {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: [{ translateX: -18.5}, { translateY: -17}],
+    borderRadius: 50,
+    width: 40,
+    height: 40,
+    backgroundColor: 'red',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  overlayText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: 'black',
+  },
 })
 export default styles;
