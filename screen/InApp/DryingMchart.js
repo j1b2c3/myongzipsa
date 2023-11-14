@@ -111,8 +111,8 @@ const DryingMchartScreen = ({ navigation }) => {
       const now = new Date();
       now.setHours(
         now.getHours() +
-          9 +
-          Math.floor(DryingMachines[machineNumber].remainingTime / 60)
+        9 +
+        Math.floor(DryingMachines[machineNumber].remainingTime / 60)
       ); // 한국 시간으로 변환
       now.setMinutes(
         now.getMinutes() + (DryingMachines[machineNumber].remainingTime % 60)
@@ -547,7 +547,7 @@ const DryingMchartScreen = ({ navigation }) => {
                   {/* <Text>입구</Text> */}
                   <Image
                     style={DryingMchartStyle.icon}
-                    //source={require('../../img/reserve_possible_color2.jpg')}
+                  //source={require('../../img/reserve_possible_color2.jpg')}
                   />
                 </TouchableOpacity>
 
