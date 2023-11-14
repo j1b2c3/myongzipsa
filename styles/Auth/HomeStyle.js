@@ -1,22 +1,5 @@
 import { StyleSheet } from 'react-native';
 
-// const styles = StyleSheet.create({
-//   head_navigation: {
-//     flex: 1,
-//     backgroundColor: '#3EAF92', //  배경
-//   },
-//   title: {
-//     fontSize: 30,
-//     fontWeight: 'bold',
-//     color: 'white', // 흰색 텍스트
-// },
-//   backButton: {
-//     fontSize: 30,
-//     fontWeight: 'bold',
-//     color: 'white',
-//   },
-// });
-
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -30,7 +13,7 @@ const styles = StyleSheet.create({
         height: "10%",
         justifyContent: "center",
         alignItems: "center",
-        //backgroundColor: 'red',
+        
     },
 
     title: {
@@ -51,7 +34,7 @@ const styles = StyleSheet.create({
         height: "10%",
         justifyContent: "center",
         alignItems: "center",
-        //backgroundColor: 'orange',
+        
     },
 
     zipsa: {
@@ -65,13 +48,14 @@ const styles = StyleSheet.create({
         height: "10%",
         justifyContent: "center",
         alignItems: "center",
-        //backgroundColor: 'yellow',
+        
     },
 
     advert: {
         resizeMode: 'stretch',
-        width: 450,
-        height: 85,
+        width: "auto",
+        height: "auto",
+        backgroundColor: 'skyblue',
     },
 
     usingContainer: {
