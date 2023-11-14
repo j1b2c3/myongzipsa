@@ -29,8 +29,8 @@ const MemberShipStyle = StyleSheet.create({
   }
   ,
   input: {
-    width: 300,
-    height: 40,
+    width: "70%",
+    height: "20%",
     borderColor: 'gray',
     borderWidth: 1,
     borderRadius: 10,
@@ -46,16 +46,16 @@ const MemberShipStyle = StyleSheet.create({
   }
   ,
   button: {
-    width: 200,
-    height: 50,
-    backgroundColor: 'skyblue',
+    width: "50%",
+    height: "20%",
+    backgroundColor: '#DDDDDD',
     padding: 10,
     borderRadius: 10,
     alignItems: 'center',
   },
 
   buttonText: {
-    color: 'white',
+    color: 'black',
     fontSize: 18,
   },
 });

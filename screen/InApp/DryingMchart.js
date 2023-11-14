@@ -11,6 +11,8 @@ export default function DryingMchartScreen({ navigation }) {
     return (
 
         <View style={DryingMchartStyle.container}>
+            <View style={DryingMchartStyle.blank}>
+            </View>
             <View style={DryingMchartStyle.row}>
                 <TouchableOpacity
                     style={DryingMchartStyle.machine}
@@ -19,13 +21,13 @@ export default function DryingMchartScreen({ navigation }) {
                         source={require("../../img/non_washing_machine.jpg")} />
                 </TouchableOpacity>
                 <TouchableOpacity
-                    style={DryingMchartStyle.machine}
+                    style={DryingMchartStyle.machine1}
                 >
                     <Image style={DryingMchartStyle.machineImage}
                         source={require("../../img/non_washing_machine.jpg")} />
                 </TouchableOpacity>
                 <TouchableOpacity
-                    style={DryingMchartStyle.machine}
+                    style={DryingMchartStyle.machine2}
                 >
                     <Image style={DryingMchartStyle.machineImage}
                         source={require("../../img/Possible_status.jpg")} />
@@ -40,7 +42,7 @@ export default function DryingMchartScreen({ navigation }) {
                         source={require("../../img/non_washing_machine.jpg")} />
                 </TouchableOpacity>
                 <TouchableOpacity
-                    style={DryingMchartStyle.machine}
+                    style={DryingMchartStyle.machine1}
                 >
                     <Image style={DryingMchartStyle.machineImage}
                         source={require("../../img/non_washing_machine.jpg")} />
@@ -54,7 +56,7 @@ export default function DryingMchartScreen({ navigation }) {
                         source={require("../../img/non_washing_machine.jpg")} />
                 </TouchableOpacity>
                 <TouchableOpacity
-                    style={DryingMchartStyle.machine}
+                    style={DryingMchartStyle.machine1}
                 >
                     <Image style={DryingMchartStyle.machineImage}
                         source={require("../../img/non_washing_machine.jpg")} />
@@ -71,13 +73,13 @@ export default function DryingMchartScreen({ navigation }) {
                     </View>
                 </TouchableOpacity>
                 <TouchableOpacity
-                    style={DryingMchartStyle.machine}
+                    style={DryingMchartStyle.machine1}
                 >
                     <Image style={DryingMchartStyle.machineImage}
                         source={require("../../img/non_washing_machine.jpg")} />
                 </TouchableOpacity>
                 <TouchableOpacity
-                    style={DryingMchartStyle.machine}
+                    style={DryingMchartStyle.machine2}
                 >
                     <Image style={DryingMchartStyle.machineImage}
                         source={require("../../img/drying_machine.jpg")} />
@@ -97,13 +99,13 @@ export default function DryingMchartScreen({ navigation }) {
                     </View>
                 </TouchableOpacity>
                 <TouchableOpacity
-                    style={DryingMchartStyle.machine}
+                    style={DryingMchartStyle.machine1}
                 >
                     <Image style={DryingMchartStyle.machineImage}
                         source={require("../../img/non_washing_machine.jpg")} />
                 </TouchableOpacity>
                 <TouchableOpacity
-                    style={DryingMchartStyle.machine}
+                    style={DryingMchartStyle.machine2}
                 >
                     <Image style={DryingMchartStyle.machineImage}
                         source={require("../../img/drying_machine.jpg")} />
@@ -111,6 +113,8 @@ export default function DryingMchartScreen({ navigation }) {
                         <Text style={DryingMchartStyle.overlayText}>4</Text>
                     </View>
                 </TouchableOpacity>
+            </View>
+            <View style={DryingMchartStyle.blank}>
             </View>
         </View>
     );

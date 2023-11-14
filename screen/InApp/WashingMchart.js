@@ -11,6 +11,8 @@ export default function WashingMchartScreen({ navigation }) {
     return (
 
         <View style={WashingMchartStyle.container}>
+            <View style={WashingMchartStyle.blank}>
+            </View>
             {/* 1행 */}
             <View style={WashingMchartStyle.row}>
                 <TouchableOpacity
@@ -22,8 +24,9 @@ export default function WashingMchartScreen({ navigation }) {
                         <Text style={WashingMchartStyle.overlayText}>1</Text>
                     </View>
                 </TouchableOpacity>
+
                 <TouchableOpacity
-                    style={WashingMchartStyle.machine}
+                    style={WashingMchartStyle.machine1}
                 >
                     <Image style={WashingMchartStyle.machineImage}
                         source={require("../../img/washing_machine.jpg")} />
@@ -31,12 +34,14 @@ export default function WashingMchartScreen({ navigation }) {
                         <Text style={WashingMchartStyle.overlayText}>4</Text>
                     </View>
                 </TouchableOpacity>
+
                 <TouchableOpacity
-                    style={WashingMchartStyle.machine}
+                    style={WashingMchartStyle.machine2}
                 >
                     <Image style={WashingMchartStyle.machineImage}
                         source={require("../../img/Possible_status.jpg")} />
                 </TouchableOpacity>
+                
             </View>
             {/* 2행 */}
             <View style={WashingMchartStyle.row}>
@@ -51,7 +56,7 @@ export default function WashingMchartScreen({ navigation }) {
                     </View>
                 </TouchableOpacity>
                 <TouchableOpacity
-                    style={WashingMchartStyle.machine}
+                    style={WashingMchartStyle.machine1}
                 >
                     <Image style={WashingMchartStyle.machineImage}
                         source={require("../../img/washing_machine.jpg")} />
@@ -72,7 +77,7 @@ export default function WashingMchartScreen({ navigation }) {
                     </View>
                 </TouchableOpacity>
                 <TouchableOpacity
-                    style={WashingMchartStyle.machine}
+                    style={WashingMchartStyle.machine1}
                 >
                     <Image style={WashingMchartStyle.machineImage}
                         source={require("../../img/washing_machine.jpg")} />
@@ -91,7 +96,7 @@ export default function WashingMchartScreen({ navigation }) {
                     {/* <Text>건조기</Text> */}
                 </TouchableOpacity>
                 <TouchableOpacity
-                    style={WashingMchartStyle.machine}
+                    style={WashingMchartStyle.machine1}
                 >
                     <Image style={WashingMchartStyle.machineImage}
                         source={require("../../img/washing_machine.jpg")} />
@@ -101,7 +106,7 @@ export default function WashingMchartScreen({ navigation }) {
                     </View>
                 </TouchableOpacity>
                 <TouchableOpacity
-                    style={WashingMchartStyle.machine}
+                    style={WashingMchartStyle.machine2}
                 >
                     <Image style={WashingMchartStyle.machineImage}
                         source={require("../../img/non_drying_machine.jpg")} />
@@ -118,7 +123,7 @@ export default function WashingMchartScreen({ navigation }) {
                     {/* <Text>건조기</Text> */}
                 </TouchableOpacity>
                 <TouchableOpacity
-                    style={WashingMchartStyle.machine}
+                    style={WashingMchartStyle.machine1}
                 >
                     <Image style={WashingMchartStyle.machineImage}
                         source={require("../../img/washing_machine.jpg")} />
@@ -128,12 +133,14 @@ export default function WashingMchartScreen({ navigation }) {
                 </TouchableOpacity>
 
                 <TouchableOpacity
-                    style={WashingMchartStyle.machine}
+                    style={WashingMchartStyle.machine2}
                 >
                     <Image style={WashingMchartStyle.machineImage}
                         source={require("../../img/non_drying_machine.jpg")} />
                     {/* <Text>건조기</Text> */}
                 </TouchableOpacity>
+            </View>
+            <View style={WashingMchartStyle.blank}>
             </View>
         </View>
     );
