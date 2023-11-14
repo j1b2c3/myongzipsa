@@ -3,7 +3,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    //alignItems: 'center',
   },
   row: {
     width: "100%",
@@ -11,7 +10,6 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     flexDirection: 'row',
     marginBottom: 3,
-
   },
   blank: {
     width: "100%",
@@ -20,41 +18,32 @@ const styles = StyleSheet.create({
   machine: {
     width: "28%",
     height: "85%",
-    //borderWidth: 1,
     borderColor: 'black',
     justifyContent: 'center',
     alignItems: 'center',
     margin: 5,
-    //backgroundColor: 'skyblue',
   },
   machine1: {
     width: "35%",
     height: "85%",
-    //borderWidth: 1,
     borderColor: 'black',
     justifyContent: 'center',
     alignItems: 'center',
     margin: 5,
-    //backgroundColor: 'skyblue',
   },
   machine2: {
     width: "28%",
     height: "85%",
-    //borderWidth: 1,
     borderColor: 'black',
     justifyContent: 'center',
     alignItems: 'center',
     margin: 5,
-    //backgroundColor: 'skyblue',
   },
   machineImage: {
     width: "100%",
     height: "100%",
     resizeMode: 'contain',
   },
-  // machineContainer: {
-  //   position: 'relative',
-  // },
   overlay: {
     position: 'absolute',
     top: '50%',

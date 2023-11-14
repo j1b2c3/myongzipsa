@@ -23,13 +23,10 @@ export default function WashingMchart2Screen({ navigation }) {
                     </View>
                 </TouchableOpacity>
                 <TouchableOpacity
-                    style={WashingMchart2Style.machine}
+                    style={WashingMchart2Style.machine2}
                 >
                     <Image style={WashingMchart2Style.machineImage}
                         source={require("../../img/non_drying_machine.jpg")} />
-                    {/* <View style={WashingMchart2Style.overlay}>
-                        <Text style={WashingMchart2Style.overlayText}>4</Text>
-                    </View> */}
                 </TouchableOpacity>
             </View>
             {/* 2행 */}
@@ -44,13 +41,10 @@ export default function WashingMchart2Screen({ navigation }) {
                     </View>
                 </TouchableOpacity>
                 <TouchableOpacity
-                    style={WashingMchart2Style.machine}
+                    style={WashingMchart2Style.machine2}
                 >
                     <Image style={WashingMchart2Style.machineImage}
                         source={require("../../img/non_drying_machine.jpg")} />
-                    {/* <View style={WashingMchart2Style.overlay}>
-                        <Text style={WashingMchart2Style.overlayText}>5</Text>
-                    </View> */}
                 </TouchableOpacity>
             </View>
             {/* 3행 */}

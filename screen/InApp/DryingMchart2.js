@@ -18,12 +18,9 @@ export default function DryingMchart2Screen({ navigation }) {
                 >
                     <Image style={DryingMchart2Style.machineImage}
                         source={require("../../img/non_washing_machine.jpg")} />
-                    {/* <View style={DryingMchart2Style.overlay}>
-                        <Text style={DryingMchart2Style.overlayText}>1</Text>
-                    </View> */}
                 </TouchableOpacity>
                 <TouchableOpacity
-                    style={DryingMchart2Style.machine}
+                    style={DryingMchart2Style.machine2}
                 >
                     <Image style={DryingMchart2Style.machineImage}
                         source={require("../../img/drying_machine.jpg")} />
@@ -39,12 +36,9 @@ export default function DryingMchart2Screen({ navigation }) {
                 >
                     <Image style={DryingMchart2Style.machineImage}
                         source={require("../../img/non_washing_machine.jpg")} />
-                    {/* <View style={DryingMchart2Style.overlay}>
-                        <Text style={DryingMchart2Style.overlayText}>2</Text>
-                    </View> */}
                 </TouchableOpacity>
                 <TouchableOpacity
-                    style={DryingMchart2Style.machine}
+                    style={DryingMchart2Style.machine2}
                 >
                     <Image style={DryingMchart2Style.machineImage}
                         source={require("../../img/drying_machine.jpg")} />
@@ -60,9 +54,6 @@ export default function DryingMchart2Screen({ navigation }) {
                 >
                     <Image style={DryingMchart2Style.machineImage}
                         source={require("../../img/non_washing_machine.jpg")} />
-                    {/* <View style={DryingMchart2Style.overlay}>
-                        <Text style={DryingMchart2Style.overlayText}>3</Text>
-                    </View> */}
                 </TouchableOpacity>
             </View>
         </View>

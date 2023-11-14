@@ -110,7 +110,6 @@ export default function WashingMchartScreen({ navigation }) {
                 >
                     <Image style={WashingMchartStyle.machineImage}
                         source={require("../../img/non_drying_machine.jpg")} />
-                    {/* <Text>건조기</Text> */}
                 </TouchableOpacity>
             </View>
             {/* 5행 */}
@@ -120,7 +119,6 @@ export default function WashingMchartScreen({ navigation }) {
                 >
                     <Image style={WashingMchartStyle.machineImage}
                         source={require("../../img/non_drying_machine.jpg")} />
-                    {/* <Text>건조기</Text> */}
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={WashingMchartStyle.machine1}
@@ -137,7 +135,6 @@ export default function WashingMchartScreen({ navigation }) {
                 >
                     <Image style={WashingMchartStyle.machineImage}
                         source={require("../../img/non_drying_machine.jpg")} />
-                    {/* <Text>건조기</Text> */}
                 </TouchableOpacity>
             </View>
             <View style={WashingMchartStyle.blank}>
