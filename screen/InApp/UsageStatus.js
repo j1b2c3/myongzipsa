@@ -16,7 +16,11 @@ const UsageStatus = () => {
 
       if (userId) {
         // Firebase에서 해당 userId의 세탁기 정보 가져오기
-        const snapshot = await database.ref('washingMachines').orderByChild('userId').equalTo(userId).once('value');
+        const snapshot = await database
+          .ref('washingMachines')
+          .orderByChild('userId')
+          .equalTo(userId)
+          .once('value');
 
         if (snapshot.exists()) {
           // Iterate through the snapshot to find the correct machine
@@ -35,7 +39,9 @@ const UsageStatus = () => {
               const remainingTimeFromDB = machineData.remainingTime;
 
               // completionTime 계산
-              const completionTimeDate = new Date(currentTime.getTime() + remainingTimeFromDB * 60 * 1000);
+              const completionTimeDate = new Date(
+                currentTime.getTime() + remainingTimeFromDB * 60 * 1000
+              );
 
               setCompletionTime(
                 `${completionTimeDate.getHours()}시 ${completionTimeDate.getMinutes()}분`
@@ -52,6 +58,16 @@ const UsageStatus = () => {
           setRemainingTime(null);
         }
       }
+
+      // 10초마다 세탁기 상태를 다시 가져오도록 타임아웃 설정
+      const refreshInterval = 10 * 1000; // 밀리초 단위의 10초
+
+      const refreshTimeout = setTimeout(() => {
+        fetchLaundryStatus();
+      }, refreshInterval);
+
+      // 컴포넌트가 언마운트될 때 메모리 누수를 방지하기 위해 타임아웃을 클리어합니다
+      return () => clearTimeout(refreshTimeout);
     };
 
     fetchLaundryStatus();
