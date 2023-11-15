@@ -73,11 +73,19 @@ export default function HomeScreen({ navigation }) {
         </TouchableOpacity>
       </View>
 
+          {/* //main 부분 */}
       {/* 세탁기 건조기 부분(중간고사) 헬스장(기말), 주차장(미정) */}
       <View style={HomeStyle.iconContainer}>
         {/*세탁기*/}
         <TouchableOpacity style={HomeStyle.leftButton}
           onPress={() => navigation.navigate("배치도", {
+// ======= front 부분
+//         {/* 세탁기 건조기 부분(중간고사) 헬스장(기말), 주차장(미정) */}
+//         <View style={HomeStyle.iconContainer}>
+//           {/*세탁기*/}
+//           <TouchableOpacity style={HomeStyle.leftButton}
+//           onPress={() => navigation.navigate("세탁기", {
+// >>>>>>> front
             pageName: "세탁기"
           })}>
           <Image style={HomeStyle.icon}
@@ -86,9 +94,15 @@ export default function HomeScreen({ navigation }) {
           {/* onPress = */}
         </TouchableOpacity>
 
+{/* <<<<<<< main */}
         {/*건조기*/}
         <TouchableOpacity style={HomeStyle.rightButton}
           onPress={() => navigation.navigate("배치도", {
+// ======= front 부분
+//           {/*건조기*/}
+//           <TouchableOpacity style={HomeStyle.rightButton}
+//           onPress={() => navigation.navigate("건조기", {
+// >>>>>>> front
             pageName: "건조기"
           })}>
           <Image style={HomeStyle.icon}

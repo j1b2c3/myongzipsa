@@ -40,16 +40,16 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     input: {
-        height: 40,
-        width: 250,
+        height: "15%",
+        width: "60%",
         borderWidth: 1,
         borderRadius: 10,
         borderColor: "gray",
         margin: 10
     },
     loginButton: {
-        height: 40,
-        width: 150,
+        height: "15%",
+        width: "35%",
         justifyContent: "center",
         alignItems: "center",
         backgroundColor: "#dcdcdc",
@@ -63,13 +63,13 @@ const styles = StyleSheet.create({
 
     subContainer: {
         width:"100%",
-        height: "15%",
+        height: "10%",
         justifyContent: "center",
         flexDirection: "row"
     },
     registerButton: {
-        height: 40,
-        width: 100,
+        height: "50%",
+        width: "35%",
         justifyContent: "center",
         alignItems: "center",
         borderWidth: 1,
@@ -82,8 +82,8 @@ const styles = StyleSheet.create({
         color: "gray"
     },
     findContainer: {
-        height: 40,
-        width: 150,
+        height: "50%",
+        width: "40%",
         justifyContent: "center",
         alignItems: "center",
         borderWidth: 1,

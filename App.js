@@ -23,6 +23,7 @@ import UsageStatusScreen from "./screen/InApp/UsageStatus";
 import ReservationStatusScreen from "./screen/InApp/ReservationStatus";
 import HomeScreen from "./screen/InApp/Home";
 import ChartScreen from "./screen/InApp/Chart";
+import Chart2Screen from "./screen/InApp/Chart2";
 import WashingMchartScreen from "./screen/InApp/WashingMchart";
 import DryingMchartScreen from "./screen/InApp/DryingMchart";
 
@@ -65,8 +66,13 @@ export default function App() {
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name="배치도"
+          name="세탁기"
           component={ChartScreen}
+        //options={{headerShown : false}}
+        />
+        <Stack.Screen
+          name="건조기"
+          component={Chart2Screen}
         //options={{headerShown : false}}
         />
 

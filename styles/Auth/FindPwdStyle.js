@@ -9,10 +9,14 @@ const styles = StyleSheet.create({
         paddingHorizontal: 16,
     },
     inputContainer: {
-        width: '100%',
+        width: 320,
+        height: 130,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     buttonContainer: {
-        width: '100%',
+        width: 320,
+        height: 50,
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#DDDDDD',
@@ -20,14 +24,13 @@ const styles = StyleSheet.create({
         borderRadius: 10,
     },
     input: {
-        height: 40,
+        height: "35%",
         width: '100%',
         borderColor: 'gray',
         borderWidth: 1,
         marginBottom: 20,
         paddingLeft: 10,
         borderRadius: 10,
-
     },
 });
 
