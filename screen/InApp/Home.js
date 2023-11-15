@@ -78,7 +78,7 @@ export default function HomeScreen({ navigation }) {
       <View style={HomeStyle.iconContainer}>
         {/*세탁기*/}
         <TouchableOpacity style={HomeStyle.leftButton}
-          onPress={() => navigation.navigate("배치도", {
+          onPress={() => navigation.navigate("세탁기", {
 // ======= front 부분
 //         {/* 세탁기 건조기 부분(중간고사) 헬스장(기말), 주차장(미정) */}
 //         <View style={HomeStyle.iconContainer}>
@@ -97,7 +97,7 @@ export default function HomeScreen({ navigation }) {
 {/* <<<<<<< main */}
         {/*건조기*/}
         <TouchableOpacity style={HomeStyle.rightButton}
-          onPress={() => navigation.navigate("배치도", {
+          onPress={() => navigation.navigate("건조기", {
 // ======= front 부분
 //           {/*건조기*/}
 //           <TouchableOpacity style={HomeStyle.rightButton}
