@@ -110,7 +110,6 @@ const WashingMchartScreen = ({ navigation }) => {
             const now = new Date();
             now.setHours(
                 now.getHours() +
-                9 +
                 Math.floor(washingMachines[machineNumber].remainingTime / 60)
             ); // 한국 시간으로 변환
             now.setMinutes(
@@ -120,8 +119,8 @@ const WashingMchartScreen = ({ navigation }) => {
             Alert.alert(
                 `${machineNumber}번 세탁기`,
                 `예약하시겠습니까? 
-      세탁완료시간: ${now.getHours()}시 ${now.getMinutes()}분.
-      남은 시간: ${washingMachines[machineNumber].remainingTime}분`,
+                세탁완료시간: ${now.getHours()}시 ${now.getMinutes()}분.
+                남은 시간: ${washingMachines[machineNumber].remainingTime}분`,
                 [
                     {
                         text: '예',
@@ -162,9 +161,7 @@ const WashingMchartScreen = ({ navigation }) => {
                     Alert.alert('사용 시작에 실패하였습니다.');
                 } else if (committed) {
                     const now = new Date();
-                    now.setHours(
-                        now.getHours() + 9 + Math.floor(initialRemainingTime / 60)
-                    ); // 한국 시간으로 변환
+                    now.setHours(now.getHours() + Math.floor(initialRemainingTime / 60));
                     now.setMinutes(now.getMinutes() + (initialRemainingTime % 60));
                     const message = `${machineNumber}번 세탁기 사용 시작. ${now.getHours()}시 ${now.getMinutes()}분에 찾아가세요.`;
                     Alert.alert(message);
@@ -216,7 +213,8 @@ const WashingMchartScreen = ({ navigation }) => {
                         machine.reserve = false;
                         machine.reservationTime = new Date().getTime();
                         machine.reserveId = userEmail;
-                        machine.remainingTime = washingMachines[machineNumber].remainingTime;
+                        machine.remainingTime =
+                            washingMachines[machineNumber].remainingTime;
                     }
                 }
                 return machine;
@@ -229,9 +227,7 @@ const WashingMchartScreen = ({ navigation }) => {
                     const reserveId = machine.reserveId;
 
                     const now = new Date();
-                    now.setHours(
-                        now.getHours() + 9 + Math.floor(machine.remainingTime / 60)
-                    ); // 한국 시간으로 변환
+                    now.setHours(now.getHours() + Math.floor(machine.remainingTime / 60));
                     now.setMinutes(now.getMinutes() + (machine.remainingTime % 60));
 
                     Alert.alert(
@@ -248,9 +244,7 @@ const WashingMchartScreen = ({ navigation }) => {
                                         machine.remainingTime == 5 &&
                                         machine.reserveId === reserveId
                                     ) {
-                                        Alert.alert(
-                                            `${machineNumber}번 세탁기 5분 남았습니다.`
-                                        );
+                                        Alert.alert(`${machineNumber}번 세탁기 5분 남았습니다.`);
                                     }
                                 } else if (machine && machine.remainingTime === 0) {
                                     machine.available = true;
@@ -402,7 +396,15 @@ const WashingMchartScreen = ({ navigation }) => {
     };
 
     const handleBorderColor = (machine, userEmail) => {
-        const { reserveId, userId, available, reserve } = washingMachines[machine];
+        const machineInfo = washingMachines[machine];
+
+        if (!machineInfo) {
+            // Handle the case where machineInfo is undefined
+            return 'gray'; // or any default color
+        }
+
+        const { reserveId, userId, available, reserve } = machineInfo;
+
         if (reserveId === userEmail && available) {
             return 'orange';
         } else if (userId === userEmail) {
@@ -419,6 +421,7 @@ const WashingMchartScreen = ({ navigation }) => {
             return 'red';
         }
     };
+
     return (
         <View>
             {isLoading ? (

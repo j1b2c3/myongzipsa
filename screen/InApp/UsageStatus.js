@@ -1,35 +1,79 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text } from 'react-native';
-//스타일 import
 import UsageStatusStyle from '../../styles/Auth/UsageStatusStyle';
+import { auth, database } from '../../javascripts/FirebaseConfigFile';
 
 const UsageStatus = () => {
-  // 사용중인 세탁기 번호와 세탁완료시간, 세탁 남은 시간을 설정
   const [machineNumber, setMachineNumber] = useState(null);
   const [completionTime, setCompletionTime] = useState(null);
   const [remainingTime, setRemainingTime] = useState(null);
 
   useEffect(() => {
-    // 가상의 데이터를 가져오는 함수
-    const fetchLaundryStatus = () => {
-      // 만약 사용중인 세탁기가 있다면,
-      // machineNumber, completionTime, remainingTime 상태를 업데이트
-      const data = {
-        machineNumber: 1,
-        completionTime: '14:30',
-        remainingTime: '01:15',
-      };
+    const fetchLaundryStatus = async () => {
+      // 현재 로그인한 유저의 userId 가져오기
+      const user = auth.currentUser;
+      const userId = user ? user.email : null;
 
-      setMachineNumber(data.machineNumber);
-      setCompletionTime(data.completionTime);
-      setRemainingTime(data.remainingTime);
+      if (userId) {
+        // Firebase에서 해당 userId의 세탁기 정보 가져오기
+        const snapshot = await database
+          .ref('washingMachines')
+          .orderByChild('userId')
+          .equalTo(userId)
+          .once('value');
+
+        if (snapshot.exists()) {
+          // Iterate through the snapshot to find the correct machine
+          snapshot.forEach((machineSnapshot) => {
+            const machineData = machineSnapshot.val();
+            const machineKey = machineSnapshot.key;
+
+            // Check if the machine is in use by the current user
+            if (machineData.userId === userId) {
+              setMachineNumber(machineKey);
+
+              // 현재 시간 가져오기
+              const currentTime = new Date();
+
+              // 세탁기 정보에서 remainingTime 가져오기
+              const remainingTimeFromDB = machineData.remainingTime;
+
+              // completionTime 계산
+              const completionTimeDate = new Date(
+                currentTime.getTime() + remainingTimeFromDB * 60 * 1000
+              );
+
+              setCompletionTime(
+                `${completionTimeDate.getHours()}시 ${completionTimeDate.getMinutes()}분`
+              );
+              setRemainingTime(`${remainingTimeFromDB}분`);
+
+              return;
+            }
+          });
+        } else {
+          // 사용중인 세탁기가 없는 경우 초기값 설정
+          setMachineNumber(null);
+          setCompletionTime(null);
+          setRemainingTime(null);
+        }
+      }
+
+      // 10초마다 세탁기 상태를 다시 가져오도록 타임아웃 설정
+      const refreshInterval = 10 * 1000; // 밀리초 단위의 10초
+
+      const refreshTimeout = setTimeout(() => {
+        fetchLaundryStatus();
+      }, refreshInterval);
+
+      // 컴포넌트가 언마운트될 때 메모리 누수를 방지하기 위해 타임아웃을 클리어합니다
+      return () => clearTimeout(refreshTimeout);
     };
 
-    fetchLaundryStatus(); // 가상의 데이터 가져오기
+    fetchLaundryStatus();
   }, []);
 
   return (
-
     <View style={UsageStatusStyle.container}>
       <View style={UsageStatusStyle.subContainer}>
         <View style={UsageStatusStyle.section}>
@@ -42,12 +86,12 @@ const UsageStatus = () => {
 
         <View style={UsageStatusStyle.section}>
           <Text style={UsageStatusStyle.sectionTitle}>세탁완료시간 : </Text>
-          <Text style={UsageStatusStyle.infoText}>{completionTime + '분'}</Text>
+          <Text style={UsageStatusStyle.infoText}>{completionTime}</Text>
         </View>
 
         <View style={UsageStatusStyle.section}>
           <Text style={UsageStatusStyle.sectionTitle}>세탁남은시간 : </Text>
-          <Text style={UsageStatusStyle.infoText}>{remainingTime + '분'}</Text>
+          <Text style={UsageStatusStyle.infoText}>{remainingTime}</Text>
         </View>
       </View>
     </View>
