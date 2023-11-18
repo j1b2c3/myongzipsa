@@ -395,33 +395,6 @@ const WashingMchartScreen = ({ navigation }) => {
         }
     };
 
-    const handleBorderColor = (machine, userEmail) => {
-        const machineInfo = washingMachines[machine];
-
-        if (!machineInfo) {
-            // Handle the case where machineInfo is undefined
-            return 'gray'; // or any default color
-        }
-
-        const { reserveId, userId, available, reserve } = machineInfo;
-
-        if (reserveId === userEmail && available) {
-            return 'orange';
-        } else if (userId === userEmail) {
-            return 'lightblue';
-        } else if (reserveId !== userEmail && reserveId !== '' && available) {
-            return 'red';
-        } else if (reserveId === userEmail) {
-            return 'green';
-        } else if (available) {
-            return 'blue';
-        } else if (reserve) {
-            return 'yellow';
-        } else {
-            return 'red';
-        }
-    };
-
     return (
         <View>
             {isLoading ? (
@@ -459,7 +432,6 @@ const WashingMchartScreen = ({ navigation }) => {
                                 <TouchableOpacity
                                     style={WashingMchartStyle.machine}
                                     onPress={() => handleMachineClick('1')}
-
                                 >
                                     <Image style={WashingMchartStyle.machineImage}
                                         source={require("../../img/washing_machine.jpg")} />
@@ -493,7 +465,6 @@ const WashingMchartScreen = ({ navigation }) => {
                                 <TouchableOpacity
                                     style={WashingMchartStyle.machine}
                                     onPress={() => handleMachineClick('2')}
-
                                 >
                                     <Image style={WashingMchartStyle.machineImage}
                                         source={require("../../img/washing_machine.jpg")} />
@@ -504,7 +475,6 @@ const WashingMchartScreen = ({ navigation }) => {
                                 <TouchableOpacity
                                     style={WashingMchartStyle.machine1}
                                     onPress={() => handleMachineClick('5')}
-
                                 >
                                     <Image style={WashingMchartStyle.machineImage}
                                         source={require("../../img/washing_machine.jpg")} />
@@ -518,7 +488,6 @@ const WashingMchartScreen = ({ navigation }) => {
                                 <TouchableOpacity
                                     style={WashingMchartStyle.machine}
                                     onPress={() => handleMachineClick('3')}
-
                                 >
                                     <Image style={WashingMchartStyle.machineImage}
                                         source={require("../../img/washing_machine.jpg")} />
@@ -529,7 +498,6 @@ const WashingMchartScreen = ({ navigation }) => {
                                 <TouchableOpacity
                                     style={WashingMchartStyle.machine1}
                                     onPress={() => handleMachineClick('6')}
-
                                 >
                                     <Image style={WashingMchartStyle.machineImage}
                                         source={require("../../img/washing_machine.jpg")} />
@@ -550,7 +518,6 @@ const WashingMchartScreen = ({ navigation }) => {
                                 <TouchableOpacity
                                     style={WashingMchartStyle.machine1}
                                     onPress={() => handleMachineClick('7')}
-
                                 >
                                     <Image style={WashingMchartStyle.machineImage}
                                         source={require("../../img/washing_machine.jpg")} />
