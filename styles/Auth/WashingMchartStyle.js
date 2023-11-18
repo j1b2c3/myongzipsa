@@ -12,7 +12,6 @@ const styles = StyleSheet.create({
     blank: {
         width: "100%",
         height: "2.5%",
-        //backgroundColor: 'skyblue',
     },
     machine: {
         width: "28%",

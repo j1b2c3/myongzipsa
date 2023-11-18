@@ -9,7 +9,6 @@ export default function DryingMchart2Screen({ navigation }) {
     const [machineState, setMachineState] = useState("default");
 
     return (
-
         <View style={DryingMchart2Style.container}>
             <View style={DryingMchart2Style.row}>
                 {/* 1행 */}

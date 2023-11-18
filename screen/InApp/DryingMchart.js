@@ -400,11 +400,11 @@ const DryingMchartScreen = ({ navigation }) => {
   };
 
   return (
-    <View>
+    <View style={DryingMchartStyle.container}>
       {isLoading ? (
         <ActivityIndicator size="large" color="#0000ff" />
       ) : (
-        <View>
+        <View style={DryingMchartStyle.container}>
           {machineNumber !== null ? (
             // 남은 시간 입력 폼 표시
             <View style={InputTimeStyle.InputContainer}>
@@ -428,7 +428,6 @@ const DryingMchartScreen = ({ navigation }) => {
               </TouchableOpacity>
             </View>
           ) : (
-            <View>
               <View style={DryingMchartStyle.container}>
                 <View style={DryingMchartStyle.blank}>
                 </View>
@@ -531,7 +530,6 @@ const DryingMchartScreen = ({ navigation }) => {
                   <TouchableOpacity
                     style={DryingMchartStyle.machine2}
                     onPress={() => handleMachineClick('4')}
-
                   >
                     <Image style={DryingMchartStyle.machineImage}
                       source={require("../../img/drying_machine.jpg")} />
@@ -542,7 +540,6 @@ const DryingMchartScreen = ({ navigation }) => {
                 </View>
                 <View style={DryingMchartStyle.blank}></View>
               </View>
-            </View>
           )}
         </View>
       )}
