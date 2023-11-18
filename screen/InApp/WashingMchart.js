@@ -451,142 +451,149 @@ const WashingMchartScreen = ({ navigation }) => {
                             </TouchableOpacity>
                         </View>
                     ) : (
-                        <View>
-                            <View style={WashingMchartStyle.iconContainer}>
-                                {/*세탁기1*/}
+                        <View style={WashingMchartStyle.container}>
+                            <View style={WashingMchartStyle.blank}>
+                            </View>
+                            {/* 1행 */}
+                            <View style={WashingMchartStyle.row}>
                                 <TouchableOpacity
-                                    style={[
-                                        WashingMchartStyle.leftButton,
-                                        { borderColor: handleBorderColor('1', userEmail) },
-                                    ]}
+                                    style={WashingMchartStyle.machine}
                                     onPress={() => handleMachineClick('1')}
+
                                 >
-                                    <Text>1번 세탁기</Text>
+                                    <Image style={WashingMchartStyle.machineImage}
+                                        source={require("../../img/washing_machine.jpg")} />
+                                    <View style={WashingMchartStyle.overlay}>
+                                        <Text style={WashingMchartStyle.overlayText}>1</Text>
+                                    </View>
                                 </TouchableOpacity>
 
-                                {/*세탁기4*/}
                                 <TouchableOpacity
-                                    style={[
-                                        WashingMchartStyle.rightButton,
-                                        { borderColor: handleBorderColor('4', userEmail) },
-                                    ]}
+                                    style={WashingMchartStyle.machine1}
                                     onPress={() => handleMachineClick('4')}
                                 >
-                                    <Text>4번 세탁기</Text>
+                                    <Image style={WashingMchartStyle.machineImage}
+                                        source={require("../../img/washing_machine.jpg")} />
+                                    <View style={WashingMchartStyle.overlay}>
+                                        <Text style={WashingMchartStyle.overlayText}>4</Text>
+                                    </View>
                                 </TouchableOpacity>
-                            </View>
 
-                            <View style={WashingMchartStyle.iconContainer}>
-                                {/*세탁기2*/}
                                 <TouchableOpacity
-                                    style={[
-                                        WashingMchartStyle.leftButton,
-                                        { borderColor: handleBorderColor('2', userEmail) },
-                                    ]}
+                                    style={WashingMchartStyle.machine2}
+                                >
+                                    <Image style={WashingMchartStyle.machineImage}
+                                        source={require("../../img/Possible_status.jpg")} />
+                                </TouchableOpacity>
+
+                            </View>
+                            {/* 2행 */}
+                            <View style={WashingMchartStyle.row}>
+
+                                <TouchableOpacity
+                                    style={WashingMchartStyle.machine}
                                     onPress={() => handleMachineClick('2')}
-                                >
-                                    <Text>2번 세탁기</Text>
-                                </TouchableOpacity>
 
-                                {/*세탁기5*/}
+                                >
+                                    <Image style={WashingMchartStyle.machineImage}
+                                        source={require("../../img/washing_machine.jpg")} />
+                                    <View style={WashingMchartStyle.overlay}>
+                                        <Text style={WashingMchartStyle.overlayText}>2</Text>
+                                    </View>
+                                </TouchableOpacity>
                                 <TouchableOpacity
-                                    style={[
-                                        WashingMchartStyle.rightButton,
-                                        { borderColor: handleBorderColor('5', userEmail) },
-                                    ]}
+                                    style={WashingMchartStyle.machine1}
                                     onPress={() => handleMachineClick('5')}
+
                                 >
-                                    <Text>5번 세탁기</Text>
+                                    <Image style={WashingMchartStyle.machineImage}
+                                        source={require("../../img/washing_machine.jpg")} />
+                                    <View style={WashingMchartStyle.overlay}>
+                                        <Text style={WashingMchartStyle.overlayText}>5</Text>
+                                    </View>
                                 </TouchableOpacity>
                             </View>
-
-                            <View style={WashingMchartStyle.iconContainer}>
-                                {/*세탁기3*/}
+                            {/* 3행 */}
+                            <View style={WashingMchartStyle.row}>
                                 <TouchableOpacity
-                                    style={[
-                                        WashingMchartStyle.leftButton,
-                                        { borderColor: handleBorderColor('3', userEmail) },
-                                    ]}
+                                    style={WashingMchartStyle.machine}
                                     onPress={() => handleMachineClick('3')}
-                                >
-                                    <Text>3번 세탁기</Text>
-                                </TouchableOpacity>
 
-                                {/*세탁기6*/}
+                                >
+                                    <Image style={WashingMchartStyle.machineImage}
+                                        source={require("../../img/washing_machine.jpg")} />
+                                    <View style={WashingMchartStyle.overlay}>
+                                        <Text style={WashingMchartStyle.overlayText}>3</Text>
+                                    </View>
+                                </TouchableOpacity>
                                 <TouchableOpacity
-                                    style={[
-                                        WashingMchartStyle.rightButton,
-                                        { borderColor: handleBorderColor('6', userEmail) },
-                                    ]}
+                                    style={WashingMchartStyle.machine1}
                                     onPress={() => handleMachineClick('6')}
+
                                 >
-                                    <Text>6번 세탁기</Text>
+                                    <Image style={WashingMchartStyle.machineImage}
+                                        source={require("../../img/washing_machine.jpg")} />
+                                    <View style={WashingMchartStyle.overlay}>
+                                        <Text style={WashingMchartStyle.overlayText}>6</Text>
+                                    </View>
                                 </TouchableOpacity>
                             </View>
-
-                            <View style={WashingMchartStyle.iconContainer}>
-                                {/*건조기1*/}
-                                <TouchableOpacity style={WashingMchartStyle.leftButton}>
-                                    <Text>1번 건조기</Text>
-                                </TouchableOpacity>
-
-                                {/*세탁기7*/}
+                            {/* 4행 */}
+                            <View style={WashingMchartStyle.row}>
                                 <TouchableOpacity
-                                    style={[
-                                        WashingMchartStyle.rightButton,
-                                        { borderColor: handleBorderColor('7', userEmail) },
-                                    ]}
+                                    style={WashingMchartStyle.machine}
+                                >
+                                    <Image style={WashingMchartStyle.machineImage}
+                                        source={require("../../img/non_drying_machine.jpg")} />
+                                    {/* <Text>건조기</Text> */}
+                                </TouchableOpacity>
+                                <TouchableOpacity
+                                    style={WashingMchartStyle.machine1}
                                     onPress={() => handleMachineClick('7')}
+
                                 >
-                                    <Text>7번 세탁기</Text>
+                                    <Image style={WashingMchartStyle.machineImage}
+                                        source={require("../../img/washing_machine.jpg")} />
+
+                                    <View style={WashingMchartStyle.overlay}>
+                                        <Text style={WashingMchartStyle.overlayText}>7</Text>
+                                    </View>
+                                </TouchableOpacity>
+                                <TouchableOpacity
+                                    style={WashingMchartStyle.machine2}
+                                >
+                                    <Image style={WashingMchartStyle.machineImage}
+                                        source={require("../../img/non_drying_machine.jpg")} />
                                 </TouchableOpacity>
                             </View>
-
-                            <View style={WashingMchartStyle.iconContainer}>
-                                {/*세탁기8*/}
+                            {/* 5행 */}
+                            <View style={WashingMchartStyle.row}>
                                 <TouchableOpacity
-                                    style={[
-                                        WashingMchartStyle.leftButton,
-                                        { borderColor: handleBorderColor('8', userEmail) },
-                                    ]}
+                                    style={WashingMchartStyle.machine}
+                                >
+                                    <Image style={WashingMchartStyle.machineImage}
+                                        source={require("../../img/non_drying_machine.jpg")} />
+                                </TouchableOpacity>
+                                <TouchableOpacity
+                                    style={WashingMchartStyle.machine1}
                                     onPress={() => handleMachineClick('8')}
-                                >
-                                    <Text>8번 세탁기</Text>
-                                </TouchableOpacity>
-                                <TouchableOpacity style={WashingMchartStyle.rightButton}>
-                                    <Text>2번 건조기</Text>
-                                </TouchableOpacity>
-                            </View>
 
-                            <View style={WashingMchartStyle.iconContainer}>
-                                {/*입구*/}
+                                >
+                                    <Image style={WashingMchartStyle.machineImage}
+                                        source={require("../../img/washing_machine.jpg")} />
+                                    <View style={WashingMchartStyle.overlay}>
+                                        <Text style={WashingMchartStyle.overlayText}>8</Text>
+                                    </View>
+                                </TouchableOpacity>
+
                                 <TouchableOpacity
-                                    style={WashingMchartStyle.leftButton}
-                                    onPress={() => autoReserveMachine()}
+                                    style={WashingMchartStyle.machine2}
                                 >
-                                    <Text>자동 추천</Text>
-                                </TouchableOpacity>
-
-                                {/*건조기3*/}
-                                <TouchableOpacity style={WashingMchartStyle.rightButton}>
-                                    <Text>3번 건조기</Text>
+                                    <Image style={WashingMchartStyle.machineImage}
+                                        source={require("../../img/non_drying_machine.jpg")} />
                                 </TouchableOpacity>
                             </View>
-
-                            <View style={WashingMchartStyle.iconContainer}>
-                                {/*입구*/}
-                                <TouchableOpacity style={WashingMchartStyle.leftButton1}>
-                                    {/* <Text>입구</Text> */}
-                                    <Image
-                                        style={WashingMchartStyle.icon}
-                                        source={require('../../img/reserve_possible_color2.jpg')}
-                                    />
-                                </TouchableOpacity>
-
-                                {/*건조기4*/}
-                                <TouchableOpacity style={WashingMchartStyle.rightButton}>
-                                    <Text>4번 건조기</Text>
-                                </TouchableOpacity>
+                            <View style={WashingMchartStyle.blank}>
                             </View>
                         </View>
                     )}
