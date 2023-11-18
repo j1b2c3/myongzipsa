@@ -1,62 +1,10 @@
 import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
-    // // <<<<<<< main
-    // iconContainer: {
-    //     width: "100%",
-    //     height: "13.5%",
-    //     justifyContent: "flex-start",
-    //     flexDirection: "row",
-    //     //backgroundColor: 'skyblue',
-    // },
-
-    // leftButton: {
-    //     top: 40,
-    //     left: 40,
-    //     height: 80,
-    //     width: 120,
-    //     justifyContent: "center",
-    //     alignItems: "center",
-    //     borderWidth: 4,
-    //     borderRadius: 10,
-    //     borderColor: "gray",
-    //     marginHorizontal: 10
-    // },
-
-    // leftButton1: {
-    //     top: 90,
-    //     left: 40,
-    //     height: 80,
-    //     width: 120,
-    //     justifyContent: "center",
-    //     alignItems: "center",
-    //     borderWidth: 4,
-    //     borderRadius: 10,
-    //     borderColor: "gray",
-    //     marginHorizontal: 10
-    // },
-
-    // rightButton: {
-    //     top: 40,
-    //     left: 90,
-    //     height: 80,
-    //     width: 120,
-    //     justifyContent: "center",
-    //     alignItems: "center",
-    //     borderWidth: 4,
-    //     borderRadius: 10,
-    //     borderColor: "gray",
-    //     marginHorizontal: 10
-    // },
-
-    // icon: {
-    //     width: 135,
-    //     height: 150,
-    // },
-    // ======= front부분
     container: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
+        backgroundColor: 'skybe',
     },
     row: {
         width: "100%",
@@ -64,12 +12,13 @@ const styles = StyleSheet.create({
         justifyContent: "flex-start",
         flexDirection: 'row',
         marginBottom: 3,
+        //borderBlockColor: 'black',
     },
     blank: {
         width: "100%",
         height: "2.5%",
+        backgroundColor: 'skyblue',
     },
-
     machine: {
         width: "28%",
         height: "85%",
@@ -116,6 +65,5 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: 'black',
     },
-    // >>>>>>> front
 })
 export default styles;
