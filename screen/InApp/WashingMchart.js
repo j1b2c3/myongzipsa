@@ -399,11 +399,11 @@ const WashingMchartScreen = ({ navigation }) => {
     };
 
     return (
-        <View>
-            {/* {isLoading ? (
+        <View style={WashingMchartStyle.container}>
+            {isLoading ? (
                 <ActivityIndicator size="large" color="#0000ff" />
             ) : (
-                <View>
+                <View style={WashingMchartStyle.container}>
                     {machineNumber !== null ? (
                         // 남은 시간 입력 폼 표시
                         <View style={InputTimeStyle.InputContainer}>
@@ -426,7 +426,7 @@ const WashingMchartScreen = ({ navigation }) => {
                                 <Text>사용 시작</Text>
                             </TouchableOpacity>
                         </View>
-                    ) : ( */}
+                    ) : (
                         <View style={WashingMchartStyle.container}>
                             <View style={WashingMchartStyle.blank}>
                             </View>
@@ -434,7 +434,7 @@ const WashingMchartScreen = ({ navigation }) => {
                             <View style={WashingMchartStyle.row}>
                                 <TouchableOpacity
                                     style={WashingMchartStyle.machine}
-                                    // onPress={() => handleMachineClick('1')}
+                                    onPress={() => handleMachineClick('1')}
                                 >
                                     <Image style={WashingMchartStyle.machineImage}
                                         source={require("../../img/washing_machine.jpg")} />
@@ -445,7 +445,7 @@ const WashingMchartScreen = ({ navigation }) => {
 
                                 <TouchableOpacity
                                     style={WashingMchartStyle.machine1}
-                                    // onPress={() => handleMachineClick('4')}
+                                    onPress={() => handleMachineClick('4')}
                                 >
                                     <Image style={WashingMchartStyle.machineImage}
                                         source={require("../../img/washing_machine.jpg")} />
@@ -463,7 +463,7 @@ const WashingMchartScreen = ({ navigation }) => {
 
                             </View>
                             {/* 2행 */}
-                            {/* <View style={WashingMchartStyle.row}>
+                            <View style={WashingMchartStyle.row}>
 
                                 <TouchableOpacity
                                     style={WashingMchartStyle.machine}
@@ -485,9 +485,9 @@ const WashingMchartScreen = ({ navigation }) => {
                                         <Text style={WashingMchartStyle.overlayText}>5</Text>
                                     </View>
                                 </TouchableOpacity>
-                            </View> */}
+                            </View>
                             {/* 3행 */}
-                            {/* <View style={WashingMchartStyle.row}>
+                            <View style={WashingMchartStyle.row}>
                                 <TouchableOpacity
                                     style={WashingMchartStyle.machine}
                                     onPress={() => handleMachineClick('3')}
@@ -508,15 +508,14 @@ const WashingMchartScreen = ({ navigation }) => {
                                         <Text style={WashingMchartStyle.overlayText}>6</Text>
                                     </View>
                                 </TouchableOpacity>
-                            </View> */}
+                            </View>
                             {/* 4행 */}
-                            {/* <View style={WashingMchartStyle.row}>
+                            <View style={WashingMchartStyle.row}>
                                 <TouchableOpacity
                                     style={WashingMchartStyle.machine}
                                 >
                                     <Image style={WashingMchartStyle.machineImage}
                                         source={require("../../img/non_drying_machine.jpg")} />
-                                    <Text>건조기</Text>
                                 </TouchableOpacity>
                                 <TouchableOpacity
                                     style={WashingMchartStyle.machine1}
@@ -535,9 +534,9 @@ const WashingMchartScreen = ({ navigation }) => {
                                     <Image style={WashingMchartStyle.machineImage}
                                         source={require("../../img/non_drying_machine.jpg")} />
                                 </TouchableOpacity>
-                            </View> */}
+                            </View>
                             {/* 5행 */}
-                            {/* <View style={WashingMchartStyle.row}>
+                            <View style={WashingMchartStyle.row}>
                                 <TouchableOpacity
                                     style={WashingMchartStyle.machine}
                                 >
@@ -562,13 +561,13 @@ const WashingMchartScreen = ({ navigation }) => {
                                     <Image style={WashingMchartStyle.machineImage}
                                         source={require("../../img/non_drying_machine.jpg")} />
                                 </TouchableOpacity>
-                            </View> */}
+                            </View>
                             <View style={WashingMchartStyle.blank}>
                             </View>
                         </View>
-                    {/* )}
+                    )}
                 </View>
-            )} */}
+            )}
         </View>
     );
 };

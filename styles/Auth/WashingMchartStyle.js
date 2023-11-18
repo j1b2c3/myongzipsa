@@ -2,22 +2,17 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'skybe',
     },
     row: {
         width: "100%",
         height: "19%",
-        justifyContent: "flex-start",
-        flexDirection: 'row',
+        flexDirection: 'row', 
         marginBottom: 3,
-        //borderBlockColor: 'black',
     },
     blank: {
         width: "100%",
         height: "2.5%",
-        backgroundColor: 'skyblue',
+        //backgroundColor: 'skyblue',
     },
     machine: {
         width: "28%",
@@ -46,7 +41,7 @@ const styles = StyleSheet.create({
     machineImage: {
         width: "100%",
         height: "100%",
-        resizeMode: 'contain',
+        resizeMode: "contain",
     },
     overlay: {
         position: 'absolute',
