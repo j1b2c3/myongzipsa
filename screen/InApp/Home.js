@@ -46,7 +46,7 @@ export default function HomeScreen({ navigation }) {
         </TouchableOpacity>
 
         <TouchableOpacity style={HomeStyle.finalButton}
-        onPress={() => navigation.navigate("QR코드", {
+          onPress={() => navigation.navigate("QR코드", {
             pageName: "QR코드"
           })}>
           <Text style={HomeStyle.useBtext}>QR코드</Text>
@@ -82,19 +82,10 @@ export default function HomeScreen({ navigation }) {
         </View>
       )}
 
-      {/* //main 부분 */}
-      {/* 세탁기 건조기 부분(중간고사) 헬스장(기말), 주차장(미정) */}
       <View style={HomeStyle.iconContainer}>
         {/*세탁기*/}
         <TouchableOpacity style={HomeStyle.leftButton}
           onPress={() => navigation.navigate("세탁기", {
-            // ======= front 부분
-            //         {/* 세탁기 건조기 부분(중간고사) 헬스장(기말), 주차장(미정) */}
-            //         <View style={HomeStyle.iconContainer}>
-            //           {/*세탁기*/}
-            //           <TouchableOpacity style={HomeStyle.leftButton}
-            //           onPress={() => navigation.navigate("세탁기", {
-            // >>>>>>> front
             pageName: "세탁기"
           })}>
           <Image style={HomeStyle.icon}
@@ -103,15 +94,9 @@ export default function HomeScreen({ navigation }) {
           {/* onPress = */}
         </TouchableOpacity>
 
-        {/* <<<<<<< main */}
         {/*건조기*/}
         <TouchableOpacity style={HomeStyle.rightButton}
           onPress={() => navigation.navigate("건조기", {
-            // ======= front 부분
-            //           {/*건조기*/}
-            //           <TouchableOpacity style={HomeStyle.rightButton}
-            //           onPress={() => navigation.navigate("건조기", {
-            // >>>>>>> front
             pageName: "건조기"
           })}>
           <Image style={HomeStyle.icon}
@@ -131,10 +116,13 @@ export default function HomeScreen({ navigation }) {
         </TouchableOpacity>
 
         {/*주차장*/}
-        <TouchableOpacity style={HomeStyle.rightButton}>
+        <TouchableOpacity style={HomeStyle.rightButton}
+          onPress={() => navigation.navigate("QR코드", {
+            pageName: "QR코드"
+          })}>
           <Image style={HomeStyle.icon2}
             source={require("../../img/icon_parking.jpg")} />
-          <Text>주차장</Text>
+          <Text>QR코드</Text>
           {/* onPress = */}
         </TouchableOpacity>
       </View>
