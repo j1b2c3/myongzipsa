@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
     },
 
     secondButton: {
-        //height: 150,
+        height: 50,
         width: 60,
         justifyContent: "center",
         alignItems: "center",
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
     },
 
     thirdButton: {
-        //height: 150,
+        height: 50,
         width: 60,
         justifyContent: "center",
         alignItems: "center",
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
     },
 
     finalButton: {
-        //height: 150,
+        height: 50,
         width: 60,
         justifyContent: "center",
         alignItems: "center",
