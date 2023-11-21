@@ -399,6 +399,25 @@ const DryingMchartScreen = ({ navigation }) => {
     }
   };
 
+  const handleColor = (machine, userEmail) => {
+    const { reserveId, userId, available, reserve } = DryingMachines[machine];
+    if (reserveId === userEmail && available) {
+      return 'blue';
+    } else if (userId === userEmail) {
+      return 'green';
+    } else if (reserveId !== userEmail && reserveId !== '' && available) {
+      return 'red';
+    } else if (reserveId === userEmail) {
+      return 'green';
+    } else if (available) {
+      return '#004CFF';
+    } else if (reserve) {
+      return 'yellow';
+    } else {
+      return 'red';
+    }
+  };
+
   return (
     <View style={DryingMchartStyle.container}>
       {isLoading ? (
@@ -487,7 +506,10 @@ const DryingMchartScreen = ({ navigation }) => {
                 >
                   <Image style={DryingMchartStyle.machineImage}
                     source={require("../../img/drying_machine.jpg")} />
-                  <View style={DryingMchartStyle.overlay}>
+                  <View style={[DryingMchartStyle.overlay,
+                  { backgroundColor: handleColor('1', userEmail) },
+                  ]}
+                  >
                     <Text style={DryingMchartStyle.overlayText}>1</Text>
                   </View>
                 </TouchableOpacity>
@@ -503,7 +525,10 @@ const DryingMchartScreen = ({ navigation }) => {
                 >
                   <Image style={DryingMchartStyle.machineImage}
                     source={require("../../img/drying_machine.jpg")} />
-                  <View style={DryingMchartStyle.overlay}>
+                  <View style={[DryingMchartStyle.overlay,
+                  { backgroundColor: handleColor('3', userEmail) },
+                  ]}
+                  >
                     <Text style={DryingMchartStyle.overlayText}>3</Text>
                   </View>
                 </TouchableOpacity>
@@ -515,7 +540,10 @@ const DryingMchartScreen = ({ navigation }) => {
                 >
                   <Image style={DryingMchartStyle.machineImage}
                     source={require("../../img/drying_machine.jpg")} />
-                  <View style={DryingMchartStyle.overlay}>
+                  <View style={[DryingMchartStyle.overlay,
+                  { backgroundColor: handleColor('2', userEmail) },
+                  ]}
+                  >
                     <Text style={DryingMchartStyle.overlayText}>2</Text>
                   </View>
                 </TouchableOpacity>
@@ -531,17 +559,21 @@ const DryingMchartScreen = ({ navigation }) => {
                 >
                   <Image style={DryingMchartStyle.machineImage}
                     source={require("../../img/drying_machine.jpg")} />
-                  <View style={DryingMchartStyle.overlay}>
+                  <View style={[DryingMchartStyle.overlay,
+                  { backgroundColor: handleColor('4', userEmail) },
+                  ]}
+                  >
                     <Text style={DryingMchartStyle.overlayText}>4</Text>
                   </View>
                 </TouchableOpacity>
               </View>
               <View style={DryingMchartStyle.blank}></View>
             </View>
-          )}
-        </View>
+          )
+          }
+        </View >
       )}
-    </View>
+    </View >
   );
 }
 

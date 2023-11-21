@@ -409,7 +409,7 @@ const WashingMchartScreen = ({ navigation }) => {
         } else if (reserveId === userEmail) {
             return 'green';
         } else if (available) {
-            return 'blue';
+            return '#004CFF';
         } else if (reserve) {
             return 'yellow';
         } else {
@@ -457,7 +457,10 @@ const WashingMchartScreen = ({ navigation }) => {
                                 >
                                     <Image style={WashingMchartStyle.machineImage}
                                         source={require("../../img/washing_machine.jpg")} />
-                                    <View style={WashingMchartStyle.overlay}>
+                                    <View style={[WashingMchartStyle.overlay,
+                                    { backgroundColor: handleColor('1', userEmail) },
+                                    ]}
+                                    >
                                         <Text style={WashingMchartStyle.overlayText}>1</Text>
                                     </View>
                                 </TouchableOpacity>
@@ -468,7 +471,10 @@ const WashingMchartScreen = ({ navigation }) => {
                                 >
                                     <Image style={WashingMchartStyle.machineImage}
                                         source={require("../../img/washing_machine.jpg")} />
-                                    <View style={WashingMchartStyle.overlay}>
+                                    <View style={[WashingMchartStyle.overlay,
+                                    { backgroundColor: handleColor('4', userEmail) },
+                                    ]}
+                                    >
                                         <Text style={WashingMchartStyle.overlayText}>4</Text>
                                     </View>
                                 </TouchableOpacity>
@@ -490,7 +496,10 @@ const WashingMchartScreen = ({ navigation }) => {
                                 >
                                     <Image style={WashingMchartStyle.machineImage}
                                         source={require("../../img/washing_machine.jpg")} />
-                                    <View style={WashingMchartStyle.overlay}>
+                                    <View style={[WashingMchartStyle.overlay,
+                                    { backgroundColor: handleColor('2', userEmail) },
+                                    ]}
+                                    >
                                         <Text style={WashingMchartStyle.overlayText}>2</Text>
                                     </View>
                                 </TouchableOpacity>
@@ -500,7 +509,10 @@ const WashingMchartScreen = ({ navigation }) => {
                                 >
                                     <Image style={WashingMchartStyle.machineImage}
                                         source={require("../../img/washing_machine.jpg")} />
-                                    <View style={WashingMchartStyle.overlay}>
+                                    <View style={[WashingMchartStyle.overlay,
+                                    { backgroundColor: handleColor('5', userEmail) },
+                                    ]}
+                                    >
                                         <Text style={WashingMchartStyle.overlayText}>5</Text>
                                     </View>
                                 </TouchableOpacity>
@@ -513,7 +525,10 @@ const WashingMchartScreen = ({ navigation }) => {
                                 >
                                     <Image style={WashingMchartStyle.machineImage}
                                         source={require("../../img/washing_machine.jpg")} />
-                                    <View style={WashingMchartStyle.overlay}>
+                                    <View style={[WashingMchartStyle.overlay,
+                                    { backgroundColor: handleColor('3', userEmail) },
+                                    ]}
+                                    >
                                         <Text style={WashingMchartStyle.overlayText}>3</Text>
                                     </View>
                                 </TouchableOpacity>
@@ -523,7 +538,10 @@ const WashingMchartScreen = ({ navigation }) => {
                                 >
                                     <Image style={WashingMchartStyle.machineImage}
                                         source={require("../../img/washing_machine.jpg")} />
-                                    <View style={WashingMchartStyle.overlay}>
+                                    <View style={[WashingMchartStyle.overlay,
+                                    { backgroundColor: handleColor('6', userEmail) },
+                                    ]}
+                                    >
                                         <Text style={WashingMchartStyle.overlayText}>6</Text>
                                     </View>
                                 </TouchableOpacity>
@@ -543,7 +561,10 @@ const WashingMchartScreen = ({ navigation }) => {
                                     <Image style={WashingMchartStyle.machineImage}
                                         source={require("../../img/washing_machine.jpg")} />
 
-                                    <View style={WashingMchartStyle.overlay}>
+                                    <View style={[WashingMchartStyle.overlay,
+                                    { backgroundColor: handleColor('7', userEmail) },
+                                    ]}
+                                    >
                                         <Text style={WashingMchartStyle.overlayText}>7</Text>
                                     </View>
                                 </TouchableOpacity>
@@ -568,7 +589,10 @@ const WashingMchartScreen = ({ navigation }) => {
                                 >
                                     <Image style={WashingMchartStyle.machineImage}
                                         source={require("../../img/washing_machine.jpg")} />
-                                    <View style={WashingMchartStyle.overlay}>
+                                    <View style={[WashingMchartStyle.overlay,
+                                    { backgroundColor: handleColor('8', userEmail) },
+                                    ]}
+                                    >
                                         <Text style={WashingMchartStyle.overlayText}>8</Text>
                                     </View>
                                 </TouchableOpacity>
@@ -585,8 +609,9 @@ const WashingMchartScreen = ({ navigation }) => {
                         </View>
                     )}
                 </View>
-            )}
-        </View>
+            )
+            }
+        </View >
     );
 };
 

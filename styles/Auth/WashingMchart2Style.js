@@ -5,9 +5,9 @@ const styles = StyleSheet.create({
   },
   row: {
     flexDirection: 'row',
-    marginTop : '5%',
-    width : '100%',
-    height : '20%'
+    marginTop: '5%',
+    width: '100%',
+    height: '20%'
   },
   machine: {
     left: '12%',
@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     margin: '1%',
   },
   machine2: {
-    right : '20%',
+    right: '20%',
     width: '50%',
     height: '85%',
     borderColor: 'black',
@@ -30,18 +30,18 @@ const styles = StyleSheet.create({
   machineImage: {
     flex: 1,
     resizeMode: 'contain',
-    width : '100%',
-    height : '100%'
+    width: '100%',
+    height: '100%'
   },
   overlay: {
     position: 'absolute',
     top: '50%',
     left: '50%',
-    transform: [{ translateX: -18.5}, { translateY: -17}],
+    transform: [{ translateX: -18.5 }, { translateY: -17 }],
     borderRadius: 50,
     width: '20%',
     height: '33%',
-    backgroundColor: 'red',
+    backgroundColor: 'black',
     justifyContent: 'center',
     alignItems: 'center',
   },
