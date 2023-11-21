@@ -483,3 +483,4 @@ const DryingMchart2Screen = ({ navigation }) => {
     );
 }
 
+export default DryingMchart2Screen;
