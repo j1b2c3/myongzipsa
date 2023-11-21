@@ -484,6 +484,12 @@ const DryingMchartScreen = ({ navigation }) => {
                   <Image style={DryingMchartStyle.machineImage}
                     source={require("../../img/non_washing_machine.jpg")} />
                 </TouchableOpacity>
+                <TouchableOpacity
+                  style={DryingMchartStyle.machine2}
+                >
+                  <Image style={DryingMchartStyle.machineImage}
+                    source={require("../../img/automatic_recommendation_button.jpg")} />
+                </TouchableOpacity>
               </View>
               <View style={DryingMchartStyle.row}>
                 <TouchableOpacity
@@ -497,6 +503,12 @@ const DryingMchartScreen = ({ navigation }) => {
                 >
                   <Image style={DryingMchartStyle.machineImage}
                     source={require("../../img/non_washing_machine.jpg")} />
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={DryingMchartStyle.machine2}
+                >
+                  <Image style={DryingMchartStyle.machineImage}
+                    source={require("../../img/report_button.jpg")} />
                 </TouchableOpacity>
               </View>
               <View style={DryingMchartStyle.row}>
