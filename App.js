@@ -25,6 +25,7 @@ import ChartScreen from "./screen/InApp/Chart";
 import Chart2Screen from "./screen/InApp/Chart2";
 import WashingMchartScreen from "./screen/InApp/WashingMchart";
 import DryingMchartScreen from "./screen/InApp/DryingMchart";
+import QRScreen from "./screen/InApp/QRcode";
 
 export default function App() {
   return (
@@ -68,6 +69,11 @@ export default function App() {
         <Stack.Screen
           name="건조기"
           component={Chart2Screen}
+        //options={{headerShown : false}}
+        />
+        <Stack.Screen
+          name="QR코드"
+          component={QRScreen}
         //options={{headerShown : false}}
         />
 

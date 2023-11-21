@@ -462,10 +462,7 @@ const DryingMchart2Screen = ({ navigation }) => {
                                 >
                                     <Image style={DryingMchart2Style.machineImage}
                                         source={require("../../img/drying_machine.jpg")} />
-                                    <View style={[DryingMchartStyle.overlay,
-                                    { backgroundColor: handleColor('5', userEmail) },
-                                    ]}
-                                    >
+                                    <View style={DryingMchart2Style.overlay}>
                                         <Text style={DryingMchart2Style.overlayText}>5</Text>
                                     </View>
                                 </TouchableOpacity>
@@ -484,10 +481,7 @@ const DryingMchart2Screen = ({ navigation }) => {
                                 >
                                     <Image style={DryingMchart2Style.machineImage}
                                         source={require("../../img/drying_machine.jpg")} />
-                                    <View style={[DryingMchartStyle.overlay,
-                                    { backgroundColor: handleColor('6', userEmail) },
-                                    ]}
-                                    >
+                                    <View style={DryingMchart2Style.overlay}>
                                         <Text style={DryingMchart2Style.overlayText}>6</Text>
                                     </View>
                                 </TouchableOpacity>
