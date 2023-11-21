@@ -439,12 +439,12 @@ const DryingMchart2Screen = ({ navigation }) => {
                                 </TouchableOpacity>
                                 <TouchableOpacity
                                     style={DryingMchart2Style.machine2}
-                                    onPress={() => handleMachineClick('4')}
+                                    onPress={() => handleMachineClick('5')}
                                 >
                                     <Image style={DryingMchart2Style.machineImage}
                                         source={require("../../img/drying_machine.jpg")} />
                                     <View style={DryingMchart2Style.overlay}>
-                                        <Text style={DryingMchart2Style.overlayText}>4</Text>
+                                        <Text style={DryingMchart2Style.overlayText}>5</Text>
                                     </View>
                                 </TouchableOpacity>
                             </View>
@@ -458,12 +458,12 @@ const DryingMchart2Screen = ({ navigation }) => {
                                 </TouchableOpacity>
                                 <TouchableOpacity
                                     style={DryingMchart2Style.machine2}
-                                    onPress={() => handleMachineClick('5')}
+                                    onPress={() => handleMachineClick('6')}
                                 >
                                     <Image style={DryingMchart2Style.machineImage}
                                         source={require("../../img/drying_machine.jpg")} />
                                     <View style={DryingMchart2Style.overlay}>
-                                        <Text style={DryingMchart2Style.overlayText}>5</Text>
+                                        <Text style={DryingMchart2Style.overlayText}>6</Text>
                                     </View>
                                 </TouchableOpacity>
                             </View>

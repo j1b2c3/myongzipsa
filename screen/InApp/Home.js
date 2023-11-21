@@ -53,7 +53,7 @@ export default function HomeScreen({ navigation }) {
         </TouchableOpacity>
 
         <TouchableOpacity style={HomeStyle.finalButton}>
-          <Text style={HomeStyle.useBtext}>주차장</Text>
+          <Text style={HomeStyle.useBtext}>QR코드</Text>
         </TouchableOpacity>
       </View>
 
@@ -107,10 +107,13 @@ export default function HomeScreen({ navigation }) {
         </TouchableOpacity>
 
         {/*주차장*/}
-        <TouchableOpacity style={HomeStyle.rightButton}>
+        <TouchableOpacity style={HomeStyle.rightButton}
+        onPress={() => navigation.navigate("QR코드", {
+            pageName: "QR코드"
+          })}>
           <Image style={HomeStyle.icon2}
             source={require("../../img/icon_parking.jpg")} />
-          <Text>주차장</Text>
+          <Text>QR코드</Text>
           {/* onPress = */}
         </TouchableOpacity>
       </View>
