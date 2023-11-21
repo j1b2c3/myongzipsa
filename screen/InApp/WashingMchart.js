@@ -546,7 +546,6 @@ const WashingMchartScreen = ({ navigation }) => {
                                 <TouchableOpacity
                                     style={WashingMchartStyle.machine1}
                                     onPress={() => handleMachineClick('8')}
-
                                 >
                                     <Image style={WashingMchartStyle.machineImage}
                                         source={require("../../img/washing_machine.jpg")} />

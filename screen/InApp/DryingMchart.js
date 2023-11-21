@@ -161,7 +161,7 @@ const DryingMchartScreen = ({ navigation }) => {
         } else if (committed) {
           const now = new Date();
           now.setHours(
-            now.getHours() + 9 + Math.floor(initialRemainingTime / 60)
+            now.getHours() + Math.floor(initialRemainingTime / 60)
           ); // 한국 시간으로 변환
           now.setMinutes(now.getMinutes() + (initialRemainingTime % 60));
           const message = `${machineNumber}번 건조기 사용 시작. ${now.getHours()}시 ${now.getMinutes()}분에 찾아가세요.`;
@@ -228,7 +228,7 @@ const DryingMchartScreen = ({ navigation }) => {
 
           const now = new Date();
           now.setHours(
-            now.getHours() + 9 + Math.floor(machine.remainingTime / 60)
+            now.getHours() + Math.floor(machine.remainingTime / 60)
           ); // 한국 시간으로 변환
           now.setMinutes(now.getMinutes() + (machine.remainingTime % 60));
 
@@ -428,118 +428,116 @@ const DryingMchartScreen = ({ navigation }) => {
               </TouchableOpacity>
             </View>
           ) : (
-              <View style={DryingMchartStyle.container}>
-                <View style={DryingMchartStyle.blank}>
-                </View>
-                <View style={DryingMchartStyle.row}>
-                  <TouchableOpacity
-                    style={DryingMchartStyle.machine}
-                  >
-                    <Image style={DryingMchartStyle.machineImage}
-                      source={require("../../img/non_washing_machine.jpg")} />
-                  </TouchableOpacity>
-                  <TouchableOpacity
-                    style={DryingMchartStyle.machine1}
-                  >
-                    <Image style={DryingMchartStyle.machineImage}
-                      source={require("../../img/non_washing_machine.jpg")} />
-                  </TouchableOpacity>
-                  <TouchableOpacity
-                    style={DryingMchartStyle.machine2}
-                  >
-                    <Image style={DryingMchartStyle.machineImage}
-                      source={require("../../img/Possible_status.jpg")} />
-                  </TouchableOpacity>
-                </View>
-                <View style={DryingMchartStyle.row}>
-
-                  <TouchableOpacity
-                    style={DryingMchartStyle.machine}
-                  >
-                    <Image style={DryingMchartStyle.machineImage}
-                      source={require("../../img/non_washing_machine.jpg")} />
-                  </TouchableOpacity>
-                  <TouchableOpacity
-                    style={DryingMchartStyle.machine1}
-                  >
-                    <Image style={DryingMchartStyle.machineImage}
-                      source={require("../../img/non_washing_machine.jpg")} />
-                  </TouchableOpacity>
-                </View>
-                <View style={DryingMchartStyle.row}>
-                  <TouchableOpacity
-                    style={DryingMchartStyle.machine}
-                  >
-                    <Image style={DryingMchartStyle.machineImage}
-                      source={require("../../img/non_washing_machine.jpg")} />
-                  </TouchableOpacity>
-                  <TouchableOpacity
-                    style={DryingMchartStyle.machine1}
-                  >
-                    <Image style={DryingMchartStyle.machineImage}
-                      source={require("../../img/non_washing_machine.jpg")} />
-                  </TouchableOpacity>
-                </View>
-                <View style={DryingMchartStyle.row}>
-                  <TouchableOpacity
-                    style={DryingMchartStyle.machine}
-                    onPress={() => handleMachineClick('1')}
-
-                  >
-                    <Image style={DryingMchartStyle.machineImage}
-                      source={require("../../img/drying_machine.jpg")} />
-                    <View style={DryingMchartStyle.overlay}>
-                      <Text style={DryingMchartStyle.overlayText}>1</Text>
-                    </View>
-                  </TouchableOpacity>
-                  <TouchableOpacity
-                    style={DryingMchartStyle.machine1}
-                  >
-                    <Image style={DryingMchartStyle.machineImage}
-                      source={require("../../img/non_washing_machine.jpg")} />
-                  </TouchableOpacity>
-                  <TouchableOpacity
-                    style={DryingMchartStyle.machine2}
-                    onPress={() => handleMachineClick('3')}
-                  >
-                    <Image style={DryingMchartStyle.machineImage}
-                      source={require("../../img/drying_machine.jpg")} />
-                    <View style={DryingMchartStyle.overlay}>
-                      <Text style={DryingMchartStyle.overlayText}>3</Text>
-                    </View>
-                  </TouchableOpacity>
-                </View>
-                <View style={DryingMchartStyle.row}>
-                  <TouchableOpacity
-                    style={DryingMchartStyle.machine}
-                    onPress={() => handleMachineClick('2')}
-
-                  >
-                    <Image style={DryingMchartStyle.machineImage}
-                      source={require("../../img/drying_machine.jpg")} />
-                    <View style={DryingMchartStyle.overlay}>
-                      <Text style={DryingMchartStyle.overlayText}>2</Text>
-                    </View>
-                  </TouchableOpacity>
-                  <TouchableOpacity
-                    style={DryingMchartStyle.machine1}
-                  >
-                    <Image style={DryingMchartStyle.machineImage}
-                      source={require("../../img/non_washing_machine.jpg")} />
-                  </TouchableOpacity>
-                  <TouchableOpacity
-                    style={DryingMchartStyle.machine2}
-                    onPress={() => handleMachineClick('4')}
-                  >
-                    <Image style={DryingMchartStyle.machineImage}
-                      source={require("../../img/drying_machine.jpg")} />
-                    <View style={DryingMchartStyle.overlay}>
-                      <Text style={DryingMchartStyle.overlayText}>4</Text>
-                    </View>
-                  </TouchableOpacity>
-                </View>
-                <View style={DryingMchartStyle.blank}></View>
+            <View style={DryingMchartStyle.container}>
+              <View style={DryingMchartStyle.blank}>
               </View>
+              <View style={DryingMchartStyle.row}>
+                <TouchableOpacity
+                  style={DryingMchartStyle.machine}
+                >
+                  <Image style={DryingMchartStyle.machineImage}
+                    source={require("../../img/non_washing_machine.jpg")} />
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={DryingMchartStyle.machine1}
+                >
+                  <Image style={DryingMchartStyle.machineImage}
+                    source={require("../../img/non_washing_machine.jpg")} />
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={DryingMchartStyle.machine2}
+                >
+                  <Image style={DryingMchartStyle.machineImage}
+                    source={require("../../img/Possible_status.jpg")} />
+                </TouchableOpacity>
+              </View>
+              <View style={DryingMchartStyle.row}>
+
+                <TouchableOpacity
+                  style={DryingMchartStyle.machine}
+                >
+                  <Image style={DryingMchartStyle.machineImage}
+                    source={require("../../img/non_washing_machine.jpg")} />
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={DryingMchartStyle.machine1}
+                >
+                  <Image style={DryingMchartStyle.machineImage}
+                    source={require("../../img/non_washing_machine.jpg")} />
+                </TouchableOpacity>
+              </View>
+              <View style={DryingMchartStyle.row}>
+                <TouchableOpacity
+                  style={DryingMchartStyle.machine}
+                >
+                  <Image style={DryingMchartStyle.machineImage}
+                    source={require("../../img/non_washing_machine.jpg")} />
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={DryingMchartStyle.machine1}
+                >
+                  <Image style={DryingMchartStyle.machineImage}
+                    source={require("../../img/non_washing_machine.jpg")} />
+                </TouchableOpacity>
+              </View>
+              <View style={DryingMchartStyle.row}>
+                <TouchableOpacity
+                  style={DryingMchartStyle.machine}
+                  onPress={() => handleMachineClick('1')}
+                >
+                  <Image style={DryingMchartStyle.machineImage}
+                    source={require("../../img/drying_machine.jpg")} />
+                  <View style={DryingMchartStyle.overlay}>
+                    <Text style={DryingMchartStyle.overlayText}>1</Text>
+                  </View>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={DryingMchartStyle.machine1}
+                >
+                  <Image style={DryingMchartStyle.machineImage}
+                    source={require("../../img/non_washing_machine.jpg")} />
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={DryingMchartStyle.machine2}
+                  onPress={() => handleMachineClick('3')}
+                >
+                  <Image style={DryingMchartStyle.machineImage}
+                    source={require("../../img/drying_machine.jpg")} />
+                  <View style={DryingMchartStyle.overlay}>
+                    <Text style={DryingMchartStyle.overlayText}>3</Text>
+                  </View>
+                </TouchableOpacity>
+              </View>
+              <View style={DryingMchartStyle.row}>
+                <TouchableOpacity
+                  style={DryingMchartStyle.machine}
+                  onPress={() => handleMachineClick('2')}
+                >
+                  <Image style={DryingMchartStyle.machineImage}
+                    source={require("../../img/drying_machine.jpg")} />
+                  <View style={DryingMchartStyle.overlay}>
+                    <Text style={DryingMchartStyle.overlayText}>2</Text>
+                  </View>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={DryingMchartStyle.machine1}
+                >
+                  <Image style={DryingMchartStyle.machineImage}
+                    source={require("../../img/non_washing_machine.jpg")} />
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={DryingMchartStyle.machine2}
+                  onPress={() => handleMachineClick('4')}
+                >
+                  <Image style={DryingMchartStyle.machineImage}
+                    source={require("../../img/drying_machine.jpg")} />
+                  <View style={DryingMchartStyle.overlay}>
+                    <Text style={DryingMchartStyle.overlayText}>4</Text>
+                  </View>
+                </TouchableOpacity>
+              </View>
+              <View style={DryingMchartStyle.blank}></View>
+            </View>
           )}
         </View>
       )}
