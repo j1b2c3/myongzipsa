@@ -13,11 +13,10 @@ const Stack = createNativeStackNavigator();
 
 // 화면 연결
 import LoginScreen from "./screen/Auth/Login";
-
-import MemberShipScreen from "./screen/InApp/MemberShip";
-import FindingScreen from "./screen/InApp/Finding";
-import FindIDScreen from "./screen/InApp/FindID";
-import FindPwdScreen from "./screen/InApp/FindPwd";
+import MemberShipScreen from "./screen/Auth/MemberShip";
+import FindingScreen from "./screen/Auth/Finding";
+import FindIDScreen from "./screen/Auth/FindID";
+import FindPwdScreen from "./screen/Auth/FindPwd";
 
 import UsageStatusScreen from "./screen/InApp/UsageStatus";
 import ReservationStatusScreen from "./screen/InApp/ReservationStatus";
@@ -26,10 +25,6 @@ import ChartScreen from "./screen/InApp/Chart";
 import Chart2Screen from "./screen/InApp/Chart2";
 import WashingMchartScreen from "./screen/InApp/WashingMchart";
 import DryingMchartScreen from "./screen/InApp/DryingMchart";
-
-import InputTimeScreen from "./screen/InApp/InputTime";
-import ReservationMachineScreen from "./screen/InApp/ReservationMachine";
-
 
 export default function App() {
   return (
@@ -75,20 +70,6 @@ export default function App() {
           component={Chart2Screen}
         //options={{headerShown : false}}
         />
-
-        <Stack.Screen
-          name="세탁시간입력"
-          component={InputTimeScreen}
-        //options={{headerShown : false}}
-        />
-
-        <Stack.Screen
-          name="예약하기"
-          component={ReservationMachineScreen}
-        //options={{headerShown : false}}
-        />
-
-
 
       </Stack.Navigator>
     </NavigationContainer>

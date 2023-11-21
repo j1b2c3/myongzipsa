@@ -64,7 +64,7 @@ const MemberShipScreen = () => {
           value={email}
           onChangeText={text => setEmail(text)}
         />
-        <TextInput 
+        <TextInput
           style={MemberShipStyle.input}
           placeholder='전화번호'
           value={phone}
