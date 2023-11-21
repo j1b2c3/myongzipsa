@@ -66,7 +66,6 @@ const UsageStatus = () => {
         fetchLaundryStatus();
       }, refreshInterval);
 
-      // 컴포넌트가 언마운트될 때 메모리 누수를 방지하기 위해 타임아웃을 클리어합니다
       return () => clearTimeout(refreshTimeout);
     };
 
