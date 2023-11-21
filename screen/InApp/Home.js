@@ -146,7 +146,7 @@ export default function HomeScreen({ navigation }) {
             source={require("../../img/blank.png")} />
         </TouchableOpacity>
       </View>
-      
+
     </SafeAreaView>
   )
 }

@@ -8,13 +8,11 @@ const QRScreen = ({ navigation }) => {
     const [userEmail, setUserEmail] = useState('');
     const [userName, setUserName] = useState('');
     const [isLoading, setIsLoading] = useState(true);
-
     useEffect(() => {
         // Fetch user information from Firebase
         const authObserver = auth.onAuthStateChanged((user) => {
             if (user) {
                 setUserEmail(user.email);
-
                 // Fetch additional user information from the database based on user's UID
                 // Replace 'users' with the actual path where user information is stored in your Firebase database
                 const userRef = database.ref(`users/${user.uid}`);
@@ -22,13 +20,13 @@ const QRScreen = ({ navigation }) => {
                     const userData = snapshot.val();
                     if (userData && userData.username) {
                         setUserName(userData.username);
+
+                        // Log email and name
+                        console.log('User Info In QR code:', user.email, userData.username);
                     }
                 });
             }
             setIsLoading(false);
-
-            // Log email and name
-            console.log('User Info In QR code:', userEmail, userName);
         });
         return authObserver;
     }, []);
