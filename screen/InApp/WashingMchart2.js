@@ -13,6 +13,7 @@ import {
 
 import { auth, database } from '../../javascripts/FirebaseConfigFile';
 import InputTimeStyle from '../../styles/Auth/InputTimeStyle';
+import WashingMchartStyle from "../../styles/Auth/WashingMchartStyle";
 import WashingMchart2Style from "../../styles/Auth/WashingMchart2Style";
 
 const WashingMchart2Screen = ({ navigation }) => {

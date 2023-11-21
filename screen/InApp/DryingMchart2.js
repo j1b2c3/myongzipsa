@@ -7,6 +7,7 @@ import { auth, database } from '../../javascripts/FirebaseConfigFile';
 import InputTimeStyle from '../../styles/Auth/InputTimeStyle';
 
 //스타일 import
+import DryingMchartStyle from "../../styles/Auth/DryingMchartStyle";
 import DryingMchart2Style from "../../styles/Auth/DryingMchart2Style";
 
 const DryingMchart2Screen = ({ navigation }) => {

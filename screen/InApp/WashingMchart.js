@@ -398,6 +398,25 @@ const WashingMchartScreen = ({ navigation }) => {
         }
     };
 
+    const handleColor = (machine, userEmail) => {
+        const { reserveId, userId, available, reserve } = washingMachines[machine];
+        if (reserveId === userEmail && available) {
+            return 'blue';
+        } else if (userId === userEmail) {
+            return 'green';
+        } else if (reserveId !== userEmail && reserveId !== '' && available) {
+            return 'red';
+        } else if (reserveId === userEmail) {
+            return 'green';
+        } else if (available) {
+            return 'blue';
+        } else if (reserve) {
+            return 'yellow';
+        } else {
+            return 'red';
+        }
+    };
+
     return (
         <View style={WashingMchartStyle.container}>
             {isLoading ? (
