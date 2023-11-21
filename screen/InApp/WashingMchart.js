@@ -485,6 +485,12 @@ const WashingMchartScreen = ({ navigation }) => {
                                         <Text style={WashingMchartStyle.overlayText}>5</Text>
                                     </View>
                                 </TouchableOpacity>
+                                <TouchableOpacity
+                                    style={WashingMchartStyle.machine2}
+                                >
+                                    <Image style={WashingMchartStyle.machineImage}
+                                        source={require("../../img/automatic_recommendation_button.jpg")} />
+                                </TouchableOpacity>
                             </View>
                             {/* 3행 */}
                             <View style={WashingMchartStyle.row}>
@@ -507,6 +513,12 @@ const WashingMchartScreen = ({ navigation }) => {
                                     <View style={WashingMchartStyle.overlay}>
                                         <Text style={WashingMchartStyle.overlayText}>6</Text>
                                     </View>
+                                </TouchableOpacity>
+                                <TouchableOpacity
+                                    style={WashingMchartStyle.machine2}
+                                >
+                                    <Image style={WashingMchartStyle.machineImage}
+                                        source={require("../../img/report_button.jpg")} />
                                 </TouchableOpacity>
                             </View>
                             {/* 4행 */}
