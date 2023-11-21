@@ -58,7 +58,7 @@ export default function App() {
         <Stack.Screen
           name="명집사"
           component={HomeScreen}
-          options={{ headerShown: false }}
+          //options={{ headerShown: false }}
         />
         <Stack.Screen
           name="세탁기"
