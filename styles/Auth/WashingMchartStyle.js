@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     row: {
         width: "100%",
         height: "19%",
-        flexDirection: 'row', 
+        flexDirection: 'row',
         marginBottom: 3,
     },
     blank: {
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
         borderRadius: 50,
         width: 40,
         height: 40,
-        backgroundColor: 'red',
+        backgroundColor: 'black',
         justifyContent: 'center',
         alignItems: 'center',
     },

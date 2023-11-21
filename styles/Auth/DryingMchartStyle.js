@@ -1,12 +1,12 @@
 import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
-  container: {
+    container: {
         flex: 1,
     },
     row: {
         width: "100%",
         height: "19%",
-        flexDirection: 'row', 
+        flexDirection: 'row',
         marginBottom: 3,
     },
     blank: {

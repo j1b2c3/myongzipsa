@@ -91,7 +91,7 @@ const ReservationStatus = () => {
                     style={ReservationStatusStyle.cancelButton}
                 // onPress={예약취소}
                 >
-                    <Text>예약 취소하기</Text>
+                    <Text style={ReservationStatusStyle.buttonText}>예약 취소</Text>
                 </TouchableOpacity>
             </View>
         </View>
