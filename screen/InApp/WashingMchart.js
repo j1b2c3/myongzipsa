@@ -200,7 +200,7 @@ const WashingMchartScreen = ({ navigation }) => {
                                 }
                                 return machine;
                             });
-                    }, 10000);
+                    }, 60000);
                 } else {
                     Alert.alert('사용 시작에 실패하였습니다.');
                 }
@@ -234,8 +234,7 @@ const WashingMchartScreen = ({ navigation }) => {
                     now.setMinutes(now.getMinutes() + (machine.remainingTime % 60));
 
                     Alert.alert(
-                        `${machineNumber}번 세탁기 예약이 완료되었습니다. 
-                        ${now.getHours()}시 ${now.getMinutes()}분에 사용하세요.`
+                        `${machineNumber}번 세탁기 예약이 완료되었습니다.\n ${now.getHours()}시 ${now.getMinutes()}분에 사용하세요.`
                     );
                     const timer = setInterval(() => {
                         database
@@ -261,7 +260,7 @@ const WashingMchartScreen = ({ navigation }) => {
                                 }
                                 return machine;
                             });
-                    }, 10000);
+                    }, 60000);
                 } else {
                     Alert.alert('예약에 실패하였습니다.');
                 }
@@ -377,7 +376,7 @@ const WashingMchartScreen = ({ navigation }) => {
                     );
                 } else {
                     Alert.alert(
-                        `세탁기 ${machineNumber}번 예약하시겠습니까?\n 남은시간: ${washingMachines[machineNumber].remainingTime}`,
+                        `세탁기 ${machineNumber}번 예약하시겠습니까?\n 남은시간: ${washingMachines[machineNumber].remainingTime}분`,
                         '',
                         [
                             {
@@ -518,6 +517,7 @@ const WashingMchartScreen = ({ navigation }) => {
                                 </TouchableOpacity>
                                 <TouchableOpacity
                                     style={WashingMchartStyle.machine2}
+                                    onPress={() => autoReserveMachine()}
                                 >
                                     <Image style={WashingMchartStyle.machineImage}
                                         source={require("../../img/automatic_recommendation_button.jpg")} />
