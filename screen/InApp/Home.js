@@ -4,6 +4,7 @@ import { auth, database } from '../../javascripts/FirebaseConfigFile';
 import HomeStyle from "../../styles/Auth/HomeStyle";
 import ChartScreen from "../InApp/Chart";
 
+
 export default function HomeScreen({ navigation }) {
 
   const [name, setName] = useState('');
@@ -120,7 +121,10 @@ export default function HomeScreen({ navigation }) {
 
       <View style={HomeStyle.iconContainer2}>
         {/*헬스장*/}
-        <TouchableOpacity style={HomeStyle.leftButton}>
+        <TouchableOpacity style={HomeStyle.leftButton}
+          onPress={() => navigation.navigate("헬스장", {
+            pageName: "헬스장"
+          })}>
           <Image style={HomeStyle.icon2}
             source={require("../../img/icon_gym.jpg")} />
           <Text>헬스장</Text>
@@ -143,7 +147,7 @@ export default function HomeScreen({ navigation }) {
             source={require("../../img/blank.png")} />
         </TouchableOpacity>
       </View>
-      
+
     </SafeAreaView>
   )
 }
