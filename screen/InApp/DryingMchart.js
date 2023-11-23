@@ -198,7 +198,7 @@ const DryingMchartScreen = ({ navigation }) => {
                 }
                 return machine;
               });
-          }, 10000);
+          }, 60000);
         } else {
           Alert.alert('사용 시작에 실패하였습니다.');
         }
@@ -262,7 +262,7 @@ const DryingMchartScreen = ({ navigation }) => {
                 }
                 return machine;
               });
-          }, 10000);
+          }, 60000);
         } else {
           Alert.alert('예약에 실패하였습니다.');
         }
@@ -322,81 +322,6 @@ const DryingMchartScreen = ({ navigation }) => {
         }
       }
     );
-  };
-
-  const autoReserveMachine = () => {
-    const availableMachines = Object.entries(DryingMachines)
-      .filter(
-        ([_, machine]) =>
-          machine.available &&
-          machine.remainingTime !== null &&
-          machine.reserve === true
-      )
-      .sort(([, a], [, b]) => a.remainingTime - b.remainingTime);
-    if (availableMachines.length > 0) {
-      // 사용 가능한 건조기 있을 때
-      const [machineNumber] = availableMachines[0];
-      Alert.alert(`사용 가능한 건조기: ${machineNumber}번`);
-    } else {
-      // 사용 가능한 건조기 없을 때
-      const shortestTimeMachine = Object.entries(DryingMachines)
-        .filter(
-          ([_, machine]) =>
-            machine.remainingTime !== null &&
-            machine.reserve === true &&
-            machine.userId !== userEmail
-        )
-        .sort(([, a], [, b]) => a.remainingTime - b.remainingTime);
-      if (shortestTimeMachine.length > 0) {
-        const [machineNumber] = shortestTimeMachine[0];
-        const reservationTime = DryingMachines[machineNumber].reservationTime;
-        const useTime = DryingMachines[machineNumber].useTime;
-        const currentTime = new Date().getTime();
-        if (reservationTime && currentTime - reservationTime >= 5 * 60 * 1000) {
-          // 예약한 사용자가 5분 이내에 사용하지 않은 경우
-          database.ref(`DryingMachines/${machineNumber}`).transaction(
-            (machine) => {
-              if (machine && machine.available) {
-                machine.available = false;
-                machine.reserve = true;
-                machine.userId = '';
-                machine.useTime = '';
-                machine.reservationTime = null;
-                machine.reserveId = '';
-              }
-              return machine;
-            },
-            (error, committed) => {
-              if (error) {
-                Alert.alert('예약에 실패하였습니다.');
-              } else if (committed) {
-                Alert.alert(`${machineNumber}번 건조기 초기화되었습니다.`);
-              } else {
-                Alert.alert('예약에 실패하였습니다.');
-              }
-            }
-          );
-        } else {
-          Alert.alert(
-            `건조기 ${machineNumber}번 예약하시겠습니까?\n 남은 시간: ${washingMachines[machineNumber].remainingTime}`,
-            '',
-            [
-              {
-                text: '예',
-                onPress: () => reserveMachine(machineNumber, userEmail),
-              },
-              {
-                text: '아니오',
-                onPress: () => console.log('취소'),
-                style: 'cancel',
-              },
-            ]
-          );
-        }
-      } else {
-        Alert.alert('예약 가능한 건조기가 없습니다.');
-      }
-    }
   };
 
   const handleColor = (machine, userEmail) => {
@@ -486,6 +411,8 @@ const DryingMchartScreen = ({ navigation }) => {
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={DryingMchartStyle.machine2}
+                  onPress={() => autoReserveMachine()}
+
                 >
                   <Image style={DryingMchartStyle.machineImage}
                     source={require("../../img/automatic_recommendation_button.jpg")} />
