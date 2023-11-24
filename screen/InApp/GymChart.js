@@ -71,12 +71,12 @@ const GymChartScreen = () => {
                 <Text style={GymChartStyle.usageInfoText2}>{currentUsers}/{totalCapacity}</Text>
             </View>
 
-            <View style={GymChartStyle.imageContainer}>
+            {/* <View style={GymChartStyle.imageContainer}>
                 <Image
-                    source={require('../../img/Running_horse.jpg')} 
+                    source={require('../../img/icon_gym.jpg')} 
                     style={GymChartStyle.image}
                 />
-            </View>
+            </View> */}
         </View>
     );
 };

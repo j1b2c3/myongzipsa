@@ -5,10 +5,11 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         paddingHorizontal: 20,
+        backgroundColor:'white',
     },
     noticeBox: {
         margin: '5%',
-        height: '25%',
+        height: '60%',
         width: '100%',
         borderWidth: 1,
         borderColor: 'black',
@@ -31,7 +32,7 @@ const styles = StyleSheet.create({
         marginBottom: '5%'
     },
     button: {
-        borderRadius: '100%',
+        borderRadius: 360,
         paddingHorizontal: 20,
         margin : '1%',
         backgroundColor: 'lightblue',
@@ -39,7 +40,7 @@ const styles = StyleSheet.create({
         alignItems: 'center', 
     },
     buttonText: {
-        fontSize : '20'
+        fontSize : 20,
     },
     usageInfoBox: {
         width: '90%',
@@ -49,11 +50,11 @@ const styles = StyleSheet.create({
         padding: '2%',
     },
     usageInfoText1: {
-        fontSize: '20',
+        fontSize: 20,
         fontWeight: 'bold',
     },
     usageInfoText2: {
-        fontSize: '40',
+        fontSize: 40,
         backgroundColor : 'yellow'
     },
     imageContainer: {
