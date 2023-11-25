@@ -10,9 +10,31 @@ const styles = StyleSheet.create({
     specialContainer: {
         width: "100%",
         height: "5%",
-        justifyContent: "center",
-        alignItems: "center",
+        justifyContent: "space-evenly",
+        flexDirection: "row",
         // backgroundColor: 'red',
+    },
+    mailButton: {
+        width: "50%",
+        height: "100%",
+        alignItems: 'center',
+        margin : 10,
+    },
+    iconMail:{
+        width: "20%",
+        height:"50%",
+        resizeMode: 'contain',
+    },
+    qrButton: {
+        width: "50%",
+        height: "100%",
+        alignItems: 'center',
+        margin : 10,
+    },
+    iconQR: {
+        width: "20%",
+        height: "50%",
+        resizeMode: 'contain',
     },
     zipsaContainer: {
         width: "100%",
@@ -23,7 +45,7 @@ const styles = StyleSheet.create({
     },
 
     zipsa: {
-        fontSize: 10,
+        fontSize: 13,
         fontWeight: 'bold',
         color: "black"
     },
@@ -54,7 +76,6 @@ const styles = StyleSheet.create({
         height: "8%",
         justifyContent: "space-evenly",
         flexDirection: "row",
-        
     },
 
 
@@ -74,8 +95,8 @@ const styles = StyleSheet.create({
 
 
     firstButton: {
-        height: 50,
-        width: 60,
+        height: "90%",
+        width: "15%",
         justifyContent: "center",
         alignItems: "center",
         //borderWidth: 1,
@@ -87,8 +108,8 @@ const styles = StyleSheet.create({
     },
 
     secondButton: {
-        height: 50,
-        width: 60,
+        height: "90%",
+        width: "15%",
         justifyContent: "center",
         alignItems: "center",
         //borderWidth: 1,
@@ -100,8 +121,8 @@ const styles = StyleSheet.create({
     },
 
     thirdButton: {
-        height: 50,
-        width: 60,
+        height: "90%",
+        width: "15%",
         justifyContent: "center",
         alignItems: "center",
         //borderWidth: 1,
@@ -113,8 +134,8 @@ const styles = StyleSheet.create({
     },
 
     finalButton: {
-        height: 50,
-        width: 60,
+        height: "90%",
+        width: "15%",
         justifyContent: "center",
         alignItems: "center",
         //borderWidth: 1,
@@ -232,11 +253,45 @@ const styles = StyleSheet.create({
         height: 120,
     },
 
-    usageStatus: {
-        backgroundColor: '#eee',
+    usageStatusW: {
+        width: "85%",
+        height: "80%",
+        backgroundColor: "#c8c8c8",
         padding: 20,
         margin: 10,
         borderRadius: 10,
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    usageStatusD: {
+        width: "85%",
+        height: "80%",
+        backgroundColor: "#D7F1FA",
+        padding: 20,
+        margin: 10,
+        borderRadius: 10,
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    usageStatusG: {
+        width: "85%",
+        height: "80%",
+        backgroundColor: "#FFD9E4",
+        padding: 20,
+        margin: 10,
+        borderRadius: 10,
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    usageStatusP: {
+        width: "85%",
+        height: "80%",
+        backgroundColor: "#E6FFE6",
+        padding: 20,
+        margin: 10,
+        borderRadius: 10,
+        justifyContent: "center",
+        alignItems: "center",
     },
 
     usageText: {

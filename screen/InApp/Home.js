@@ -26,11 +26,20 @@ export default function HomeScreen({ navigation }) {
     <SafeAreaView style={HomeStyle.container}>
       <StatusBar />
       <View style = {HomeStyle.specialContainer}>
-        {/* <TouchableOpactiy style = {HomeStyle.mailButton}>
-        <Image style={HomeStyle.icon}
-            source={require("../../img/icon_mail_.png")} /> */}
-          <Text>쪽지함</Text>
-        {/* </TouchableOpactiy> */}
+        <TouchableOpacity style = {HomeStyle.mailButton}>
+          <Image style={HomeStyle.iconMail}
+              source={require("../../img/icon_mail_.png")}/>
+            <Text>쪽지함</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={HomeStyle.qrButton}
+          onPress={() => navigation.navigate("QR코드", {
+            pageName: "QR코드"
+          })}>
+            <Image style={HomeStyle.iconQR}
+              source={require("../../img/icon_qr.png")}/>
+          <Text>QR코드</Text>
+        </TouchableOpacity>
       </View>
       {/* 명집사의 특색 */}
       <View style={HomeStyle.zipsaContainer}>
@@ -52,42 +61,40 @@ export default function HomeScreen({ navigation }) {
           <Text style={HomeStyle.useBtext}>헬스장</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={HomeStyle.finalButton}
-          onPress={() => navigation.navigate("QR코드", {
-            pageName: "QR코드"
-          })}>
-          <Text style={HomeStyle.useBtext}>QR코드</Text>
+        <TouchableOpacity style={HomeStyle.finalButton} onPress={() => setSelectedButton('주차장')}>
+          <Text style={HomeStyle.useBtext}>주차장</Text>
         </TouchableOpacity>
+
       </View>
 
       <View style = {HomeStyle.useContainer}>
         {/* 각 버튼에 따른 사용 및 이용 현황 */}
         {(selectedButton === '세탁기') && (
-          <View style={HomeStyle.usageStatus}>
-            <Text style={HomeStyle.usageText}>세탁기 사용 현황</Text>
+          <TouchableOpacity style={HomeStyle.usageStatusW}>
+            <Text style={HomeStyle.usageText}>내 정보</Text>
             {/* 세탁기 사용 현황에 대한 내용 */}
-          </View>
+          </TouchableOpacity>
         )}
 
         {(selectedButton === '건조기') && (
-          <View style={HomeStyle.usageStatus}>
-            <Text style={HomeStyle.usageText}>건조기 사용 현황</Text>
+          <TouchableOpacity style={HomeStyle.usageStatusD}>
+            <Text style={HomeStyle.usageText}>내 정보</Text>
             {/* 건조기 사용 현황에 대한 내용 */}
-          </View>
+          </TouchableOpacity>
         )}
 
         {(selectedButton === '헬스장') && (
-          <View style={HomeStyle.usageStatus}>
-            <Text style={HomeStyle.usageText}>헬스장 이용 현황</Text>
+          <TouchableOpacity style={HomeStyle.usageStatusG}>
+            <Text style={HomeStyle.usageText}>내 정보</Text>
             {/* 헬스장 이용 현황에 대한 내용 */}
-          </View>
+          </TouchableOpacity>
         )}
 
         {(selectedButton === '주차장') && (
-          <View style={HomeStyle.usageStatus}>
-            <Text style={HomeStyle.usageText}>주차장 이용 현황</Text>
+          <TouchableOpacity style={HomeStyle.usageStatusP}>
+            <Text style={HomeStyle.usageText}>내 정보</Text>
             {/* 주차장 이용 현황에 대한 내용 */}
-          </View>
+          </TouchableOpacity>
         )}
       </View>
 
