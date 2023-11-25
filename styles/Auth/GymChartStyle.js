@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
         margin : '1%',
         backgroundColor: 'lightblue',
         justifyContent: 'center',
-        alignItems: 'center',
+        alignItems: 'center', 
     },
     buttonText: {
         fontSize : 20,
@@ -58,14 +58,14 @@ const styles = StyleSheet.create({
         backgroundColor : 'yellow'
     },
     imageContainer: {
-        alignItems: 'center',
-        marginTop: '5%',
-
+        alignItems: 'center', 
+        marginTop: '5%', 
+    
     },
     image: {
         resizeMode : "contain",
-        width: 200,
-        height: 200,
+        width: 200, 
+        height: 200, 
     },
 
 

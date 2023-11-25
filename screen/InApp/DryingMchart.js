@@ -396,7 +396,7 @@ const DryingMchartScreen = ({ navigation }) => {
             Alert.alert('예약 가능한 건조기가 없습니다.');
         }
     }
-};
+  };
   const handleColor = (machine, userEmail) => {
     const { reserveId, userId, available, reserve } = DryingMachines[machine];
     if (reserveId === userEmail && available) {

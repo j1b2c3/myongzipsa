@@ -73,16 +73,15 @@ export default function App() {
         //options={{headerShown : false}}
         />
         <Stack.Screen
-          name="QR코드"
-          component={QRScreen}
-        //options={{headerShown : false}}
-        />
-        <Stack.Screen
           name="헬스장"
           component={GymChartScreen}
         //options={{headerShown : false}}
         />
-
+        <Stack.Screen
+          name="QR코드"
+          component={QRScreen}
+        //options={{headerShown : false}}
+        />
       </Stack.Navigator>
     </NavigationContainer>
 

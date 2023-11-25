@@ -5,40 +5,47 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#fff',
         alignItems: 'center',
-        justifyContent: 'flex-start'
+        justifyContent: 'flex-start',
     },
-
-    titleContainer: {
+    specialContainer: {
         width: "100%",
-        height: "10%",
-        justifyContent: "center",
-        alignItems: "center",
-
+        height: "5%",
+        justifyContent: "space-evenly",
+        flexDirection: "row",
+        // backgroundColor: 'red',
     },
-
-    title: {
-        width: "40%",
+    mailButton: {
+        width: "50%",
         height: "100%",
-        resizeMode: 'contain'
-
+        alignItems: 'center',
+        margin : 10,
     },
-
-    titleText: {
-        fontSize: 40,
-        fontWeight: 'bold',
-        color: "skyblue"
+    iconMail:{
+        width: "20%",
+        height:"50%",
+        resizeMode: 'contain',
     },
-
+    qrButton: {
+        width: "50%",
+        height: "100%",
+        alignItems: 'center',
+        margin : 10,
+    },
+    iconQR: {
+        width: "20%",
+        height: "50%",
+        resizeMode: 'contain',
+    },
     zipsaContainer: {
         width: "100%",
-        height: "10%",
+        height: "20%",
         justifyContent: "center",
         alignItems: "center",
-
+        // backgroundColor: 'orange',
     },
 
     zipsa: {
-        fontSize: 10,
+        fontSize: 13,
         fontWeight: 'bold',
         color: "black"
     },
@@ -48,43 +55,48 @@ const styles = StyleSheet.create({
         height: "10%",
         justifyContent: "center",
         alignItems: "center",
-
+        // backgroundColor: 'yellow',
     },
-
+    useContainer:{
+        width: "100%",
+        height: "12%",
+        justifyContent: "center",
+        alignItems: "center",
+        // backgroundColor: 'blue',
+    },
     advert: {
         resizeMode: 'stretch',
-        width: "auto",
-        height: "auto",
-        backgroundColor: 'skyblue',
+        width: 415,
+        height: "100%",
+        // backgroundColor: 'skyblue',
     },
 
     usingContainer: {
-        width: "93%",
+        width: "100%",
         height: "8%",
         justifyContent: "space-evenly",
         flexDirection: "row",
-        //backgroundColor: 'skyblue',
     },
 
 
-    usingContainer2: {
-        width: "93%",
-        height: "13%",
-        justifyContent: "flex-start",
-        flexDirection: "row",
-        //borderWidth: 1,
-        borderRadius: 30,
-        borderColor: "gray",
-        backgroundColor: "#c8c8c8",
-        marginBottom: 35,
-        paddingTop: 10,
-        paddingBottom: 22,
-    },
+    // usingContainer2: {
+    //     width: "93%",
+    //     height: "15%",
+    //     justifyContent: "flex-start",
+    //     flexDirection: "row",
+    //     //borderWidth: 1,
+    //     borderRadius: 30,
+    //     borderColor: "gray",
+    //     backgroundColor: "#c8c8c8",
+    //     marginBottom: 35,
+    //     paddingTop: 10,
+    //     paddingBottom: 22,
+    // },
 
 
     firstButton: {
-        height: 50,
-        width: 60,
+        height: "90%",
+        width: "15%",
         justifyContent: "center",
         alignItems: "center",
         //borderWidth: 1,
@@ -96,8 +108,8 @@ const styles = StyleSheet.create({
     },
 
     secondButton: {
-        height: 50,
-        width: 60,
+        height: "90%",
+        width: "15%",
         justifyContent: "center",
         alignItems: "center",
         //borderWidth: 1,
@@ -109,8 +121,8 @@ const styles = StyleSheet.create({
     },
 
     thirdButton: {
-        height: 50,
-        width: 60,
+        height: "90%",
+        width: "15%",
         justifyContent: "center",
         alignItems: "center",
         //borderWidth: 1,
@@ -122,8 +134,8 @@ const styles = StyleSheet.create({
     },
 
     finalButton: {
-        height: 50,
-        width: 60,
+        height: "90%",
+        width: "15%",
         justifyContent: "center",
         alignItems: "center",
         //borderWidth: 1,
@@ -241,11 +253,45 @@ const styles = StyleSheet.create({
         height: 120,
     },
 
-    usageStatus: {
-        backgroundColor: '#eee',
+    usageStatusW: {
+        width: "85%",
+        height: "80%",
+        backgroundColor: "#c8c8c8",
         padding: 20,
         margin: 10,
         borderRadius: 10,
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    usageStatusD: {
+        width: "85%",
+        height: "80%",
+        backgroundColor: "#D7F1FA",
+        padding: 20,
+        margin: 10,
+        borderRadius: 10,
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    usageStatusG: {
+        width: "85%",
+        height: "80%",
+        backgroundColor: "#FFD9E4",
+        padding: 20,
+        margin: 10,
+        borderRadius: 10,
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    usageStatusP: {
+        width: "85%",
+        height: "80%",
+        backgroundColor: "#E6FFE6",
+        padding: 20,
+        margin: 10,
+        borderRadius: 10,
+        justifyContent: "center",
+        alignItems: "center",
     },
 
     usageText: {
