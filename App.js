@@ -25,7 +25,7 @@ import ChartScreen from "./screen/InApp/Chart";
 import Chart2Screen from "./screen/InApp/Chart2";
 import WashingMchartScreen from "./screen/InApp/WashingMchart";
 import DryingMchartScreen from "./screen/InApp/DryingMchart";
-//import QRScreen from "./screen/InApp/QRcode";
+import QRScreen from "./screen/InApp/QRcode";
 import GymChartScreen from "./screen/InApp/GymChart";
 
 export default function App() {
@@ -72,14 +72,14 @@ export default function App() {
           component={Chart2Screen}
         //options={{headerShown : false}}
         />
-        {/* <Stack.Screen
-          name="QR코드"
-          component={QRScreen}
-        //options={{headerShown : false}}
-        /> */}
         <Stack.Screen
           name="헬스장"
           component={GymChartScreen}
+        //options={{headerShown : false}}
+        />
+        <Stack.Screen
+          name="QR코드"
+          component={QRScreen}
         //options={{headerShown : false}}
         />
       </Stack.Navigator>
