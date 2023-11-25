@@ -82,7 +82,7 @@ export default function HomeScreen({ navigation }) {
         </View>
       )}
 
-      <View style={HomeStyle.iconContainer}>
+<View style={HomeStyle.iconContainer}>
         {/*세탁기*/}
         <TouchableOpacity style={HomeStyle.leftButton}
           onPress={() => navigation.navigate("세탁기", {
@@ -108,7 +108,10 @@ export default function HomeScreen({ navigation }) {
 
       <View style={HomeStyle.iconContainer2}>
         {/*헬스장*/}
-        <TouchableOpacity style={HomeStyle.leftButton}>
+        <TouchableOpacity style={HomeStyle.leftButton}
+          onPress={() => navigation.navigate("헬스장", {
+            pageName: "헬스장"
+          })}>
           <Image style={HomeStyle.icon2}
             source={require("../../img/icon_gym.jpg")} />
           <Text>헬스장</Text>
