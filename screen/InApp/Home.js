@@ -25,7 +25,13 @@ export default function HomeScreen({ navigation }) {
   return (
     <SafeAreaView style={HomeStyle.container}>
       <StatusBar />
-
+      <View style = {HomeStyle.specialContainer}>
+        {/* <TouchableOpactiy style = {HomeStyle.mailButton}>
+        <Image style={HomeStyle.icon}
+            source={require("../../img/icon_mail_.png")} /> */}
+          <Text>쪽지함</Text>
+        {/* </TouchableOpactiy> */}
+      </View>
       {/* 명집사의 특색 */}
       <View style={HomeStyle.zipsaContainer}>
         <Text style={HomeStyle.zipsa}>안녕하세요 명집사입니다. </Text>
@@ -54,34 +60,36 @@ export default function HomeScreen({ navigation }) {
         </TouchableOpacity>
       </View>
 
-      {/* 각 버튼에 따른 사용 및 이용 현황 */}
-      {(selectedButton === '세탁기') && (
-        <View style={HomeStyle.usageStatus}>
-          <Text style={HomeStyle.usageText}>세탁기 사용 현황</Text>
-          {/* 세탁기 사용 현황에 대한 내용 */}
-        </View>
-      )}
+      <View style = {HomeStyle.useContainer}>
+        {/* 각 버튼에 따른 사용 및 이용 현황 */}
+        {(selectedButton === '세탁기') && (
+          <View style={HomeStyle.usageStatus}>
+            <Text style={HomeStyle.usageText}>세탁기 사용 현황</Text>
+            {/* 세탁기 사용 현황에 대한 내용 */}
+          </View>
+        )}
 
-      {(selectedButton === '건조기') && (
-        <View style={HomeStyle.usageStatus}>
-          <Text style={HomeStyle.usageText}>건조기 사용 현황</Text>
-          {/* 건조기 사용 현황에 대한 내용 */}
-        </View>
-      )}
+        {(selectedButton === '건조기') && (
+          <View style={HomeStyle.usageStatus}>
+            <Text style={HomeStyle.usageText}>건조기 사용 현황</Text>
+            {/* 건조기 사용 현황에 대한 내용 */}
+          </View>
+        )}
 
-      {(selectedButton === '헬스장') && (
-        <View style={HomeStyle.usageStatus}>
-          <Text style={HomeStyle.usageText}>헬스장 이용 현황</Text>
-          {/* 헬스장 이용 현황에 대한 내용 */}
-        </View>
-      )}
+        {(selectedButton === '헬스장') && (
+          <View style={HomeStyle.usageStatus}>
+            <Text style={HomeStyle.usageText}>헬스장 이용 현황</Text>
+            {/* 헬스장 이용 현황에 대한 내용 */}
+          </View>
+        )}
 
-      {(selectedButton === '주차장') && (
-        <View style={HomeStyle.usageStatus}>
-          <Text style={HomeStyle.usageText}>주차장 이용 현황</Text>
-          {/* 주차장 이용 현황에 대한 내용 */}
-        </View>
-      )}
+        {(selectedButton === '주차장') && (
+          <View style={HomeStyle.usageStatus}>
+            <Text style={HomeStyle.usageText}>주차장 이용 현황</Text>
+            {/* 주차장 이용 현황에 대한 내용 */}
+          </View>
+        )}
+      </View>
 
       <View style={HomeStyle.iconContainer}>
         {/*세탁기*/}

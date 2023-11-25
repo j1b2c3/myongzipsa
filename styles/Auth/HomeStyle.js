@@ -5,36 +5,21 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#fff',
         alignItems: 'center',
-        justifyContent: 'flex-start'
+        justifyContent: 'flex-start',
     },
-
-    titleContainer: {
+    specialContainer: {
         width: "100%",
-        height: "10%",
+        height: "5%",
         justifyContent: "center",
         alignItems: "center",
-
+        // backgroundColor: 'red',
     },
-
-    title: {
-        width: "40%",
-        height: "100%",
-        resizeMode: 'contain'
-
-    },
-
-    titleText: {
-        fontSize: 40,
-        fontWeight: 'bold',
-        color: "skyblue"
-    },
-
     zipsaContainer: {
         width: "100%",
-        height: "10%",
+        height: "20%",
         justifyContent: "center",
         alignItems: "center",
-
+        // backgroundColor: 'orange',
     },
 
     zipsa: {
@@ -48,38 +33,44 @@ const styles = StyleSheet.create({
         height: "10%",
         justifyContent: "center",
         alignItems: "center",
-
+        // backgroundColor: 'yellow',
     },
-
+    useContainer:{
+        width: "100%",
+        height: "12%",
+        justifyContent: "center",
+        alignItems: "center",
+        // backgroundColor: 'blue',
+    },
     advert: {
         resizeMode: 'stretch',
-        width: "auto",
-        height: "auto",
-        backgroundColor: 'skyblue',
+        width: 415,
+        height: "100%",
+        // backgroundColor: 'skyblue',
     },
 
     usingContainer: {
-        width: "93%",
+        width: "100%",
         height: "8%",
         justifyContent: "space-evenly",
         flexDirection: "row",
-        //backgroundColor: 'skyblue',
+        
     },
 
 
-    usingContainer2: {
-        width: "93%",
-        height: "13%",
-        justifyContent: "flex-start",
-        flexDirection: "row",
-        //borderWidth: 1,
-        borderRadius: 30,
-        borderColor: "gray",
-        backgroundColor: "#c8c8c8",
-        marginBottom: 35,
-        paddingTop: 10,
-        paddingBottom: 22,
-    },
+    // usingContainer2: {
+    //     width: "93%",
+    //     height: "15%",
+    //     justifyContent: "flex-start",
+    //     flexDirection: "row",
+    //     //borderWidth: 1,
+    //     borderRadius: 30,
+    //     borderColor: "gray",
+    //     backgroundColor: "#c8c8c8",
+    //     marginBottom: 35,
+    //     paddingTop: 10,
+    //     paddingBottom: 22,
+    // },
 
 
     firstButton: {
