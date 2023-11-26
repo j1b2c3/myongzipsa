@@ -25,26 +25,26 @@ export default function HomeScreen({ navigation }) {
   return (
     <SafeAreaView style={HomeStyle.container}>
       <StatusBar />
-      <View style = {HomeStyle.specialContainer}>
-        <TouchableOpacity style = {HomeStyle.mailButton}>
+      <View style={HomeStyle.specialContainer}>
+        <TouchableOpacity style={HomeStyle.mailButton}>
           <Image style={HomeStyle.iconMail}
-              source={require("../../img/icon_mail_.png")}/>
-            <Text>쪽지함</Text>
+            source={require("../../img/icon_mail_.png")} />
+          <Text>쪽지함</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={HomeStyle.qrButton}
           onPress={() => navigation.navigate("QR코드", {
             pageName: "QR코드"
           })}>
-            <Image style={HomeStyle.iconQR}
-              source={require("../../img/icon_qr.png")}/>
+          <Image style={HomeStyle.iconQR}
+            source={require("../../img/icon_qr.png")} />
           <Text>QR코드</Text>
         </TouchableOpacity>
       </View>
       {/* 명집사의 특색 */}
       <View style={HomeStyle.zipsaContainer}>
         <Text style={HomeStyle.zipsa}>안녕하세요 명집사입니다. </Text>
-        <Text style={HomeStyle.zipsa}>{name}님 오늘도 좋은 아침입니다.</Text>
+        <Text style={HomeStyle.zipsa}>{name}님 오늘도 좋은 하루입니다.</Text>
         <Text style={HomeStyle.zipsa}>무엇을 도와드릴까요?</Text>
       </View>
 
@@ -67,7 +67,7 @@ export default function HomeScreen({ navigation }) {
 
       </View>
 
-      <View style = {HomeStyle.useContainer}>
+      <View style={HomeStyle.useContainer}>
         {/* 각 버튼에 따른 사용 및 이용 현황 */}
         {(selectedButton === '세탁기') && (
           <TouchableOpacity style={HomeStyle.usageStatusW}>
@@ -98,7 +98,7 @@ export default function HomeScreen({ navigation }) {
         )}
       </View>
 
-<View style={HomeStyle.iconContainer}>
+      <View style={HomeStyle.iconContainer}>
         {/*세탁기*/}
         <TouchableOpacity style={HomeStyle.leftButton}
           onPress={() => navigation.navigate("세탁기", {
