@@ -18,18 +18,18 @@ const styles = StyleSheet.create({
         width: "50%",
         height: "100%",
         alignItems: 'center',
-        margin : 10,
+        margin: 10,
     },
-    iconMail:{
+    iconMail: {
         width: "20%",
-        height:"50%",
+        height: "50%",
         resizeMode: 'contain',
     },
     qrButton: {
         width: "50%",
         height: "100%",
         alignItems: 'center',
-        margin : 10,
+        margin: 10,
     },
     iconQR: {
         width: "20%",
@@ -45,11 +45,19 @@ const styles = StyleSheet.create({
     },
 
     zipsa: {
-        fontSize: 13,
+        fontSize: 11,
         fontWeight: 'bold',
-        color: "black"
+        color: "black",
+        paddingLeft: 90,
+        padding: 5
     },
-
+    overlayImage: {
+        position: 'absolute',
+        width: '100%',
+        height: '95%',
+        resizeMode: 'contain',
+        opacity: 0.6,
+    },
     advContainer: {
         width: "100%",
         height: "10%",
@@ -57,7 +65,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         // backgroundColor: 'yellow',
     },
-    useContainer:{
+    useContainer: {
         width: "100%",
         height: "12%",
         justifyContent: "center",
@@ -299,6 +307,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginBottom: 10,
     },
+
 
 });
 
