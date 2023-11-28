@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { Text, View, TouchableOpacity, Alert } from 'react-native';
+import React, { useState, useEffect, createRef } from "react";
+import {Text, View, TouchableOpacity, Alert} from 'react-native';
+import { auth, database } from '../../javascripts/FirebaseConfigFile';
 
 // 스타일 import
 import GymChartStyle from '../../styles/Auth/GymChartStyle';
@@ -8,6 +9,16 @@ const GymChartScreen = () => {
     const [totalCapacity, setTotalCapacity] = useState(50);
     const [currentUsers, setCurrentUsers] = useState(0);
     const [userQueue, setUserQueue] = useState([]);
+
+    useEffect(() => {
+        const gymRef = database.ref('Gym');
+        gymRef.on('value', (snapshot) => {
+            const data = snapshot.val();
+            setCurrentUsers(data?.currentUserCnt || 0);
+        });
+
+        return () => gymRef.off();
+    }, []);
 
     const startUsage = () => {
         if (currentUsers < totalCapacity) {
@@ -19,12 +30,20 @@ const GymChartScreen = () => {
                     {
                         text: "확인",
                         onPress: () => {
-                            if (!userQueue.includes("start")) {
-                                setCurrentUsers(currentUsers + 1);
-                                setUserQueue([...userQueue, "start"]);
-                            } else {
-                                alert("이미 이용 중입니다.");
-                            }
+                            const userKey = auth.currentUser.email.replace(/[.$#[\]/]/g, "_");
+                            database.ref('Gym').child('userId').child(userKey).once('value', snapshot => {
+                                if (snapshot.exists()) {
+                                    alert("이미 이용 중입니다.");
+                                } else {
+                                    setCurrentUsers(currentUsers + 1);
+                                    setUserQueue([...userQueue, auth.currentUser.email]);
+
+                                    database.ref('Gym').update({
+                                        currentUserCnt: currentUsers + 1,
+                                        [`userId/${userKey}`]: true
+                                    });
+                                }
+                            });
                         }
                     }
                 ],
@@ -45,12 +64,22 @@ const GymChartScreen = () => {
                     {
                         text: "확인",
                         onPress: () => {
-                            if (!userQueue.includes("end")) {
-                                setCurrentUsers(currentUsers - 1);
-                                setUserQueue([...userQueue, "end"]);
-                            } else {
-                                alert("이미 종료했습니다.");
-                            }
+                            const userKey = auth.currentUser.email.replace(/[.$#[\]/]/g, "_");
+                            database.ref('Gym').child('userId').child(userKey).once('value', snapshot => {
+                                if (!snapshot.exists()) {
+                                    alert("이미 종료했습니다.");
+                                } else {
+                                    setCurrentUsers(currentUsers - 1);
+
+                                    const newUserQueue = userQueue.filter(queue => queue !== auth.currentUser.email);
+                                    setUserQueue(newUserQueue);
+
+                                    database.ref('Gym').update({
+                                        currentUserCnt: currentUsers - 1,
+                                        [`userId/${userKey}`]: null
+                                    });
+                                }
+                            });
                         }
                     }
                 ],
@@ -60,8 +89,6 @@ const GymChartScreen = () => {
             alert("이용 중인 사람이 없습니다!");
         }
     };
-
-
     return (
         <View style={GymChartStyle.container}>
             <View style={GymChartStyle.noticeBox}>
@@ -90,7 +117,7 @@ const GymChartScreen = () => {
 
             {/* <View style={GymChartStyle.imageContainer}>
                 <Image
-                    source={require('../../img/icon_gym.jpg')} 
+                    source={require('../../img/icon_gym.jpg')}
                     style={GymChartStyle.image}
                 />
             </View> */}
