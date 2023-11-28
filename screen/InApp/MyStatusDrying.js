@@ -11,7 +11,7 @@ const fetchStatus = async (type, userIdSetter, completionTimeSetter) => {
     if (userId) {
         const field = type === 'usage' ? 'userId' : 'reserveId';
         const snapshot = await database
-            .ref('washingMachines')
+            .ref('dryingMachines')
             .orderByChild(field)
             .equalTo(userId)
             .once('value');
@@ -44,29 +44,7 @@ const fetchStatus = async (type, userIdSetter, completionTimeSetter) => {
     }
 };
 
-const cancelReservation = (machineNumber) => {
-    database.ref(`washingMachines/${machineNumber}`).transaction(
-        (machine) => {
-            if (machine && machine.reserveId === userEmail) {
-                machine.reserve = true;
-                machine.reserveId = '';
-                machine.reservationTime = null;
-            }
-            return machine;
-        },
-        (error, committed) => {
-            if (error) {
-                Alert.alert('예약 취소에 실패하였습니다.');
-            } else if (committed) {
-                Alert.alert(`${machineNumber}번 세탁기 예약이 취소되었습니다.`);
-            } else {
-                Alert.alert('예약 취소에 실패하였습니다.');
-            }
-        }
-    );
-};
-
-const StatusW = () => {
+const StatusD = () => {
     const UsageStatus = () => {
         const [machineNumber, setMachineNumber] = useState(null);
         const [completionTime, setCompletionTime] = useState(null);
@@ -92,18 +70,18 @@ const StatusW = () => {
                     <View style={UsageStatusStyle.section}>
                         <Text style={UsageStatusStyle.statusText}>
                             {machineNumber
-                                ? `${machineNumber}번 세탁기 사용중`
-                                : '사용중인 세탁기 없음'}
+                                ? `${machineNumber}번 건조기 사용중`
+                                : '사용중인 건조기 없음'}
                         </Text>
                     </View>
 
                     <View style={UsageStatusStyle.section}>
-                        <Text style={UsageStatusStyle.sectionTitle}>세탁완료시간 : </Text>
+                        <Text style={UsageStatusStyle.sectionTitle}>건조 완료시간 : </Text>
                         <Text style={UsageStatusStyle.infoText}>{completionTime}</Text>
                     </View>
 
                     <View style={UsageStatusStyle.section}>
-                        <Text style={UsageStatusStyle.sectionTitle}>세탁남은시간 : </Text>
+                        <Text style={UsageStatusStyle.sectionTitle}>건조 남은시간 : </Text>
                         <Text style={UsageStatusStyle.infoText}>{remainingTime}</Text>
                     </View>
                 </View>
@@ -135,8 +113,8 @@ const StatusW = () => {
                     <View style={ReservationStatusStyle.section}>
                         <Text style={ReservationStatusStyle.statusText}>
                             {machineNumber
-                                ? `${machineNumber}번 세탁기 예약중`
-                                : '예약중인 세탁기 없음'}
+                                ? `${machineNumber}번 건조기 예약중`
+                                : '예약중인 건조기 없음'}
                         </Text>
                     </View>
 
@@ -149,26 +127,12 @@ const StatusW = () => {
 
                     <TouchableOpacity
                         style={ReservationStatusStyle.cancelButton}
-                        onPress={Alert.alert(
-                            `세탁기 ${machineNumber}번`,
-                            `예약 중입니다. 예약을 취소하시겠습니까?`,
-                            [
-                                {
-                                    text: '예',
-                                    onPress: () => cancelUsing(machineNumber),
-                                },
-                                {
-                                    text: '아니오',
-                                    onPress: () => console.log('취소'),
-                                    style: 'cancel',
-                                },
-                            ]
-                        )
-                        }>
+                    // onPress={예약취소}
+                    >
                         <Text style={ReservationStatusStyle.buttonText}>예약 취소</Text>
                     </TouchableOpacity>
                 </View>
-            </View >
+            </View>
         );
     };
 
@@ -180,4 +144,4 @@ const StatusW = () => {
     );
 };
 
-export default StatusW;
+export default StatusD;
