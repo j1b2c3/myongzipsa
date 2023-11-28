@@ -102,12 +102,12 @@ const StatusW = () => {
                     </View>
 
                     <View style={UsageStatusStyle.section}>
-                        <Text style={UsageStatusStyle.sectionTitle}>세탁완료시간 : </Text>
+                        <Text style={UsageStatusStyle.sectionTitle}>세탁완료시간 :</Text>
                         <Text style={UsageStatusStyle.infoText}>{completionTime}</Text>
                     </View>
 
                     <View style={UsageStatusStyle.section}>
-                        <Text style={UsageStatusStyle.sectionTitle}>세탁남은시간 : </Text>
+                        <Text style={UsageStatusStyle.sectionTitle}>세탁남은시간 :</Text>
                         <Text style={UsageStatusStyle.infoText}>{remainingTime}</Text>
                     </View>
                 </View>
@@ -147,7 +147,7 @@ const StatusW = () => {
 
                     <View style={ReservationStatusStyle.section}>
                         <Text style={ReservationStatusStyle.sectionTitle}>
-                            예약된 시간 :{' '}
+                            예약된 시간 :{''}
                         </Text>
                         <Text style={ReservationStatusStyle.infoText}>{completionTime}</Text>
                     </View>

@@ -19,7 +19,7 @@ const UsageStatusStyle = StyleSheet.create({
         borderRadius: 10,
         borderColor: '#ccc',
         padding: 10,
-        backgroundColor:'white',
+        backgroundColor: 'white',
     },
 
     section: {
@@ -34,7 +34,6 @@ const UsageStatusStyle = StyleSheet.create({
     statusText: {
         fontSize: 24,
         fontWeight: 'bold',
-        textDecorationLine: 'underline',
         //backgroundColor: '#ccc', 
         //borderWidth: 2,
         //borderRadius: 3, 
@@ -44,8 +43,7 @@ const UsageStatusStyle = StyleSheet.create({
     infoText: {
         fontSize: 20,
         //backgroundColor: '#FFD700',
-        textDecorationLine: 'underline',
-        borderRadius: 10, 
+        borderRadius: 10,
     },
 });
 
