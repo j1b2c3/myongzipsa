@@ -4,168 +4,144 @@ import UsageStatusStyle from '../../styles/Auth/UsageStatusStyle';
 import ReservationStatusStyle from '../../styles/Auth/ReservationStatusStyle';
 import { auth, database } from '../../javascripts/FirebaseConfigFile';
 
-const UsageStatus = () => {
-    const [machineNumber, setMachineNumber] = useState(null);
-    const [completionTime, setCompletionTime] = useState(null);
-    const [remainingTime, setRemainingTime] = useState(null);
+const fetchStatus = async (type, userIdSetter, completionTimeSetter) => {
+    const user = auth.currentUser;
+    const userId = user ? user.email : null;
 
-    useEffect(() => {
-        const fetchLaundryStatus = async () => {
-            const user = auth.currentUser;
-            const userId = user ? user.email : null;
+    if (userId) {
+        const field = type === 'usage' ? 'userId' : 'reserveId';
+        const snapshot = await database
+            .ref('washingMachines')
+            .orderByChild(field)
+            .equalTo(userId)
+            .once('value');
 
-            if (userId) {
-                const snapshot = await database
-                    .ref('washingMachines')
-                    .orderByChild('userId')
-                    .equalTo(userId)
-                    .once('value');
+        if (snapshot.exists()) {
+            snapshot.forEach((machineSnapshot) => {
+                const machineData = machineSnapshot.val();
+                const machineKey = machineSnapshot.key;
 
-                if (snapshot.exists()) {
-                    snapshot.forEach((machineSnapshot) => {
-                        const machineData = machineSnapshot.val();
-                        const machineKey = machineSnapshot.key;
+                if (machineData[field] === userId) {
+                    userIdSetter(machineKey);
 
-                        if (machineData.userId === userId) {
-                            setMachineNumber(machineKey);
+                    const currentTime = new Date();
+                    const remainingTimeFromDB = machineData.remainingTime;
+                    const completionTimeDate = new Date(
+                        currentTime.getTime() + remainingTimeFromDB * 60 * 1000
+                    );
 
-                            const currentTime = new Date();
-                            const remainingTimeFromDB = machineData.remainingTime;
-                            const completionTimeDate = new Date(
-                                currentTime.getTime() + remainingTimeFromDB * 60 * 1000
-                            );
+                    completionTimeSetter(
+                        `${completionTimeDate.getHours()}시 ${completionTimeDate.getMinutes()}분`
+                    );
 
-                            setCompletionTime(
-                                `${completionTimeDate.getHours()}시 ${completionTimeDate.getMinutes()}분`
-                            );
-                            setRemainingTime(`${remainingTimeFromDB}분`);
-
-                            return;
-                        }
-                    });
-                } else {
-                    setMachineNumber(null);
-                    setCompletionTime(null);
-                    setRemainingTime(null);
+                    return;
                 }
-            }
-
-            const refreshInterval = 10 * 1000;
-            const refreshTimeout = setTimeout(() => {
-                fetchLaundryStatus();
-            }, refreshInterval);
-
-            return () => clearTimeout(refreshTimeout);
-        };
-
-        fetchLaundryStatus();
-    }, []);
-
-    return (
-        <View style={UsageStatusStyle.container}>
-            <View style={UsageStatusStyle.subContainer}>
-                <View style={UsageStatusStyle.section}>
-                    <Text style={UsageStatusStyle.statusText}>
-                        {machineNumber
-                            ? `${machineNumber}번 세탁기 사용중`
-                            : '사용중인 세탁기 없음'}
-                    </Text>
-                </View>
-
-                <View style={UsageStatusStyle.section}>
-                    <Text style={UsageStatusStyle.sectionTitle}>세탁완료시간 : </Text>
-                    <Text style={UsageStatusStyle.infoText}>{completionTime}</Text>
-                </View>
-
-                <View style={UsageStatusStyle.section}>
-                    <Text style={UsageStatusStyle.sectionTitle}>세탁남은시간 : </Text>
-                    <Text style={UsageStatusStyle.infoText}>{remainingTime}</Text>
-                </View>
-            </View>
-        </View>
-    );
+            });
+        } else {
+            userIdSetter(null);
+            completionTimeSetter(null);
+        }
+    }
 };
 
-const ReservationStatus = () => {
-    const [machineNumber, setMachineNumber] = useState(null);
-    const [completionTime, setCompletionTime] = useState(null);
+const StatusW = () => {
+    const UsageStatus = () => {
+        const [machineNumber, setMachineNumber] = useState(null);
+        const [completionTime, setCompletionTime] = useState(null);
+        const [remainingTime, setRemainingTime] = useState(null);
 
-    useEffect(() => {
-        const fetchReserveStatus = async () => {
-            const user = auth.currentUser;
-            const userId = user ? user.email : null;
+        useEffect(() => {
+            const fetchLaundryStatus = async () => {
+                await fetchStatus('usage', setMachineNumber, setCompletionTime);
 
-            if (userId) {
-                const snapshot = await database
-                    .ref('washingMachines')
-                    .orderByChild('reserveId')
-                    .equalTo(userId)
-                    .once('value');
+                const refreshInterval = setInterval(async () => {
+                    await fetchStatus('usage', setMachineNumber, setCompletionTime);
+                }, 10 * 1000);
 
-                if (snapshot.exists()) {
-                    snapshot.forEach((machineSnapshot) => {
-                        const machineData = machineSnapshot.val();
-                        const machineKey = machineSnapshot.key;
+                return () => clearInterval(refreshInterval);
+            };
 
-                        if (machineData.reserveId === userId) {
-                            setMachineNumber(machineKey);
+            fetchLaundryStatus();
+        }, []);
 
-                            const currentTime = new Date();
-                            const remainingTimeFromDB = machineData.remainingTime;
-                            const completionTimeDate = new Date(
-                                currentTime.getTime() + remainingTimeFromDB * 60 * 1000
-                            );
+        return (
+            <View style={UsageStatusStyle.container}>
+                <View style={UsageStatusStyle.subContainer}>
+                    <View style={UsageStatusStyle.section}>
+                        <Text style={UsageStatusStyle.statusText}>
+                            {machineNumber
+                                ? `${machineNumber}번 세탁기 사용중`
+                                : '사용중인 세탁기 없음'}
+                        </Text>
+                    </View>
 
-                            setCompletionTime(
-                                `${completionTimeDate.getHours()}시 ${completionTimeDate.getMinutes()}분`
-                            );
+                    <View style={UsageStatusStyle.section}>
+                        <Text style={UsageStatusStyle.sectionTitle}>세탁완료시간 : </Text>
+                        <Text style={UsageStatusStyle.infoText}>{completionTime}</Text>
+                    </View>
 
-                            return;
-                        }
-                    });
-                } else {
-                    setMachineNumber(null);
-                    setCompletionTime(null);
-                }
-            }
-        };
+                    <View style={UsageStatusStyle.section}>
+                        <Text style={UsageStatusStyle.sectionTitle}>세탁남은시간 : </Text>
+                        <Text style={UsageStatusStyle.infoText}>{remainingTime}</Text>
+                    </View>
+                </View>
+            </View>
+        );
+    };
 
-        fetchReserveStatus();
+    const ReservationStatus = () => {
+        const [machineNumber, setMachineNumber] = useState(null);
+        const [completionTime, setCompletionTime] = useState(null);
 
-        const refreshInterval = setInterval(() => {
+        useEffect(() => {
+            const fetchReserveStatus = async () => {
+                await fetchStatus('reserve', setMachineNumber, setCompletionTime);
+
+                const refreshInterval = setInterval(async () => {
+                    await fetchStatus('reserve', setMachineNumber, setCompletionTime);
+                }, 10 * 1000);
+
+                return () => clearInterval(refreshInterval);
+            };
+
             fetchReserveStatus();
-        }, 10 * 1000);
+        }, []);
 
-        return () => clearInterval(refreshInterval);
-    }, []);
+        return (
+            <View style={ReservationStatusStyle.container}>
+                <View style={ReservationStatusStyle.subContainer}>
+                    <View style={ReservationStatusStyle.section}>
+                        <Text style={ReservationStatusStyle.statusText}>
+                            {machineNumber
+                                ? `${machineNumber}번 세탁기 예약중`
+                                : '예약중인 세탁기 없음'}
+                        </Text>
+                    </View>
+
+                    <View style={ReservationStatusStyle.section}>
+                        <Text style={ReservationStatusStyle.sectionTitle}>
+                            예약된 시간 :{' '}
+                        </Text>
+                        <Text style={ReservationStatusStyle.infoText}>{completionTime}</Text>
+                    </View>
+
+                    <TouchableOpacity
+                        style={ReservationStatusStyle.cancelButton}
+                    // onPress={예약취소}
+                    >
+                        <Text style={ReservationStatusStyle.buttonText}>예약 취소</Text>
+                    </TouchableOpacity>
+                </View>
+            </View>
+        );
+    };
 
     return (
-        <View style={ReservationStatusStyle.container}>
-            <View style={ReservationStatusStyle.subContainer}>
-                <View style={ReservationStatusStyle.section}>
-                    <Text style={ReservationStatusStyle.statusText}>
-                        {machineNumber
-                            ? `${machineNumber}번 세탁기 예약중`
-                            : '예약중인 세탁기 없음'}
-                    </Text>
-                </View>
-
-                <View style={ReservationStatusStyle.section}>
-                    <Text style={ReservationStatusStyle.sectionTitle}>
-                        예약된 시간 :{' '}
-                    </Text>
-                    <Text style={ReservationStatusStyle.infoText}>{completionTime}</Text>
-                </View>
-
-                <TouchableOpacity
-                    style={ReservationStatusStyle.cancelButton}
-                // onPress={예약취소}
-                >
-                    <Text style={ReservationStatusStyle.buttonText}>예약 취소</Text>
-                </TouchableOpacity>
-            </View>
+        <View>
+            <UsageStatus />
+            <ReservationStatus />
         </View>
     );
 };
 
-export { UsageStatus, ReservationStatus };
+export default StatusW;

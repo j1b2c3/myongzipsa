@@ -3,6 +3,7 @@ import { Text, View, TouchableOpacity, Image, StatusBar, SafeAreaView } from 're
 import { auth, database } from '../../javascripts/FirebaseConfigFile';
 import HomeStyle from "../../styles/Auth/HomeStyle";
 import ChartScreen from "../InApp/Chart";
+import { ReservationStatus, UsageStatus } from "./MyStatusWashing";
 
 
 export default function HomeScreen({ navigation }) {
@@ -70,7 +71,7 @@ export default function HomeScreen({ navigation }) {
       <View style={HomeStyle.useContainer}>
         {/* 각 버튼에 따른 사용 및 이용 현황 */}
         {(selectedButton === '세탁기') && (
-          <TouchableOpacity style={HomeStyle.usageStatusW}>
+          <TouchableOpacity style={HomeStyle.usageStatusW} onPress={() => navigation.navigate('세탁기 정보')}>
             <Text style={HomeStyle.usageText}>내 정보</Text>
             {/* 세탁기 사용 현황에 대한 내용 */}
           </TouchableOpacity>

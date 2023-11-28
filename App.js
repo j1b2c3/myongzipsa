@@ -28,6 +28,8 @@ import DryingMchartScreen from "./screen/InApp/DryingMchart";
 import QRScreen from "./screen/InApp/QRcode";
 import GymChartScreen from "./screen/InApp/GymChart";
 
+import StatusW from "./screen/InApp/MyStatusWashing";
+
 export default function App() {
   return (
     <NavigationContainer>
@@ -60,7 +62,7 @@ export default function App() {
         <Stack.Screen
           name="명집사"
           component={HomeScreen}
-          //options={{ headerShown: false }}
+        //options={{ headerShown: false }}
         />
         <Stack.Screen
           name="세탁기"
@@ -80,6 +82,11 @@ export default function App() {
         <Stack.Screen
           name="QR코드"
           component={QRScreen}
+        //options={{headerShown : false}}
+        />
+        <Stack.Screen
+          name="세탁기 정보"
+          component={StatusW}
         //options={{headerShown : false}}
         />
       </Stack.Navigator>
