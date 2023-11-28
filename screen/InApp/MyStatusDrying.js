@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Alert } from 'react-native';
 import UsageStatusStyle from '../../styles/Auth/UsageStatusStyle';
 import ReservationStatusStyle from '../../styles/Auth/ReservationStatusStyle';
 import { auth, database } from '../../javascripts/FirebaseConfigFile';

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Alert } from 'react-native';
 import UsageStatusStyle from '../../styles/Auth/UsageStatusStyle';
 import ReservationStatusStyle from '../../styles/Auth/ReservationStatusStyle';
 import { auth, database } from '../../javascripts/FirebaseConfigFile';
@@ -47,7 +47,7 @@ const fetchStatus = async (type, userIdSetter, completionTimeSetter) => {
 const cancelReservation = (machineNumber) => {
     database.ref(`washingMachines/${machineNumber}`).transaction(
         (machine) => {
-            if (machine && machine.reserveId === userEmail) {
+            if (machine) {
                 machine.reserve = true;
                 machine.reserveId = '';
                 machine.reservationTime = null;
@@ -149,35 +149,37 @@ const StatusW = () => {
 
                     <TouchableOpacity
                         style={ReservationStatusStyle.cancelButton}
-                        onPress={Alert.alert(
-                            `세탁기 ${machineNumber}번`,
-                            `예약 중입니다. 예약을 취소하시겠습니까?`,
-                            [
-                                {
-                                    text: '예',
-                                    onPress: () => cancelUsing(machineNumber),
-                                },
-                                {
-                                    text: '아니오',
-                                    onPress: () => console.log('취소'),
-                                    style: 'cancel',
-                                },
-                            ]
-                        )
-                        }>
+                        onPress={() => {
+                            Alert.alert(
+                                `세탁기 ${machineNumber}번`,
+                                `예약 중입니다. 예약을 취소하시겠습니까?`,
+                                [
+                                    {
+                                        text: '예',
+                                        onPress: () => cancelReservation(machineNumber),
+                                    },
+                                    {
+                                        text: '아니오',
+                                        onPress: () => console.log('취소'),
+                                        style: 'cancel',
+                                    },
+                                ]
+                            );
+                        }}>
                         <Text style={ReservationStatusStyle.buttonText}>예약 취소</Text>
                     </TouchableOpacity>
+
                 </View>
             </View >
         );
     };
 
     return (
-        <View style = {UsageStatusStyle.container1}>
-            <View style = {UsageStatusStyle.container2}>
+        <View style={UsageStatusStyle.container1}>
+            <View style={UsageStatusStyle.container2}>
                 <UsageStatus />
             </View>
-            <View style = {UsageStatusStyle.container2}>
+            <View style={UsageStatusStyle.container2}>
                 <ReservationStatus />
             </View>
         </View>
