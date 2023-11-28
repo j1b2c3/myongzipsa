@@ -7,7 +7,7 @@ const ReservationStatusStyle = StyleSheet.create({
 
     },
     subContainer: {
-        height: "28%",
+        height: "80%",
         marginBottom: 20,
         borderWidth: 3,
         borderRadius: 10,

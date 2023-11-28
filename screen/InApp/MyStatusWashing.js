@@ -173,9 +173,13 @@ const StatusW = () => {
     };
 
     return (
-        <View>
-            <UsageStatus />
-            <ReservationStatus />
+        <View style = {UsageStatusStyle.container1}>
+            <View style = {UsageStatusStyle.container2}>
+                <UsageStatus />
+            </View>
+            <View style = {UsageStatusStyle.container2}>
+                <ReservationStatus />
+            </View>
         </View>
     );
 };

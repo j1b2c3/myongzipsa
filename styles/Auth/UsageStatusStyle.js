@@ -4,10 +4,16 @@ const UsageStatusStyle = StyleSheet.create({
     container: {
         flex: 1,
         padding: 20,
-
+    },
+    container1: {
+        flex: 1,
+    },
+    container2: {
+        width: "100%",
+        height: "40%",
     },
     subContainer: {
-        height: "28%",
+        height: "80%",
         marginBottom: 20,
         borderWidth: 3,
         borderRadius: 10,

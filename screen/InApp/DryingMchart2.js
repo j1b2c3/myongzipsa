@@ -82,7 +82,7 @@ const DryingMchart2Screen = ({ navigation }) => {
         ) {
             // 이미 다른 사람이 예약중인 경우 알림 표시
             Alert.alert(
-                `이미 다른 사용자가 예약중입니다. \n남은 시간: ${dryingMachines[machineNumber].remainingTime} 분`
+                `이미 다른 사용자가 예약중입니다. \n남은 시간: ${dryingMachines[machineNumber].remainingTime}분`
             );
         } else if (
             DryingMachines[machineNumber].reserveId === userEmail &&
@@ -172,11 +172,11 @@ const DryingMchart2Screen = ({ navigation }) => {
                             .transaction((machine) => {
                                 if (machine && machine.remainingTime > 0) {
                                     if (
-                                        machine.remainingTime <= 5 &&
+                                        machine.remainingTime == 5 &&
                                         machine.userId === userEmail
                                     ) {
                                         Alert.alert(
-                                            `${machineNumber}번 건조기 남은 시간: ${machine.remainingTime}분. (5분 이하)`
+                                            `${machineNumber}번 건조기 5분 남았습니다.`
                                         );
                                     }
                                     machine.remainingTime--;
@@ -243,11 +243,11 @@ const DryingMchart2Screen = ({ navigation }) => {
                                 if (machine && machine.remainingTime > 0) {
                                     machine.remainingTime--;
                                     if (
-                                        machine.remainingTime <= 5 &&
+                                        machine.remainingTime == 5 &&
                                         machine.reserveId === reserveId
                                     ) {
                                         Alert.alert(
-                                            `${machineNumber}번 건조기 남은 시간: ${machine.remainingTime}분. (5분 이하)`
+                                            `${machineNumber}번 건조기 5분 남았습니다.`
                                         );
                                     }
                                 } else if (machine && machine.remainingTime === 0) {
