@@ -4,7 +4,7 @@ import UsageStatusStyle from '../../styles/Auth/UsageStatusStyle';
 import ReservationStatusStyle from '../../styles/Auth/ReservationStatusStyle';
 import { auth, database } from '../../javascripts/FirebaseConfigFile';
 
-const fetchStatus = async (type, userIdSetter, completionTimeSetter) => {
+const fetchStatus = async (type, userIdSetter, completionTimeSetter, remainingTimeSetter) => {
     const user = auth.currentUser;
     const userId = user ? user.email : null;
 
@@ -32,6 +32,10 @@ const fetchStatus = async (type, userIdSetter, completionTimeSetter) => {
 
                     completionTimeSetter(
                         `${completionTimeDate.getHours()}시 ${completionTimeDate.getMinutes()}분`
+                    );
+
+                    remainingTimeSetter(
+                        `${remainingTimeFromDB}분`
                     );
 
                     return;
@@ -74,17 +78,17 @@ const StatusW = () => {
 
         useEffect(() => {
             const fetchLaundryStatus = async () => {
-                await fetchStatus('usage', setMachineNumber, setCompletionTime);
+                await fetchStatus('usage', setMachineNumber, setCompletionTime, setRemainingTime);
 
                 const refreshInterval = setInterval(async () => {
-                    await fetchStatus('usage', setMachineNumber, setCompletionTime);
+                    await fetchStatus('usage', setMachineNumber, setCompletionTime, setRemainingTime);
                 }, 10 * 1000);
 
                 return () => clearInterval(refreshInterval);
             };
 
             fetchLaundryStatus();
-        }, []);
+        }, [setRemainingTime]);
 
         return (
             <View style={UsageStatusStyle.container}>
@@ -114,13 +118,14 @@ const StatusW = () => {
     const ReservationStatus = () => {
         const [machineNumber, setMachineNumber] = useState(null);
         const [completionTime, setCompletionTime] = useState(null);
+        const [remainingTime, setRemainingTime] = useState(null);
 
         useEffect(() => {
             const fetchReserveStatus = async () => {
-                await fetchStatus('reserve', setMachineNumber, setCompletionTime);
+                await fetchStatus('reserve', setMachineNumber, setCompletionTime, setRemainingTime);
 
                 const refreshInterval = setInterval(async () => {
-                    await fetchStatus('reserve', setMachineNumber, setCompletionTime);
+                    await fetchStatus('reserve', setMachineNumber, setCompletionTime, setRemainingTime);
                 }, 10 * 1000);
 
                 return () => clearInterval(refreshInterval);
