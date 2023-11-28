@@ -44,11 +44,14 @@ export default function HomeScreen({ navigation }) {
       </View>
       {/* 명집사의 특색 */}
       <View style={HomeStyle.zipsaContainer}>
-        <Text style={HomeStyle.zipsa}>안녕하세요 명집사입니다. </Text>
-        <Text style={HomeStyle.zipsa}>{name}님 오늘도 좋은 하루입니다.</Text>
-        <Text style={HomeStyle.zipsa}>무엇을 도와드릴까요?</Text>
+        <Text style={HomeStyle.zipsa}>  안녕하세요 명집사입니다. </Text>
+        <Text style={HomeStyle.zipsa}> {name}님 오늘도 좋은 아침입니다.</Text>
+        <Text style={HomeStyle.zipsa}>        무엇을 도와드릴까요?</Text>
+        <Image
+          style={HomeStyle.overlayImage}
+          source={require("../../img/zipsa.jpg")}
+        />
       </View>
-
       <View style={HomeStyle.usingContainer}>
         <TouchableOpacity style={HomeStyle.firstButton} onPress={() => setSelectedButton('세탁기')}>
           <Text style={HomeStyle.useBtext}>세탁기</Text>
