@@ -88,7 +88,7 @@ const WashingMchart2Screen = ({ navigation }) => {
         ) {
             // 이미 다른 사람이 예약중인 경우 알림 표시
             Alert.alert(
-                `이미 다른 사용자가 예약중입니다. \n남은 시간: ${washingMachines[machineNumber].remainingTime} 분`
+                `이미 다른 사용자가 예약중입니다. \n남은 시간: ${washingMachines[machineNumber].remainingTime}분`
             );
         } else if (
             washingMachines[machineNumber].reserveId === userEmail &&
@@ -179,7 +179,7 @@ const WashingMchart2Screen = ({ navigation }) => {
                                         machine.userId === userEmail
                                     ) {
                                         Alert.alert(
-                                            `${machineNumber}번 세탁기 남은 시간: ${machine.remainingTime}분. (5분 이하)`
+                                            `${machineNumber}번 세탁기 5분 남았습니다.`
                                         );
                                     }
                                     machine.remainingTime--;
@@ -354,7 +354,7 @@ const WashingMchart2Screen = ({ navigation }) => {
                         <View style={InputTimeStyle.InputContainer}>
                             <TextInput
                                 style={InputTimeStyle.input}
-                                placeholder="세탁시간 (분단위로 입력)"
+                                placeholder="사용 시간 (분단위로 입력)"
                                 onChangeText={(text) => setRemainingTimeInput(text)}
                                 keyboardType="numeric"
                             />

@@ -14,7 +14,6 @@ const QRScreen = ({ navigation }) => {
             if (user) {
                 setUserEmail(user.email);
                 // Fetch additional user information from the database based on user's UID
-                // Replace 'users' with the actual path where user information is stored in your Firebase database
                 const userRef = database.ref(`users/${user.uid}`);
                 userRef.once('value', (snapshot) => {
                     const userData = snapshot.val();

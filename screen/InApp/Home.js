@@ -3,6 +3,7 @@ import { Text, View, TouchableOpacity, Image, StatusBar, SafeAreaView } from 're
 import { auth, database } from '../../javascripts/FirebaseConfigFile';
 import HomeStyle from "../../styles/Auth/HomeStyle";
 import ChartScreen from "../InApp/Chart";
+import { ReservationStatus, UsageStatus } from "./MyStatusWashing";
 
 
 export default function HomeScreen({ navigation }) {
@@ -43,13 +44,9 @@ export default function HomeScreen({ navigation }) {
       </View>
       {/* 명집사의 특색 */}
       <View style={HomeStyle.zipsaContainer}>
-        <Text style={HomeStyle.zipsa}>  안녕하세요 명집사입니다. </Text>
-        <Text style={HomeStyle.zipsa}> {name}님 오늘도 좋은 아침입니다.</Text>
-        <Text style={HomeStyle.zipsa}>   무엇을 도와드릴까요?</Text>
-        <Image
-          style={HomeStyle.overlayImage}
-          source={require("../../img/zipsa.jpg")}
-        />
+        <Text style={HomeStyle.zipsa}>안녕하세요 명집사입니다. </Text>
+        <Text style={HomeStyle.zipsa}>{name}님 오늘도 좋은 하루입니다.</Text>
+        <Text style={HomeStyle.zipsa}>무엇을 도와드릴까요?</Text>
       </View>
 
       <View style={HomeStyle.usingContainer}>
@@ -74,7 +71,7 @@ export default function HomeScreen({ navigation }) {
       <View style={HomeStyle.useContainer}>
         {/* 각 버튼에 따른 사용 및 이용 현황 */}
         {(selectedButton === '세탁기') && (
-          <TouchableOpacity style={HomeStyle.usageStatusW}>
+          <TouchableOpacity style={HomeStyle.usageStatusW} onPress={() => navigation.navigate('세탁기 정보')}>
             <Text style={HomeStyle.usageText}>내 정보</Text>
             {/* 세탁기 사용 현황에 대한 내용 */}
           </TouchableOpacity>

@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import { Text, View, TouchableOpacity, Alert, Image } from 'react-native';
+import { Text, View, TouchableOpacity, Alert } from 'react-native';
 
-//스타일 import
+// 스타일 import
 import GymChartStyle from '../../styles/Auth/GymChartStyle';
 
 const GymChartScreen = () => {
     const [totalCapacity, setTotalCapacity] = useState(50);
-    const [currentUsers, setCurrentUsers] = useState(4);
+    const [currentUsers, setCurrentUsers] = useState(0);
+    const [userQueue, setUserQueue] = useState([]);
 
     const startUsage = () => {
         if (currentUsers < totalCapacity) {
@@ -17,7 +18,14 @@ const GymChartScreen = () => {
                     { text: "취소", style: "cancel" },
                     {
                         text: "확인",
-                        onPress: () => setCurrentUsers(currentUsers + 1)
+                        onPress: () => {
+                            if (!userQueue.includes("start")) {
+                                setCurrentUsers(currentUsers + 1);
+                                setUserQueue([...userQueue, "start"]);
+                            } else {
+                                alert("이미 이용 중입니다.");
+                            }
+                        }
                     }
                 ],
                 { cancelable: false }
@@ -36,7 +44,14 @@ const GymChartScreen = () => {
                     { text: "취소", style: "cancel" },
                     {
                         text: "확인",
-                        onPress: () => setCurrentUsers(currentUsers - 1)
+                        onPress: () => {
+                            if (!userQueue.includes("end")) {
+                                setCurrentUsers(currentUsers - 1);
+                                setUserQueue([...userQueue, "end"]);
+                            } else {
+                                alert("이미 종료했습니다.");
+                            }
+                        }
                     }
                 ],
                 { cancelable: false }
@@ -45,6 +60,8 @@ const GymChartScreen = () => {
             alert("이용 중인 사람이 없습니다!");
         }
     };
+
+
     return (
         <View style={GymChartStyle.container}>
             <View style={GymChartStyle.noticeBox}>
