@@ -14,8 +14,6 @@ export default function Chart2Screen({ navigation, route }) {
     <Tab.Navigator initialRouteName={initialPage}>
       <Tab.Screen name="1번방" component={DryingMchartScreen} options={{ title: '1번방' }} />
       <Tab.Screen name="2번방" component={DryingMchart2Screen} options={{ title: '2번방' }} />
-      {/* <Tab.Screen name="헬스장" component={FindIDScreen} options={{ title: '헬스장' }} />
-        <Tab.Screen name="주차장" component={FindIDScreen} options={{ title: '주차장' }} /> */}
     </Tab.Navigator>
   );
 }

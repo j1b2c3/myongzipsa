@@ -8,14 +8,12 @@ import WashingMchart2Screen from './WashingMchart2';
 //세탁기배치도
 const Tab = createMaterialTopTabNavigator();
 
-export default function ChartScreen({navigation, route}) {
+export default function ChartScreen({ navigation, route }) {
   const { pageName: initialPage } = route.params;
-    return (
-      <Tab.Navigator initialRouteName={initialPage}>
-        <Tab.Screen name="1번방" component={WashingMchartScreen} options={{ title: '1번방' }} />
-        <Tab.Screen name="2번방" component={WashingMchart2Screen} options={{ title: '2번방' }} />
-        {/* <Tab.Screen name="헬스장" component={FindIDScreen} options={{ title: '헬스장' }} />
-        <Tab.Screen name="주차장" component={FindIDScreen} options={{ title: '주차장' }} /> */}
-      </Tab.Navigator>
-    );
-  }
+  return (
+    <Tab.Navigator initialRouteName={initialPage}>
+      <Tab.Screen name="1번방" component={WashingMchartScreen} options={{ title: '1번방' }} />
+      <Tab.Screen name="2번방" component={WashingMchart2Screen} options={{ title: '2번방' }} />
+    </Tab.Navigator>
+  );
+}
