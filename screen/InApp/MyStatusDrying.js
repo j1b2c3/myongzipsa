@@ -4,14 +4,14 @@ import UsageStatusStyle from '../../styles/Auth/UsageStatusStyle';
 import ReservationStatusStyle from '../../styles/Auth/ReservationStatusStyle';
 import { auth, database } from '../../javascripts/FirebaseConfigFile';
 
-const fetchStatus = async (type, userIdSetter, completionTimeSetter) => {
+const fetchStatus = async (type, userIdSetter, completionTimeSetter, remainingTimeSetter) => {
     const user = auth.currentUser;
     const userId = user ? user.email : null;
 
     if (userId) {
         const field = type === 'usage' ? 'userId' : 'reserveId';
         const snapshot = await database
-            .ref('dryingMachines')
+            .ref('DryingMachines')
             .orderByChild(field)
             .equalTo(userId)
             .once('value');
@@ -34,6 +34,10 @@ const fetchStatus = async (type, userIdSetter, completionTimeSetter) => {
                         `${completionTimeDate.getHours()}시 ${completionTimeDate.getMinutes()}분`
                     );
 
+                    remainingTimeSetter(
+                        `${remainingTimeFromDB}분`
+                    );
+
                     return;
                 }
             });
@@ -44,6 +48,28 @@ const fetchStatus = async (type, userIdSetter, completionTimeSetter) => {
     }
 };
 
+const cancelReservation = (machineNumber) => {
+    database.ref(`DryingMachines/${machineNumber}`).transaction(
+        (machine) => {
+            if (machine) {
+                machine.reserve = true;
+                machine.reserveId = '';
+                machine.reservationTime = null;
+            }
+            return machine;
+        },
+        (error, committed) => {
+            if (error) {
+                Alert.alert('예약 취소에 실패하였습니다.');
+            } else if (committed) {
+                Alert.alert(`${machineNumber}번 건조기 예약이 취소되었습니다.`);
+            } else {
+                Alert.alert('예약 취소에 실패하였습니다.');
+            }
+        }
+    );
+};
+
 const StatusD = () => {
     const UsageStatus = () => {
         const [machineNumber, setMachineNumber] = useState(null);
@@ -52,17 +78,17 @@ const StatusD = () => {
 
         useEffect(() => {
             const fetchLaundryStatus = async () => {
-                await fetchStatus('usage', setMachineNumber, setCompletionTime);
+                await fetchStatus('usage', setMachineNumber, setCompletionTime, setRemainingTime);
 
                 const refreshInterval = setInterval(async () => {
-                    await fetchStatus('usage', setMachineNumber, setCompletionTime);
+                    await fetchStatus('usage', setMachineNumber, setCompletionTime, setRemainingTime);
                 }, 10 * 1000);
 
                 return () => clearInterval(refreshInterval);
             };
 
             fetchLaundryStatus();
-        }, []);
+        }, [setRemainingTime]);
 
         return (
             <View style={UsageStatusStyle.container}>
@@ -76,12 +102,12 @@ const StatusD = () => {
                     </View>
 
                     <View style={UsageStatusStyle.section}>
-                        <Text style={UsageStatusStyle.sectionTitle}>건조 완료시간 : </Text>
+                        <Text style={UsageStatusStyle.sectionTitle}>건조완료시간 : </Text>
                         <Text style={UsageStatusStyle.infoText}>{completionTime}</Text>
                     </View>
 
                     <View style={UsageStatusStyle.section}>
-                        <Text style={UsageStatusStyle.sectionTitle}>건조 남은시간 : </Text>
+                        <Text style={UsageStatusStyle.sectionTitle}>건조남은시간 : </Text>
                         <Text style={UsageStatusStyle.infoText}>{remainingTime}</Text>
                     </View>
                 </View>
@@ -92,13 +118,14 @@ const StatusD = () => {
     const ReservationStatus = () => {
         const [machineNumber, setMachineNumber] = useState(null);
         const [completionTime, setCompletionTime] = useState(null);
+        const [remainingTime, setRemainingTime] = useState(null);
 
         useEffect(() => {
             const fetchReserveStatus = async () => {
-                await fetchStatus('reserve', setMachineNumber, setCompletionTime);
+                await fetchStatus('reserve', setMachineNumber, setCompletionTime, setRemainingTime);
 
                 const refreshInterval = setInterval(async () => {
-                    await fetchStatus('reserve', setMachineNumber, setCompletionTime);
+                    await fetchStatus('reserve', setMachineNumber, setCompletionTime, setRemainingTime);
                 }, 10 * 1000);
 
                 return () => clearInterval(refreshInterval);
@@ -127,19 +154,39 @@ const StatusD = () => {
 
                     <TouchableOpacity
                         style={ReservationStatusStyle.cancelButton}
-                    // onPress={예약취소}
-                    >
+                        onPress={() => {
+                            Alert.alert(
+                                `건조기 ${machineNumber}번`,
+                                `예약 중입니다. 예약을 취소하시겠습니까?`,
+                                [
+                                    {
+                                        text: '예',
+                                        onPress: () => cancelReservation(machineNumber),
+                                    },
+                                    {
+                                        text: '아니오',
+                                        onPress: () => console.log('취소'),
+                                        style: 'cancel',
+                                    },
+                                ]
+                            );
+                        }}>
                         <Text style={ReservationStatusStyle.buttonText}>예약 취소</Text>
                     </TouchableOpacity>
+
                 </View>
-            </View>
+            </View >
         );
     };
 
     return (
-        <View>
-            <UsageStatus />
-            <ReservationStatus />
+        <View style={UsageStatusStyle.container1}>
+            <View style={UsageStatusStyle.container2}>
+                <UsageStatus />
+            </View>
+            <View style={UsageStatusStyle.container2}>
+                <ReservationStatus />
+            </View>
         </View>
     );
 };

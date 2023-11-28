@@ -78,7 +78,7 @@ export default function HomeScreen({ navigation }) {
         )}
 
         {(selectedButton === '건조기') && (
-          <TouchableOpacity style={HomeStyle.usageStatusD}>
+          <TouchableOpacity style={HomeStyle.usageStatusD} onPress={() => navigation.navigate('건조기 정보')} >
             <Text style={HomeStyle.usageText}>내 정보</Text>
             {/* 건조기 사용 현황에 대한 내용 */}
           </TouchableOpacity>
