@@ -48,31 +48,33 @@ const StatusGym = ({ navigation }) => {
         const todayStr = `${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`;
         return date === todayStr;
     };
-
     return (
         <ScrollView
             contentContainerStyle={{padding: 30}}  // flex: 1 제거하고 필요한 padding 또는 margin 추가
             showsVerticalScrollIndicator={false}
         >
-            {dates.map((date, index) => (
-                <View key={index}>
-                    <TouchableOpacity
-                        style={[StatusGymStyle.dateBox, isToday(date) ? { backgroundColor: '#87ceeb' } : {}]}
-                        onPress={() => selectDate(date)}
-                    >
-                        <Text style={StatusGymStyle.dateText}>{date}</Text>
-                    </TouchableOpacity>
-                    {selectedDate === date && (
-                        <View style={StatusGymStyle.usageBox}>
-                            <Text>날짜: {selectedDate}</Text>
-                            <Text>입장 시간: {enterTime}</Text>
-                            <Text>퇴장 시간: {outTime}</Text>
-                        </View>
-                    )}
+            {dates.length > 0 ? (
+                dates.map((date, index) => (
+                    <View key={index}>
+                        <TouchableOpacity
+                            style={[StatusGymStyle.dateBox, isToday(date) ? { backgroundColor: '#87ceeb' } : {}]}
+                            onPress={() => selectDate(date)}
+                        >
+                            <Text style={StatusGymStyle.dateText}>{date}</Text>
+                        </TouchableOpacity>
+                        {selectedDate === date && (
+                            <View style={StatusGymStyle.usageBox}>
+                                <Text>날짜: {selectedDate}</Text>
+                                <Text>입장 시간: {enterTime}</Text>
+                                <Text>퇴장 시간: {outTime}</Text>
+                            </View>
+                        )}
+                    </View>
+                ))
+            ) : (
+                <View style={StatusGymStyle.noRecordContainer}>
+                    <Text style={StatusGymStyle.noRecordText}>아직 헬스장 이용 기록이 없습니다!</Text>
                 </View>
-            ))}
-            {dates.length === 0 && (
-                <ActivityIndicator size="large" color="#0000ff" />
             )}
         </ScrollView>
     );
