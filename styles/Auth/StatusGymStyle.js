@@ -34,6 +34,20 @@ const StatusGymStyle = StyleSheet.create({
         backgroundColor: '#aaaaaa', // 미세한 색조 변경
         alignItems: 'flex-start',
     },
+    noRecordContainer: {
+        padding: 20,
+        borderRadius: 8,
+        backgroundColor: '#f3f3f3', // Light gray background
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: 20,
+    },
+    noRecordText: {
+        fontSize: 20,
+        color: '#555555',
+        fontWeight: 'bold', // Make it bold
+        textAlign: 'center', // Center the text
+    },
 });
 
 export default StatusGymStyle;
