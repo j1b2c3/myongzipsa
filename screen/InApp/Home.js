@@ -88,7 +88,7 @@ export default function HomeScreen({ navigation }) {
         )}
 
         {(selectedButton === '헬스장') && (
-          <TouchableOpacity style={HomeStyle.usageStatusG}>
+          <TouchableOpacity style={HomeStyle.usageStatusG} onPress={() => navigation.navigate('헬스장 정보')}>
             <Text style={HomeStyle.usageText}>내 정보</Text>
             {/* 헬스장 이용 현황에 대한 내용 */}
           </TouchableOpacity>

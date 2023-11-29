@@ -38,9 +38,18 @@ const GymChartScreen = () => {
                                     setCurrentUsers(currentUsers + 1);
                                     setUserQueue([...userQueue, auth.currentUser.email]);
 
+                                    const currentTime = new Date();
+                                    const date = `${currentTime.getFullYear()}-${currentTime.getMonth()+1}-${currentTime.getDate()}`;
+                                    const time = `${currentTime.getHours()}:${currentTime.getMinutes()}:${currentTime.getSeconds()}`;
+
                                     database.ref('Gym').update({
                                         currentUserCnt: currentUsers + 1,
                                         [`userId/${userKey}`]: true
+                                    });
+
+                                    database.ref('GymDateList').child(date).child(userKey).update({
+                                        email: auth.currentUser.email,
+                                        enterTime: time
                                     });
                                 }
                             });
@@ -74,9 +83,17 @@ const GymChartScreen = () => {
                                     const newUserQueue = userQueue.filter(queue => queue !== auth.currentUser.email);
                                     setUserQueue(newUserQueue);
 
+                                    const currentTime = new Date();
+                                    const date = `${currentTime.getFullYear()}-${currentTime.getMonth()+1}-${currentTime.getDate()}`;
+                                    const time = `${currentTime.getHours()}:${currentTime.getMinutes()}:${currentTime.getSeconds()}`;
+
                                     database.ref('Gym').update({
                                         currentUserCnt: currentUsers - 1,
                                         [`userId/${userKey}`]: null
+                                    });
+
+                                    database.ref('GymDateList').child(date).child(userKey).update({
+                                        outTime: time
                                     });
                                 }
                             });

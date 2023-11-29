@@ -30,6 +30,7 @@ import GymChartScreen from "./screen/InApp/GymChart";
 
 import StatusW from "./screen/InApp/MyStatusWashing";
 import StatusD from "./screen/InApp/MyStatusDrying";
+import StatusGym from "./screen/InApp/gymStatus";
 
 export default function App() {
   return (
@@ -91,6 +92,10 @@ export default function App() {
         <Stack.Screen
           name="건조기 정보"
           component={StatusD}
+        />
+        <Stack.Screen
+          name="헬스장 정보"
+          component={StatusGym}
         />
       </Stack.Navigator>
     </NavigationContainer>
