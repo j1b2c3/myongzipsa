@@ -27,6 +27,8 @@ import WashingMchartScreen from "./screen/InApp/WashingMchart";
 import DryingMchartScreen from "./screen/InApp/DryingMchart";
 import QRScreen from "./screen/InApp/QRcode";
 import GymChartScreen from "./screen/InApp/GymChart";
+import MailBoxScreen from "./screen/InApp/MailBox";
+
 
 export default function App() {
   return (
@@ -70,6 +72,11 @@ export default function App() {
         <Stack.Screen
           name="건조기"
           component={Chart2Screen}
+        //options={{headerShown : false}}
+        />
+        <Stack.Screen
+          name="쪽지함"
+          component={MailBoxScreen}
         //options={{headerShown : false}}
         />
         <Stack.Screen
