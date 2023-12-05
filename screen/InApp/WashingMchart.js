@@ -553,6 +553,9 @@ const WashingMchartScreen = ({ navigation }) => {
                                 </TouchableOpacity>
                                 <TouchableOpacity
                                     style={WashingMchartStyle.machine2}
+                                    onPress={() => navigation.navigate("쪽지함", {
+                                        pageName: "쪽지함"
+                                    })}
                                 >
                                     <Image style={WashingMchartStyle.machineImage}
                                         source={require("../../img/report_button.jpg")} />
