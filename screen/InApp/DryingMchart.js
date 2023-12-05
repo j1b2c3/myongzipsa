@@ -506,6 +506,9 @@ const DryingMchartScreen = ({ navigation }) => {
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={DryingMchartStyle.machine2}
+                  onPress={() => navigation.navigate("쪽지함", {
+                    pageName: "쪽지함"
+                  })}
                 >
                   <Image style={DryingMchartStyle.machineImage}
                     source={require("../../img/report_button.jpg")} />
