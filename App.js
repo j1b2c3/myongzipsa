@@ -28,6 +28,7 @@ import DryingMchartScreen from "./screen/InApp/DryingMchart";
 import QRScreen from "./screen/InApp/QRcode";
 import GymChartScreen from "./screen/InApp/GymChart";
 import MailBoxScreen from "./screen/InApp/MailBox";
+import AdminScreen from "./screen/InApp/adminMail";
 
 
 import StatusW from "./screen/InApp/MyStatusWashing";
@@ -81,6 +82,11 @@ export default function App() {
         <Stack.Screen
           name="공지사항"
           component={MailBoxScreen}
+        //options={{headerShown : false}}
+        />
+        <Stack.Screen
+          name="문의관리"
+          component={AdminScreen}
         //options={{headerShown : false}}
         />
         <Stack.Screen

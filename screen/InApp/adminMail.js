@@ -5,7 +5,7 @@ import { auth, database } from '../../javascripts/FirebaseConfigFile';
 //스타일 import
 import MailBoxStyle from '../../styles/Auth/MailBoxStyle';
 
-const MailBoxScreen = () => {
+const AdminScreen = () => {
     const [selectedButton, setSelectedButton] = useState(null);
     const [messageText, setMessageText] = useState('');
     const [receivedMessages, setReceivedMessages] = useState([]);
@@ -21,7 +21,7 @@ const MailBoxScreen = () => {
 
     // 파이어베이스 DB에 메시지 저장
     const handleMessageSend = () => {
-        const ref = database.ref(`MailBox/${adminKey}/${'receivedMsg'}`);
+        const ref = database.ref(`MailBox/${adminKey}/${'sentMsg'}`);
         ref.once("value", function (snapshot) {
             const messageNumber = snapshot.numChildren() + 1; // 새로운 메시지 순서 번호
             ref.child(messageNumber).set({
@@ -33,7 +33,7 @@ const MailBoxScreen = () => {
     };
     // 받은 메시지 확인하기
     const getReceivedMessages = () => {
-        const ref = database.ref(`MailBox/${adminKey}/${'sentMsg'}`);
+        const ref = database.ref(`MailBox/${adminKey}/${'receivedMsg'}`);
         ref.once("value", snapshot => {
             const data = snapshot.val();
             if (data) {
@@ -49,12 +49,12 @@ const MailBoxScreen = () => {
     };
     // 보낸 메시지 확인하기
     const getSentMessages = () => {
-        const ref = database.ref(`MailBox/${adminKey}/${'receivedMsg'}`);
+        const ref = database.ref(`MailBox/${adminKey}/${'sentMsg'}`);
         ref.once("value", snapshot => {
             const data = snapshot.val();
             if (data) {
                 const messages = Object.keys(data)
-                    .filter(key => Object.keys(data[key])[0] === (userKey))
+                    .filter(key => Object.keys(data[key])[0] === (adminKey))
                     .map(key => ({
                         id: key,
                         content: Object.values(data[key])[0]
@@ -73,33 +73,33 @@ const MailBoxScreen = () => {
             style={MailBoxStyle.MainContainer}
         >
             <View style={MailBoxStyle.SelectContainer}>
-                <TouchableOpacity onPress={() => setSelectedButton('받은쪽지')}>
-                    <Text> 공지사항</Text>
-                </TouchableOpacity>
-                <Text>   | </Text>
                 <TouchableOpacity onPress={() => setSelectedButton('보낸쪽지')}>
-                    <Text> 문의내역</Text>
+                    <Text> 받은문의</Text>
+                </TouchableOpacity>
+                <Text>  | </Text>
+                <TouchableOpacity onPress={() => setSelectedButton('받은쪽지')}>
+                    <Text> 보낸 공지사항</Text>
                 </TouchableOpacity>
             </View>
 
             <ScrollView style={MailBoxStyle.ListContainer}>
                 {/* 여기에 받은 쪽지와 보낸 쪽지 목록 표시 */}
-                {(selectedButton !== '보낸쪽지') && (
+                {(selectedButton === '받은쪽지') && (
                     <View>
                         <Text style={MailBoxStyle.ListTitleText}>공지사항</Text>
                         {/* 받은 쪽지 목록 렌더링 */}
-                        {receivedMessages.map(message => (
+                        {sentMessages.map(message => (
                             <View key={message.id} style={MailBoxStyle.MessageContainer}>
                                 <Text>{message.content}</Text>
                             </View>
                         ))}
                     </View>
                 )}
-                {(selectedButton === '보낸쪽지') && (
+                {(selectedButton !== '받은쪽지') && (
                     <View>
-                        <Text style={MailBoxStyle.ListTitleText}>문의내역</Text>
+                        <Text style={MailBoxStyle.ListTitleText}>받은 문의</Text>
                         {/* 보낸 쪽지 목록 렌더링 */}
-                        {sentMessages.map(message => (
+                        {receivedMessages.map(message => (
                             <View key={message.id} style={MailBoxStyle.MessageContainer}>
                                 <Text>{message.content}</Text>
                             </View>
@@ -115,16 +115,16 @@ const MailBoxScreen = () => {
                 <TextInput
                     style={MailBoxStyle.ComposeTextInput}
                     multiline
-                    placeholder="내용을 작성하세요"
+                    placeholder="공지사항을 작성하세요"
                     onChangeText={(text) => setMessageText(text)}
                     value={messageText}
                 />
                 <TouchableOpacity style={MailBoxStyle.SendButton} onPress={handleMessageSend}>
-                    <Text style={MailBoxStyle.SendButtonText}>문의하기</Text>
+                    <Text style={MailBoxStyle.SendButtonText}>보내기</Text>
                 </TouchableOpacity>
             </KeyboardAvoidingView>
         </KeyboardAvoidingView>
     );
 };
 
-export default MailBoxScreen;
+export default AdminScreen;
