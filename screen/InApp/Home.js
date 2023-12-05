@@ -57,7 +57,7 @@ export default function HomeScreen({ navigation }) {
       {/* 명집사의 특색 */}
       <View style={HomeStyle.zipsaContainer}>
         <Text style={HomeStyle.zipsa}> 어서오세요 {name}님</Text>
-        <Text style={HomeStyle.zipsa}>  무엇을 도와드릴까요?</Text>
+        <Text style={HomeStyle.zipsa}> 무엇을 도와드릴까요?</Text>
         <Image
           style={HomeStyle.overlayImage}
           source={require("../../img/zipsa.jpg")}

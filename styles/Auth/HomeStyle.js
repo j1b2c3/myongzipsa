@@ -45,11 +45,12 @@ const styles = StyleSheet.create({
     },
 
     zipsa: {
-        fontSize: 10,
+        height: "21%",
+        fontSize: 13,
         fontWeight: 'bold',
         color: "black",
         paddingLeft: 100,
-        padding: 4.5,
+        padding: 2,
     },
     overlayImage: {
         position: 'absolute',
