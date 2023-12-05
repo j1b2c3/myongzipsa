@@ -2,6 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, ActivityIndicator } from 'react-native';
 import QRCode from 'react-native-qrcode-svg';
 import { auth, database } from '../../javascripts/FirebaseConfigFile';
+
+// Text 적용
+Text.defaultProps = Text.defaultProps || {};
+Text.defaultProps.allowFontScaling = false;
+
 import QRscreenStyle from '../../styles/Auth/QRscreenStyle';
 
 const QRScreen = ({ navigation }) => {

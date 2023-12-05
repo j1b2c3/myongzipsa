@@ -3,6 +3,10 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import ReservationStatusStyle from '../../styles/Auth/ReservationStatusStyle';
 import { auth, database } from '../../javascripts/FirebaseConfigFile';
 
+// Text 적용
+Text.defaultProps = Text.defaultProps || {};
+Text.defaultProps.allowFontScaling = false;
+
 const ReservationStatus = () => {
     const [machineNumber, setMachineNumber] = useState(null);
     const [completionTime, setCompletionTime] = useState(null);

@@ -4,11 +4,15 @@ import {
     Text, View, TouchableOpacity, TextInput, Button, Alert, StyleSheet, Image, ActivityIndicator
 } from 'react-native';
 import { auth, database } from '../../javascripts/FirebaseConfigFile';
-import InputTimeStyle from '../../styles/Auth/InputTimeStyle';
+
+// Text 적용
+Text.defaultProps = Text.defaultProps || {};
+Text.defaultProps.allowFontScaling = false;
 
 //스타일 import
 import DryingMchartStyle from "../../styles/Auth/DryingMchartStyle";
 import DryingMchart2Style from "../../styles/Auth/DryingMchart2Style";
+import InputTimeStyle from '../../styles/Auth/InputTimeStyle';
 
 const DryingMchart2Screen = ({ navigation }) => {
     const [DryingMachines, setDryingMachines] = useState({});

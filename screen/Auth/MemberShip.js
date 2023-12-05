@@ -3,6 +3,10 @@ import React, { useState } from 'react'
 import { Text, View, TouchableOpacity, TextInput } from 'react-native'
 import MemberShipStyle from '../../styles/Auth/MemberShipStyle'
 
+// Text 적용
+Text.defaultProps = Text.defaultProps || {};
+Text.defaultProps.allowFontScaling = false;
+
 const MemberShipScreen = () => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')

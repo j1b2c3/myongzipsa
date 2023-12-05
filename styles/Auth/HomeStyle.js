@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     },
     specialContainer: {
         width: "100%",
-        height: "5%",
+        height: "6%",
         justifyContent: "space-evenly",
         flexDirection: "row",
         // backgroundColor: 'red',
@@ -45,11 +45,11 @@ const styles = StyleSheet.create({
     },
 
     zipsa: {
-        fontSize: 11,
+        fontSize: 10,
         fontWeight: 'bold',
         color: "black",
-        paddingLeft: 90,
-        padding: 5
+        paddingLeft: 100,
+        padding: 4.5,
     },
     overlayImage: {
         position: 'absolute',
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     },
     advContainer: {
         width: "100%",
-        height: "10%",
+        height: "9%",
         justifyContent: "center",
         alignItems: "center",
         // backgroundColor: 'yellow',

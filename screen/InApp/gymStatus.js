@@ -3,6 +3,10 @@ import { View, Text, TouchableOpacity, ScrollView, ActivityIndicator } from 'rea
 import { auth, database } from '../../javascripts/FirebaseConfigFile';
 import StatusGymStyle from '../../styles/Auth/StatusGymStyle';
 
+// Text 적용
+Text.defaultProps = Text.defaultProps || {};
+Text.defaultProps.allowFontScaling = false;
+
 const StatusGym = ({ navigation }) => {
     const [dates, setDates] = useState([]);
     const [selectedDate, setSelectedDate] = useState(null);

@@ -2,6 +2,10 @@ import React, { useState, useEffect, createRef } from "react";
 import {Text, View, TouchableOpacity, Alert} from 'react-native';
 import { auth, database } from '../../javascripts/FirebaseConfigFile';
 
+// Text 적용
+Text.defaultProps = Text.defaultProps || {};
+Text.defaultProps.allowFontScaling = false;
+
 // 스타일 import
 import GymChartStyle from '../../styles/Auth/GymChartStyle';
 

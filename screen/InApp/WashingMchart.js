@@ -11,6 +11,10 @@ import {
     Button,
 } from 'react-native';
 
+// Text 적용
+Text.defaultProps = Text.defaultProps || {};
+Text.defaultProps.allowFontScaling = false;
+
 import { auth, database } from '../../javascripts/FirebaseConfigFile';
 import InputTimeStyle from '../../styles/Auth/InputTimeStyle';
 import WashingMchartStyle from '../../styles/Auth/WashingMchartStyle';

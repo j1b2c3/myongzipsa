@@ -4,6 +4,10 @@ import UsageStatusStyle from '../../styles/Auth/UsageStatusStyle';
 import ReservationStatusStyle from '../../styles/Auth/ReservationStatusStyle';
 import { auth, database } from '../../javascripts/FirebaseConfigFile';
 
+// Text 적용
+Text.defaultProps = Text.defaultProps || {};
+Text.defaultProps.allowFontScaling = false;
+
 const fetchStatus = async (type, userIdSetter, completionTimeSetter, remainingTimeSetter) => {
     const user = auth.currentUser;
     const userId = user ? user.email : null;
