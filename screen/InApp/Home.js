@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Text, View, TouchableOpacity, Image, StatusBar, SafeAreaView, Alert } from 'react-native';
+import { Text, View, TouchableOpacity, Image, StatusBar, SafeAreaView } from 'react-native';
 import { auth, database } from '../../javascripts/FirebaseConfigFile';
 import HomeStyle from "../../styles/Auth/HomeStyle";
 import ChartScreen from "../InApp/Chart";
@@ -13,7 +13,6 @@ export default function HomeScreen({ navigation }) {
 
   const [name, setName] = useState('');
   const [selectedButton, setSelectedButton] = useState(null);
-  const [email, setEmail] = useState('');
 
   useEffect(() => {
     const user = auth.currentUser;
@@ -83,25 +82,21 @@ export default function HomeScreen({ navigation }) {
       </View>
 
       <View style={HomeStyle.useContainer}>
-        {/* 각 버튼에 따른 사용 및 이용 현황 */}
         {(selectedButton === '세탁기') && (
           <TouchableOpacity style={HomeStyle.usageStatusW} onPress={() => navigation.navigate('세탁기 정보')}>
             <Text style={HomeStyle.usageText}>내 정보</Text>
-            {/* 세탁기 사용 현황에 대한 내용 */}
           </TouchableOpacity>
         )}
 
         {(selectedButton === '건조기') && (
           <TouchableOpacity style={HomeStyle.usageStatusD} onPress={() => navigation.navigate('건조기 정보')} >
             <Text style={HomeStyle.usageText}>내 정보</Text>
-            {/* 건조기 사용 현황에 대한 내용 */}
           </TouchableOpacity>
         )}
 
         {(selectedButton === '헬스장') && (
           <TouchableOpacity style={HomeStyle.usageStatusG} onPress={() => navigation.navigate('헬스장 정보')}>
             <Text style={HomeStyle.usageText}>내 정보</Text>
-            {/* 헬스장 이용 현황에 대한 내용 */}
           </TouchableOpacity>
         )}
 
@@ -113,7 +108,6 @@ export default function HomeScreen({ navigation }) {
       </View>
 
       <View style={HomeStyle.iconContainer}>
-        {/*세탁기*/}
         <TouchableOpacity style={HomeStyle.leftButton}
           onPress={() => navigation.navigate("세탁기", {
             pageName: "세탁기"
@@ -123,7 +117,6 @@ export default function HomeScreen({ navigation }) {
           <Text>세탁기</Text>
         </TouchableOpacity>
 
-        {/*건조기*/}
         <TouchableOpacity style={HomeStyle.rightButton}
           onPress={() => navigation.navigate("건조기", {
             pageName: "건조기"
@@ -135,7 +128,6 @@ export default function HomeScreen({ navigation }) {
       </View>
 
       <View style={HomeStyle.iconContainer2}>
-        {/*헬스장*/}
         <TouchableOpacity style={HomeStyle.leftButton}
           onPress={() => navigation.navigate("헬스장", {
             pageName: "헬스장"
@@ -145,7 +137,6 @@ export default function HomeScreen({ navigation }) {
           <Text>헬스장</Text>
         </TouchableOpacity>
 
-        {/*주차장*/}
         <TouchableOpacity style={HomeStyle.rightButton}>
           <Image style={HomeStyle.icon2}
             source={require("../../img/icon_parking.jpg")} />
@@ -153,7 +144,6 @@ export default function HomeScreen({ navigation }) {
         </TouchableOpacity>
       </View>
 
-      {/* 광고 배너 부분 */}
       <View style={HomeStyle.advContainer}>
         <TouchableOpacity >
           <Image style={HomeStyle.advert}
