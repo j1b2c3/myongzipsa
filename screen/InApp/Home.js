@@ -26,14 +26,14 @@ export default function HomeScreen({ navigation }) {
   return (
     <SafeAreaView style={HomeStyle.container}>
       <StatusBar />
-      <View style = {HomeStyle.specialContainer}>
-        <TouchableOpacity style = {HomeStyle.mailButton}
-         onPress={() => navigation.navigate("쪽지함", {
-          pageName: "쪽지함"
-        })}>
+      <View style={HomeStyle.specialContainer}>
+        <TouchableOpacity style={HomeStyle.mailButton}
+          onPress={() => navigation.navigate("공지사항", {
+            pageName: "공지사항"
+          })}>
           <Image style={HomeStyle.iconMail}
             source={require("../../img/icon_mail_.png")} />
-          <Text>쪽지함</Text>
+          <Text>공지사항</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={HomeStyle.qrButton}

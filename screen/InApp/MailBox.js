@@ -43,7 +43,7 @@ const MailBoxScreen = () => {
                 })).reverse(); //내림차순. 
                 setReceivedMessages(messages);
             } else {
-                setReceivedMessages([{ id: '1', content: '쪽지함이 비어있습니다!' }]);
+                setReceivedMessages([{ id: '1', content: '내용이 없습니다!' }]);
             }
         });
     };
@@ -61,7 +61,7 @@ const MailBoxScreen = () => {
                     })).reverse(); // 내림차순 
                 setSentMessages(messages);
             } else {
-                setSentMessages([{ id: '1', content: '쪽지함이 비어있습니다!' }]);
+                setSentMessages([{ id: '1', content: '내용이 없습니다!' }]);
             }
         });
     };
@@ -74,18 +74,18 @@ const MailBoxScreen = () => {
         >
             <View style={MailBoxStyle.SelectContainer}>
                 <TouchableOpacity onPress={() => setSelectedButton('받은쪽지')}>
-                    <Text>받은쪽지  | </Text>
+                    <Text> 공지사항  | </Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => setSelectedButton('보낸쪽지')}>
-                    <Text> 보낸쪽지</Text>
+                    <Text> 문의내역</Text>
                 </TouchableOpacity>
             </View>
 
             <ScrollView style={MailBoxStyle.ListContainer}>
                 {/* 여기에 받은 쪽지와 보낸 쪽지 목록 표시 */}
-                {(selectedButton === '받은쪽지') && (
+                {(selectedButton !== '보낸쪽지') && (
                     <View>
-                        <Text style={MailBoxStyle.ListTitleText}>받은 쪽지 목록</Text>
+                        <Text style={MailBoxStyle.ListTitleText}>공지사항</Text>
                         {/* 받은 쪽지 목록 렌더링 */}
                         {receivedMessages.map(message => (
                             <View key={message.id} style={MailBoxStyle.MessageContainer}>
@@ -96,7 +96,7 @@ const MailBoxScreen = () => {
                 )}
                 {(selectedButton === '보낸쪽지') && (
                     <View>
-                        <Text style={MailBoxStyle.ListTitleText}>보낸 쪽지 목록</Text>
+                        <Text style={MailBoxStyle.ListTitleText}>문의내역</Text>
                         {/* 보낸 쪽지 목록 렌더링 */}
                         {sentMessages.map(message => (
                             <View key={message.id} style={MailBoxStyle.MessageContainer}>
@@ -114,12 +114,12 @@ const MailBoxScreen = () => {
                 <TextInput
                     style={MailBoxStyle.ComposeTextInput}
                     multiline
-                    placeholder="여기에 쪽지를 작성하세요"
+                    placeholder="내용을 작성하세요"
                     onChangeText={(text) => setMessageText(text)}
                     value={messageText}
                 />
                 <TouchableOpacity style={MailBoxStyle.SendButton} onPress={handleMessageSend}>
-                    <Text style={MailBoxStyle.SendButtonText}>쪽지 보내기</Text>
+                    <Text style={MailBoxStyle.SendButtonText}>문의하기</Text>
                 </TouchableOpacity>
             </KeyboardAvoidingView>
         </KeyboardAvoidingView>

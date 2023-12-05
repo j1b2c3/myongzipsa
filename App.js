@@ -79,7 +79,7 @@ export default function App() {
         //options={{headerShown : false}}
         />
         <Stack.Screen
-          name="쪽지함"
+          name="공지사항"
           component={MailBoxScreen}
         //options={{headerShown : false}}
         />
