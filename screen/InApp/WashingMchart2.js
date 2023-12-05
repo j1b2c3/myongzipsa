@@ -66,9 +66,24 @@ const WashingMchart2Screen = ({ navigation }) => {
             (washingMachines[machineNumber].available &&
                 washingMachines[machineNumber].reserveId === userEmail)
         ) {
-            // 세탁기가 사용 가능한 경우 남은 시간 입력 폼을 표시
-            setMachineNumber(machineNumber);
-            setRemainingTimeInput(''); // remainingTimeInput 초기화
+            Alert.alert(
+                `세탁기 ${machineNumber}번`,
+                `사용하시겠습니까?`,
+                [
+                    {
+                        text: '예',
+                        onPress: () => {
+                            setMachineNumber(machineNumber),
+                                setRemainingTimeInput('')
+                        } // remainingTimeInput 초기화
+                    },
+                    {
+                        text: '아니오',
+                        onPress: () => console.log('취소'),
+                        style: 'cancel',
+                    },
+                ]
+            );
         } else if (washingMachines[machineNumber].userId === userEmail) {
             // 사용자가 이미 사용중인 경우 사용 취소 여부를 묻는 알림 표시
             Alert.alert(

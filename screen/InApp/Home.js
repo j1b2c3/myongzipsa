@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Text, View, TouchableOpacity, Image, StatusBar, SafeAreaView } from 'react-native';
+import { Text, View, TouchableOpacity, Image, StatusBar, SafeAreaView, Alert } from 'react-native';
 import { auth, database } from '../../javascripts/FirebaseConfigFile';
 import HomeStyle from "../../styles/Auth/HomeStyle";
 import ChartScreen from "../InApp/Chart";
@@ -108,7 +108,6 @@ export default function HomeScreen({ navigation }) {
         {(selectedButton === '주차장') && (
           <TouchableOpacity style={HomeStyle.usageStatusP}>
             <Text style={HomeStyle.usageText}>내 정보</Text>
-            {/* 주차장 이용 현황에 대한 내용 */}
           </TouchableOpacity>
         )}
       </View>
@@ -122,7 +121,6 @@ export default function HomeScreen({ navigation }) {
           <Image style={HomeStyle.icon}
             source={require("../../img/icon_washing_machine.jpg")} />
           <Text>세탁기</Text>
-          {/* onPress = */}
         </TouchableOpacity>
 
         {/*건조기*/}
@@ -133,7 +131,6 @@ export default function HomeScreen({ navigation }) {
           <Image style={HomeStyle.icon}
             source={require("../../img/icon_drying_machine.jpg")} />
           <Text>건조기</Text>
-          {/* onPress = */}
         </TouchableOpacity>
       </View>
 
@@ -146,7 +143,6 @@ export default function HomeScreen({ navigation }) {
           <Image style={HomeStyle.icon2}
             source={require("../../img/icon_gym.jpg")} />
           <Text>헬스장</Text>
-          {/* onPress = */}
         </TouchableOpacity>
 
         {/*주차장*/}
@@ -154,7 +150,6 @@ export default function HomeScreen({ navigation }) {
           <Image style={HomeStyle.icon2}
             source={require("../../img/icon_parking.jpg")} />
           <Text>주차장</Text>
-          {/* onPress = */}
         </TouchableOpacity>
       </View>
 
