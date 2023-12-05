@@ -456,6 +456,7 @@ const WashingMchartScreen = ({ navigation }) => {
                                 >
                                     <Image style={WashingMchartStyle.machineImage}
                                         source={require("../../img/washing_machine.jpg")} />
+                            
                                     <View style={[WashingMchartStyle.overlay,
                                     { backgroundColor: handleColor('1', userEmail) },
                                     ]}
@@ -482,7 +483,7 @@ const WashingMchartScreen = ({ navigation }) => {
                                     style={WashingMchartStyle.machine2}
                                 >
                                     <Image style={WashingMchartStyle.machineImage}
-                                        source={require("../../img/Possible_status.jpg")} />
+                                        source={require("../../img/Possible_status2.jpg")} />
                                 </TouchableOpacity>
 
                             </View>
