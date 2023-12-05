@@ -10,6 +10,7 @@ export default function HomeScreen({ navigation }) {
 
   const [name, setName] = useState('');
   const [selectedButton, setSelectedButton] = useState(null);
+  const [email, setEmail] = useState('');
 
   useEffect(() => {
     const user = auth.currentUser;
@@ -28,9 +29,14 @@ export default function HomeScreen({ navigation }) {
       <StatusBar />
       <View style={HomeStyle.specialContainer}>
         <TouchableOpacity style={HomeStyle.mailButton}
-          onPress={() => navigation.navigate("공지사항", {
-            pageName: "공지사항"
-          })}>
+          onPress={() => {
+            if (name === '관리자') {
+              navigation.navigate("문의관리", { pageName: "문의관리" });
+            } else {
+              navigation.navigate("공지사항", { pageName: "공지사항" });
+            }
+          }}
+        >
           <Image style={HomeStyle.iconMail}
             source={require("../../img/icon_mail_.png")} />
           <Text>공지사항</Text>
@@ -48,7 +54,7 @@ export default function HomeScreen({ navigation }) {
       {/* 명집사의 특색 */}
       <View style={HomeStyle.zipsaContainer}>
         <Text style={HomeStyle.zipsa}>  안녕하세요 명집사입니다. </Text>
-        <Text style={HomeStyle.zipsa}> {name}님 오늘도 좋은 아침입니다.</Text>
+        <Text style={HomeStyle.zipsa}> 어서오세요 {name}님</Text>
         <Text style={HomeStyle.zipsa}>        무엇을 도와드릴까요?</Text>
         <Image
           style={HomeStyle.overlayImage}
