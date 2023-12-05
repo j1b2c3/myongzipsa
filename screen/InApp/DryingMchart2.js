@@ -329,11 +329,11 @@ const DryingMchart2Screen = ({ navigation }) => {
         if (reserveId === userEmail && available) {
             return 'blue';
         } else if (userId === userEmail) {
-            return 'green';
+            return 'orange';
         } else if (reserveId !== userEmail && reserveId !== '' && available) {
             return 'red';
         } else if (reserveId === userEmail) {
-            return 'green';
+            return 'orange';
         } else if (available) {
             return '#004CFF';
         } else if (reserve) {

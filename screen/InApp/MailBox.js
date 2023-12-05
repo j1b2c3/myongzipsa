@@ -22,7 +22,7 @@ const MailBoxScreen = () => {
     // 파이어베이스 DB에 메시지 저장
     const handleMessageSend = () => {
         const ref = database.ref(`MailBox/${adminKey}/${userKey === adminKey ? 'sentMsg' : 'receivedMsg'}`);
-        ref.once("value", function(snapshot) {
+        ref.once("value", function (snapshot) {
             const messageNumber = snapshot.numChildren() + 1; // 새로운 메시지 순서 번호
             ref.child(messageNumber).set({
                 [userKey]: messageText
@@ -40,7 +40,7 @@ const MailBoxScreen = () => {
                 const messages = Object.keys(data).map(key => ({
                     id: key,
                     content: Object.values(data[key])[0]
-                })).reverse(); //내림차순.
+                })).reverse(); //내림차순. 
                 setReceivedMessages(messages);
             } else {
                 setReceivedMessages([{ id: '1', content: '쪽지함이 비어있습니다!' }]);
@@ -58,7 +58,7 @@ const MailBoxScreen = () => {
                     .map(key => ({
                         id: key,
                         content: Object.values(data[key])[0]
-                    })).reverse(); // 내림차순
+                    })).reverse(); // 내림차순 
                 setSentMessages(messages);
             } else {
                 setSentMessages([{ id: '1', content: '쪽지함이 비어있습니다!' }]);
