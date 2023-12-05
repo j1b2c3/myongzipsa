@@ -29,6 +29,7 @@ const MailBoxScreen = () => {
             });
         });
 
+        Alert.alert('문의가 접수되었습니다.');
         setMessageText(''); // 입력 상자 초기화
     };
     // 받은 메시지 확인하기
@@ -74,9 +75,9 @@ const MailBoxScreen = () => {
         >
             <View style={MailBoxStyle.SelectContainer}>
                 <TouchableOpacity onPress={() => setSelectedButton('받은쪽지')}>
-                    <Text> 공지사항</Text>
+                    <Text> 공지사항 </Text>
                 </TouchableOpacity>
-                <Text>   | </Text>
+                <Text>  | </Text>
                 <TouchableOpacity onPress={() => setSelectedButton('보낸쪽지')}>
                     <Text> 문의내역</Text>
                 </TouchableOpacity>

@@ -29,6 +29,7 @@ const AdminScreen = () => {
             });
         });
 
+        Alert.alert('공지사항이 등록되었습니다.');
         setMessageText(''); // 입력 상자 초기화
     };
     // 받은 메시지 확인하기
