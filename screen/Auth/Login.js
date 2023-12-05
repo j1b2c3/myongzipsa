@@ -2,6 +2,10 @@ import { auth } from '../../javascripts/FirebaseConfigFile';
 import React, { useState, useEffect, createRef } from 'react'
 import { Text, View, TouchableOpacity, TextInput, Image, Alert, TouchableWithoutFeedback, Keyboard } from 'react-native'
 
+// Text 적용
+Text.defaultProps = Text.defaultProps || {};
+Text.defaultProps.allowFontScaling = false;
+
 // 스타일 import
 import LoginStyle from '../../styles/Auth/LoginStyle'
 

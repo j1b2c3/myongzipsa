@@ -5,6 +5,9 @@ import HomeStyle from "../../styles/Auth/HomeStyle";
 import ChartScreen from "../InApp/Chart";
 import { ReservationStatus, UsageStatus } from "./MyStatusWashing";
 
+// Text 적용
+Text.defaultProps = Text.defaultProps || {};
+Text.defaultProps.allowFontScaling = false;
 
 export default function HomeScreen({ navigation }) {
 
@@ -49,7 +52,7 @@ export default function HomeScreen({ navigation }) {
       <View style={HomeStyle.zipsaContainer}>
         <Text style={HomeStyle.zipsa}>  안녕하세요 명집사입니다. </Text>
         <Text style={HomeStyle.zipsa}> {name}님 오늘도 좋은 아침입니다.</Text>
-        <Text style={HomeStyle.zipsa}>        무엇을 도와드릴까요?</Text>
+        <Text style={HomeStyle.zipsa}>  무엇을 도와드릴까요?</Text>
         <Image
           style={HomeStyle.overlayImage}
           source={require("../../img/zipsa.jpg")}

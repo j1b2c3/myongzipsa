@@ -3,6 +3,10 @@ import { View, Text } from 'react-native';
 import UsageStatusStyle from '../../styles/Auth/UsageStatusStyle';
 import { auth, database } from '../../javascripts/FirebaseConfigFile';
 
+// Text 적용
+Text.defaultProps = Text.defaultProps || {};
+Text.defaultProps.allowFontScaling = false;
+
 const UsageStatus = () => {
   const [machineNumber, setMachineNumber] = useState(null);
   const [completionTime, setCompletionTime] = useState(null);

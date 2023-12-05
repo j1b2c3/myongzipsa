@@ -5,6 +5,10 @@ import 'firebase/auth';
 import 'firebase/database';
 import { auth, database } from '../../javascripts/FirebaseConfigFile';
 
+// Text 적용
+Text.defaultProps = Text.defaultProps || {};
+Text.defaultProps.allowFontScaling = false;
+
 // 스타일 import
 import FindIDStyle from "../../styles/Auth/FindIDStyle";
 
