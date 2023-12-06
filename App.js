@@ -18,8 +18,6 @@ import FindingScreen from "./screen/Auth/Finding";
 import FindIDScreen from "./screen/Auth/FindID";
 import FindPwdScreen from "./screen/Auth/FindPwd";
 
-import UsageStatusScreen from "./screen/InApp/UsageStatus";
-import ReservationStatusScreen from "./screen/InApp/ReservationStatus";
 import HomeScreen from "./screen/InApp/Home";
 import ChartScreen from "./screen/InApp/Chart";
 import Chart2Screen from "./screen/InApp/Chart2";
@@ -52,16 +50,6 @@ export default function App() {
         <Stack.Screen
           name="아이디/비밀번호 찾기"
           component={FindingScreen}
-        //options={{headerShown : false}}
-        />
-        <Stack.Screen
-          name="사용현황"
-          component={UsageStatusScreen}
-        //options={{headerShown : false}}
-        />
-        <Stack.Screen
-          name="예약현황"
-          component={ReservationStatusScreen}
         //options={{headerShown : false}}
         />
         <Stack.Screen
