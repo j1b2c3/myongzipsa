@@ -502,7 +502,7 @@ const WashingMchartScreen = ({ navigation }) => {
                                     style={WashingMchartStyle.machine2}
                                 >
                                     <Image style={WashingMchartStyle.machineImage}
-                                        source={require("../../img/Possible_status2.jpg")} />
+                                        source={require("../../img/Possible_status3.jpg")} />
                                 </TouchableOpacity>
 
                             </View>
