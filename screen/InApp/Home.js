@@ -39,8 +39,8 @@ export default function HomeScreen({ navigation }) {
             }
           }}
         >
-          <Image style={HomeStyle.iconMail}
-            source={require("../../img/icon_mail_.png")} />
+          <Image style={HomeStyle.iconNotice}
+            source={require("../../img/icon_notice.png")} />
           <Text>공지사항</Text>
         </TouchableOpacity>
 

@@ -20,8 +20,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         margin: 10,
     },
-    iconMail: {
-        width: "20%",
+    iconNotice: {
+        width: "40%",
         height: "50%",
         resizeMode: 'contain',
     },
