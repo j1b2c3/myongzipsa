@@ -540,7 +540,7 @@ const WashingMchartScreen = ({ navigation }) => {
                                     onPress={() => autoReserveMachine()}
                                 >
                                     <Image style={WashingMchartStyle.machineImage}
-                                        source={require("../../img/automatic_recommendation_button.jpg")} />
+                                        source={require("../../img/automatic_recommendation_button3.jpg")} />
                                 </TouchableOpacity>
                             </View>
                             {/* 3행 */}
@@ -578,7 +578,7 @@ const WashingMchartScreen = ({ navigation }) => {
                                     })}
                                 >
                                     <Image style={WashingMchartStyle.machineImage}
-                                        source={require("../../img/report_button.jpg")} />
+                                        source={require("../../img/report_button3.jpg")} />
                                 </TouchableOpacity>
                             </View>
                             {/* 4행 */}
