@@ -485,7 +485,7 @@ const DryingMchartScreen = ({ navigation }) => {
                   style={DryingMchartStyle.machine2}
                 >
                   <Image style={DryingMchartStyle.machineImage}
-                    source={require("../../img/Possible_status3.jpg")} />
+                    source={require("../../img/Possible_status.jpg")} />
                 </TouchableOpacity>
               </View>
               <View style={DryingMchartStyle.row}>
