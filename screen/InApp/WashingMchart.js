@@ -54,6 +54,22 @@ const WashingMchartScreen = ({ navigation }) => {
         });
         return authObserver;
     }, []);
+    const handleHelpClick = () => {
+        Alert.alert(
+            // <Image style={WashingMchartStyle.machineImage}
+            //     source={require("../../img/icon_tip.png")} />
+            '도움말',
+            '예약 가능 : \n현재 상태는 사용 중 입니다. \n해당 편의 시설에 예약을 할 수 있습니다. \n\n사용 중 : \n현재 상태는 미 사용 중 입니다. \n편의 시설을 사용 할 수 있습니다. \n\n사용 불가 : \n현재 상태는 사용 중 입니다. \n또한 다른 사용자의 예약이 잡혀 있습니다. \n사용 및 예약이 불가능 합니다. \n\n내 사용 및 예약 : \n현재 상태는 사용 중 입니다. \n자신이 사용 중이거나 예약 중인 편의 시설입니다.',
+    
+                [
+                    {
+                        text: '닫기',
+                        onPress: () => console.log('취소'),
+                        style: 'cancel',
+                    }
+                ]
+        )
+    }
 
     const handleMachineClick = (machineNumber) => {
         if (!washingMachines[machineNumber]) {
@@ -500,6 +516,7 @@ const WashingMchartScreen = ({ navigation }) => {
 
                                 <TouchableOpacity
                                     style={WashingMchartStyle.machine2}
+                                    onPress={() => handleHelpClick()}
                                 >
                                     <Image style={WashingMchartStyle.machineImage}
                                         source={require("../../img/Possible_status2.jpg")} />
