@@ -519,7 +519,7 @@ const WashingMchartScreen = ({ navigation }) => {
                                     onPress={() => handleHelpClick()}
                                 >
                                     <Image style={WashingMchartStyle.machineImage}
-                                        source={require("../../img/Possible_status2.jpg")} />
+                                        source={require("../../img/Possible_status.jpg")} />
                                 </TouchableOpacity>
 
                             </View>
